@@ -2,7 +2,7 @@
 
 import { githubConfig } from '@/config/Github';
 import Link from 'next/link';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import Container from '../common/Container';
 import GithubIcon from '../svgs/Github';
@@ -82,6 +82,7 @@ export default function Github() {
   const [total, setTotal] = useState(0);
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const todayStr = useMemo(() => {
     return getLocalDateString(new Date());
@@ -100,6 +101,7 @@ export default function Github() {
           headers: {
             Accept: 'application/json',
           },
+          cache: 'no-store',
         });
 
         if (!response.ok) {
@@ -136,8 +138,28 @@ export default function Github() {
 
     fetchContributions();
 
-    return () => controller.abort();
+    const handleFocus = () => {
+      fetchContributions();
+    };
+    window.addEventListener('focus', handleFocus);
+    const interval = setInterval(fetchContributions, 60000);
+
+    return () => {
+      controller.abort();
+      window.removeEventListener('focus', handleFocus);
+      clearInterval(interval);
+    };
   }, []);
+
+  // Auto scroll to the right edge (latest month) when graph finishes loading
+  useEffect(() => {
+    if (!isLoading && !hasError && scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      requestAnimationFrame(() => {
+        container.scrollLeft = container.scrollWidth;
+      });
+    }
+  }, [isLoading, hasError]);
 
   const contributionMap = useMemo(() => {
     const map = new Map<string, Contribution>();
@@ -306,7 +328,10 @@ export default function Github() {
         {/* Contribution Graph */}
         {!isLoading && !hasError && (
           <div className="border-border bg-background rounded-xl border p-5">
-            <div className="overflow-x-auto pb-2 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-muted-foreground/20 hover:[&::-webkit-scrollbar-thumb]:bg-muted-foreground/40">
+            <div
+              ref={scrollContainerRef}
+              className="overflow-x-auto pb-2 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-muted-foreground/20 hover:[&::-webkit-scrollbar-thumb]:bg-muted-foreground/40"
+            >
               <div className="min-w-[760px]">
                 {/* Month labels */}
                 <div className="mb-2 ml-9 grid grid-cols-[repeat(53,11px)] gap-[3px] text-xs h-4 relative">
