@@ -50,8 +50,8 @@ export const experiences: Experience[] = [
     location: 'Noida, India (Remote)',
     image: '/company/promote1.png',
     description: [
-      'Architected and developed the complete frontend infrastructure for the platform, a comprehensive solution for creating and managing promotional campaigns.',
-      'Led a comprehensive codebase refactoring initiative that improved maintainability, scalability, and development velocity across the entire platform.',
+      'Developed and maintained the company’s official portfolio website using Next.js, React.js, TypeScript, and Tailwind CSS, delivering a responsive and SEO-optimized web experience.',
+      'Collaborated with the founding team to build investor-facing web pages showcasing the company’s AI-powered Virtual Try-On and Hyperlocal Commerce Platform.',
       'Integrated and optimized backend API connections, implementing efficient data fetching strategies and error handling mechanisms.',
       'Enhanced user experience and interface design through implementation of consistent design systems, accessibility standards, and performance optimizations.',
     ],
@@ -148,11 +148,11 @@ export const experiences: Experience[] = [
     location: 'Remote, India',
     image: '/company/prepeasy.png',
     description: [
-      'Independently architected and developed end-to-end full-stack solutions for core product features, resulting in 95% cost reduction in AI interview services.',
-      'Single-handedly engineered and deployed a scalable AI Interview Platform, implementing real-time leaderboard analytics and automated personalized interview feedback system, reducing per-session costs from *$7* to *$0.30*.',
-      'Designed and developed comprehensive AI Resume Builder with automated optimization features, increasing user engagement by generating tailored resume recommendations and industry-specific summaries.',
-      'Built and integrated an AI-powered Cover Letter Generator with customizable templates, improving user application success rates through personalized content generation.',
-      'Engineered a complete Learning Management System (LMS) with an integrated Quiz Platform, featuring progress tracking and performance analytics.',
+      'Worked with teams to develop websites for clients using modern web technologies',
+      'Built and integrated an AI-powered Caption Generator with customizable hastags, improving user application success rates through personalized content generation.',
+      'Leveraged frameworks like React and Next.js to build dynamic web applications.',
+      'Gained experience in frontend development, ensuring responsive design.',
+      
     ],
     startDate: 'January 2025',
     endDate: 'June 2025',
@@ -208,8 +208,8 @@ export const experiences: Experience[] = [
         icon: <Bun />,
       },
     ],
-    website: 'https://prepeasy.ai',
-    github: 'https://github.com/prepeasy',
+    website: 'https://mynk.is-a.dev',
+    github: 'https://github.com/Mayank-Pandey7',
   },
   
   {
