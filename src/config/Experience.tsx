@@ -48,7 +48,7 @@ export const experiences: Experience[] = [
     company: 'TrialShopy',
     position: 'Full Stack Developer Intern',
     location: 'Noida, India (Remote)',
-    image: '/company/promote.png',
+    image: '/company/promote1.png',
     description: [
       'Architected and developed the complete frontend infrastructure for the platform, a comprehensive solution for creating and managing promotional campaigns.',
       'Led a comprehensive codebase refactoring initiative that improved maintainability, scalability, and development velocity across the entire platform.',
@@ -143,9 +143,9 @@ export const experiences: Experience[] = [
   },
   {
     isCurrent: false,
-    company: 'Prepeasy',
-    position: 'Founding Engineer',
-    location: 'Freelance',
+    company: 'Freelance',
+    position: 'Frontend Developer',
+    location: 'Remote, India',
     image: '/company/prepeasy.png',
     description: [
       'Independently architected and developed end-to-end full-stack solutions for core product features, resulting in 95% cost reduction in AI interview services.',
@@ -154,7 +154,7 @@ export const experiences: Experience[] = [
       'Built and integrated an AI-powered Cover Letter Generator with customizable templates, improving user application success rates through personalized content generation.',
       'Engineered a complete Learning Management System (LMS) with an integrated Quiz Platform, featuring progress tracking and performance analytics.',
     ],
-    startDate: 'April 2025',
+    startDate: 'January 2025',
     endDate: 'June 2025',
     technologies: [
       {
@@ -211,113 +211,21 @@ export const experiences: Experience[] = [
     website: 'https://prepeasy.ai',
     github: 'https://github.com/prepeasy',
   },
+  
   {
     isCurrent: false,
-    company: 'Expelee',
-    position: 'SDE-1 (Full Stack) Intern',
-    location: 'Dubai, UAE (Remote)',
-    image: '/company/expelee.png',
-    description: [
-      '*Riskmitra (riskmitra.com)*: Built full-stack product with Next.js, Tailwind CSS, Framer Motion, shadcn, wallet integration, and GitBook integration.',
-      '*Core AI (core-ai.me)*: Designed and developed with Next.js, Tailwind CSS, Framer Motion, shadcn, focusing on scalability and modular UI design.',
-      '*GPU AI (gpuai.me)*: Integrated Three.js for interactive 3D elements alongside full-stack features from Core AI setup.',
-      '*Altranium (gaming.altranium.com)*: Developed immersive gaming platform using Three.js, MERN, Tailwind, and Framer Motion.',
-      '*Pars Network (parsnetwork.me)*: Engineered landing experience with MERN, Tailwind CSS, and GSAP for advanced animations and transitions.',
-      '*TEQ Network (teq-network.vercel.app)*: Designed and developed landing page using MERN, Tailwind CSS, and Web3 wallet integration.',
-    ],
-    startDate: 'Aug 2023',
-    endDate: 'April 2025',
-    technologies: [
-      {
-        name: 'Bun',
-        href: 'https://bun.sh/',
-        icon: <Bun />,
-      },
-      {
-        name: 'Express',
-        href: 'https://expressjs.com/',
-        icon: <ExpressJs />,
-      },
-      {
-        name: 'Figma',
-        href: 'https://figma.com/',
-        icon: <Figma />,
-      },
-      {
-        name: 'JavaScript',
-        href: 'https://javascript.com/',
-        icon: <JavaScript />,
-      },
-      {
-        name: 'MongoDB',
-        href: 'https://mongodb.com/',
-        icon: <MongoDB />,
-      },
-      {
-        name: 'Next.js',
-        href: 'https://nextjs.org/',
-        icon: <NextJs />,
-      },
-      {
-        name: 'Node.js',
-        href: 'https://nodejs.org/',
-        icon: <NodeJs />,
-      },
-      {
-        name: 'PostgreSQL',
-        href: 'https://postgresql.org/',
-        icon: <PostgreSQL />,
-      },
-      {
-        name: 'Prisma',
-        href: 'https://prisma.io/',
-        icon: <Prisma />,
-      },
-      {
-        name: 'React',
-        href: 'https://react.dev/',
-        icon: <ReactIcon />,
-      },
-      {
-        name: 'TypeScript',
-        href: 'https://typescriptlang.org/',
-        icon: <TypeScript />,
-      },
-      {
-        name: 'Postman',
-        href: 'https://postman.com/',
-        icon: <Postman />,
-      },
-      {
-        name: 'Vercel',
-        href: 'https://vercel.com/',
-        icon: <Vercel />,
-      },
-      {
-        name: 'AWS',
-        href: 'https://aws.amazon.com/',
-        icon: <AWS />,
-      },
-    ],
-    website: 'https://expelee.com',
-    x: 'https://x.com/0xExpelee',
-    linkedin: 'https://www.linkedin.com/company/expelee',
-    github: 'https://github.com/expeleeOfficial',
-  },
-  {
-    isCurrent: false,
-    company: 'Flameloop',
-    position: 'Junior Frontend Developer',
-    location: 'Indore, India (offline)',
+    company: 'Octanet Services Pvt. Ltd.',
+    position: 'Web Developer Intern',
+    location: 'Remote, India ',
     image: '/company/loop.png',
     description: [
       'Developed and maintained web applications using HTML, CSS, and JavaScript.',
       'Collaborated with cross-functional teams to deliver high-quality software on time.',
       'Design & Developed multiple websites for clients.',
     ],
-    startDate: 'June 2023',
-    endDate: 'July 2023',
-    website: 'https://flameloop.com',
+    startDate: 'Aug 2024',
+    endDate: 'Sep 2024',
+    website: 'https://www.octanet.in',
     technologies: [
       {
         name: 'HTML',
@@ -345,7 +253,6 @@ export const experiences: Experience[] = [
         icon: <BootStrap />,
       },
     ],
-    x: 'https://x.com/Flameloop149578',
-    linkedin: 'https://www.linkedin.com/company/flameloop',
+    linkedin: 'https://www.linkedin.com/company/octanetservices/',
   },
 ];
