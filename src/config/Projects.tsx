@@ -22,9 +22,9 @@ import { Project } from '@/types/project';
 
 export const projects: Project[] = [
   {
-    title: 'NotesBuddy',
+    title: 'SocialAi',
     description:
-      'A comprehensive study platform with notes, flashcards, quizzes, AI chatbot, and interactive learning tools',
+      'A full-stack AI-powered social media content generation platform that helps users create captions, post ideas, hashtags, and platform-specific ',
     image: '/project/notesbuddy.png',
     video: 'https://ik.imagekit.io/hokb3mrdr/notesbuddy.mp4?tr=orig',
     link: 'https://notesbuddy.in',
@@ -45,9 +45,9 @@ export const projects: Project[] = [
     isWorking: true,
   },
   {
-    title: 'Appwrite MCP Server',
+    title: 'LaunchDeck',
     description:
-      'Model Context Protocol server for seamless Appwrite database operations with 7 powerful tools and 99.9% success rate',
+      'Collaborated with a development team to build a modern SaaS-style developer toolkit platform and 99.9% success rate',
     image: '/project/appwrite.png',
     video: 'https://ik.imagekit.io/hokb3mrdr/appwrite.mp4',
     link: 'https://mcp.ramx.in/',

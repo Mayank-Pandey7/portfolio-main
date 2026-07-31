@@ -27,7 +27,7 @@ export const devices = [
     icon: <Headphones className="size-4" />,
   },
   {
-    name: 'Samsung S23 (256 GB)',
+    name: 'Realme 10 Pro (256 GB)',
     icon: <Phone className="size-4" />,
   },
 ];
