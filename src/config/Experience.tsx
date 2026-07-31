@@ -6,10 +6,7 @@ import ExpressJs from '@/components/technologies/ExpressJs';
 import Figma from '@/components/technologies/Figma';
 import Html from '@/components/technologies/Html';
 import JavaScript from '@/components/technologies/JavaScript';
-import MongoDB from '@/components/technologies/MongoDB';
-import NestJs from '@/components/technologies/NestJs';
 import NextJs from '@/components/technologies/NextJs';
-import NodeJs from '@/components/technologies/NodeJs';
 import PostgreSQL from '@/components/technologies/PostgreSQL';
 import Postman from '@/components/technologies/Postman';
 import Prisma from '@/components/technologies/Prisma';
@@ -154,7 +151,7 @@ export const experiences: Experience[] = [
       'Gained experience in frontend development, ensuring responsive design.',
       
     ],
-    startDate: 'January 2025',
+    startDate: 'Oct 2024',
     endDate: 'June 2025',
     technologies: [
       {

@@ -178,7 +178,7 @@ export default function Github() {
     const { start, end } = getDateRange();
 
     const result: Contribution[][] = [];
-    let current = new Date(start);
+    const current = new Date(start);
 
     while (current <= end) {
       const week: Contribution[] = [];

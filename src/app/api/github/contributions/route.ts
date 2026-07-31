@@ -51,7 +51,16 @@ async function fetchFallback() {
   const recentDays = days.filter((d) => d.date >= yearAgoStr);
   const totalContributions = recentDays.reduce((acc, d) => acc + d.count, 0);
 
-  const weeksMap = new Map<string, any[]>();
+  const weeksMap = new Map<
+  string,
+  {
+    date: string;
+    contributionCount: number;
+    contributionLevel: string;
+    color: string;
+    weekday: number;
+  }[]
+>();
   recentDays.forEach((day) => {
     const d = new Date(`${day.date}T00:00:00`);
     const sunday = new Date(d);
