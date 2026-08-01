@@ -1,27 +1,15 @@
 export const certificates = [
   {
-    file: '/blog/frontend-part-1.png',
-    title: 'SSoC Certificate',
-    issuer: 'Summer of Code (SSoC)',
-    date: '2025-10-10',
+    file: '/blog/Certificate2.png',
+    title: 'Certification: Blockchain Basics',
+    issuer: 'Cyfrin Updraft',
+    date: '2025-06-02',
   },
   {
-    file: '/blog/how-to-be-me.png',
-    title: 'Example Certificate 1',
-    issuer: 'Example Issuer',
-    date: '2024-01-01',
-  },
-  {
-    file: '/blog/frontend-part-1.png',
-    title: 'Example Certificate 2',
-    issuer: 'Example Issuer',
-    date: '2023-08-01',
-  },
-  {
-    file: '/blog/how-to-be-me.png',
-    title: 'SSoC Participation Certificate',
-    issuer: 'SSoC',
-    date: '2025-10-10',
+    file: '/blog/Certificate1.png',
+    title: ' UI-UX for Beginners',
+    issuer: 'Simpli Learn',
+    date: '2026-06-16',
   },
 ];
 
