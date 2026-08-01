@@ -7,7 +7,7 @@ import Phone from '@/components/svgs/devices/Phone';
 
 export const devices = [
   {
-    name: 'Apple MacBook Pro 16"in M4 48GB 512GB',
+    name: 'HP 15s - 8GB 512GB',
     icon: <Laptop className="size-4" />,
   },
   {
@@ -15,15 +15,15 @@ export const devices = [
     icon: <Monitor className="size-4" />,
   },
   {
-    name: 'Magic Keyboard',
+    name: 'HP Gaming Keyboard',
     icon: <Keyboard className="size-4" />,
   },
   {
-    name: 'Logitech MX Master 3S Mouse',
+    name: 'Logitech Mouse',
     icon: <Mouse className="size-4" />,
   },
   {
-    name: 'Crossbeats Roar 2.0 (Special Addition)',
+    name: 'Crossbeats Roar',
     icon: <Headphones className="size-4" />,
   },
   {
@@ -49,7 +49,7 @@ export const webExtensions = [
 ];
 
 export const software = [
-  { name: 'Dia', href: 'https://www.diabrowser.com/' },
+  { name: 'Brave', href: 'https://brave.com/' },
   { name: 'Notion', href: 'https://www.notion.so/desktop' },
   { name: 'TickTick', href: 'https://ticktick.com/download' },
   { name: 'OBS Studio', href: 'https://obsproject.com/' },
