@@ -35,7 +35,28 @@ export const projects: Project[] = [
     github: 'https://github.com/Mayank-Pandey7/SocialAi',
     live: 'https://social-ai-dusky.vercel.app/',
     details: true,
-    projectDetailsPageSlug: '/projects/notesbuddy',
+    projectDetailsPageSlug: '/projects/socialai',
+    isWorking: true,
+  },
+  {
+    title: 'TrialShopy (Portfolio)',
+    description:
+      'A full-stack AI-powered social media content generation platform that helps users create captions, post ideas, hashtags, and platform-specific ',
+    image: '/project/notesbuddy.png',
+    link: 'https://nexus-ai-mayank.vercel.app/',
+    technologies: [
+      { name: 'Next.js', icon: <NextJs key="nextjs" /> },
+      { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
+      { name: 'React', icon: <ReactIcon key="react" /> },
+      { name: 'Vercel', icon: <Vercel key="vercel" /> },
+      { name: 'MongoDB', icon: <MongoDB key="mongodb" /> },
+      { name: 'Tailwind CSS', icon: <TailwindCss key="tailwindcss" /> },
+      { name: 'MDX', icon: <MDXIcon key="mdx" /> },
+    ],
+    github: 'https://github.com/Mayank-Pandey7/nexus-ai',
+    live: 'https://nexus-ai-mayank.vercel.app/',
+    details: true,
+    projectDetailsPageSlug: '/projects/nexusai',
     isWorking: true,
   },
   {
@@ -54,7 +75,7 @@ export const projects: Project[] = [
     ],
     live: 'https://launchdeck.vercel.app/',
     details: true,
-    projectDetailsPageSlug: '/projects/appwrite-mcp-server',
+    projectDetailsPageSlug: '/projects/LaunchDeck',
     isWorking: true,
   },
   {
@@ -73,7 +94,7 @@ export const projects: Project[] = [
     github: 'https://github.com/Mayank-Pandey7/CSV-importer',
     live: 'https://csv-importer-mayank.vercel.app/',
     details: true,
-    projectDetailsPageSlug: '/projects/syncify',
+    projectDetailsPageSlug: '/projects/csv-importer',
     isWorking: true,
   },
   {
@@ -90,10 +111,10 @@ export const projects: Project[] = [
       { name: 'Tailwind CSS', icon: <TailwindCss key="tailwindcss" /> },
       { name: 'Socket.io', icon: <SocketIo key="socketio" /> },
     ],
-    github: 'https://github.com/Mayank-Pandey7/SocialAi',
+    github: 'https://github.com/Mayank-Pandey7/calender',
     live: 'https://calender-mauve-one.vercel.app/',
     details: true,
-    projectDetailsPageSlug: '/projects/pasandida-aurat',
+    projectDetailsPageSlug: '/projects/calander',
     isWorking: true, // Currently in development
   },
   {
