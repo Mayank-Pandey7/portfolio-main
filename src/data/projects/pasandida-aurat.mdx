@@ -1,59 +1,116 @@
 ---
-title: 'Pasandida Aurat - Anonymous Dating Platform'
-description: 'A unique dating platform featuring anonymous questions and authentic connections, currently in development with innovative matching algorithms'
-image: '/project/pasandida.png'
-video: '/project/pasandida-aurat.mp4'
+
+title: 'Calendar'
+description: 'A modern calendar web app for viewing dates, navigating months, and managing schedules with a clean and responsive interface.'
+image: '/project/calendar.png'
 technologies:
-  [
-    'Next.js',
-    'TypeScript',
-    'Tailwind CSS',
-    'Prisma',
-    'PostgreSQL',
-    'WebRTC',
-    'Socket.io',
-  ]
-github: 'https://github.com/ramxcodes'
-live: 'https://www.pasandidaurat.com/'
-timeline: 'TO START'
-role: 'Full Stack'
+[
+'React',
+'JavaScript',
+'Tailwind CSS',
+'Vercel',
+]
+
+github: 'https://github.com/Mayank-Pandey7/calender'
+live: 'https://calender-mauve-one.vercel.app/'
+timeline: '1 week'
+role: 'Frontend'
 team: 'Solo'
-status: 'In Development'
+status: 'completed'
 featured: true
-challenges: ['Privacy & Safety', 'Anonymous System', 'Real-time Features']
-learnings: ['Dating Psychology', 'Privacy Design', 'Real-time Communication']
+challenges:
+[
+'Calendar Logic',
+'Date Management',
+'Responsive Design',
+'Interactive UI',
+]
+learnings:
+[
+'Date Manipulation',
+'React State Management',
+'Responsive UI Development',
+'Calendar Component Design',
+]
 isPublished: true
----
+-----------------
+
+# Calendar: Modern Scheduling Experience
 
 ## Overview
 
-**Pasandida Aurat** is an innovative dating platform that prioritizes authentic connections through anonymous questioning systems and "not going to lie" honesty features. Currently in development, the platform aims to revolutionize online dating by removing superficial barriers and encouraging genuine conversations.
+Calendar is a modern and responsive calendar application that allows users to view dates, navigate between months, and organize their schedules through a clean and intuitive interface.
 
-## Key Features (In Development)
+## Features
 
-### **Authentic Connection System**
+* Monthly calendar view
+* Date navigation
+* Current date highlighting
+* Interactive date selection
+* Event and schedule management
+* Responsive design
+* Clean and minimal interface
 
-- **Anonymous Questions**: Ice-breaker questions without revealing identity
-- **"Not Going to Lie" Feature**: Encouraging radical honesty
-- **Gradual Reveal**: Progressive disclosure of personal information
-- **Compatibility Matching**: Algorithm-based personality matching
+## Why I built this
 
-### **Privacy-First Design**
+I built this project to create a simple and user-friendly calendar experience for managing dates and schedules without unnecessary complexity.
 
-- **Anonymous Interaction**: Initial conversations without photos
-- **Secure Communication**: End-to-end encrypted messaging
-- **Consent-Based Reveal**: User-controlled identity disclosure
-- **Safety Reporting**: Comprehensive user protection system
+## Technical Stuff
 
-## Development Progress
+### Frontend
 
-### **Current Status**
+The frontend is built with a lightweight modern stack focused on performance and usability:
 
--  **In Development**: Core features being implemented
-- **Design Phase**: UI/UX design iterations
-- **Security Focus**: Privacy-first architecture planning
-- **Mobile-First**: Responsive design approach
+* **React**: For building reusable calendar components and managing UI state
+* **JavaScript**: For implementing calendar logic and interactions
+* **Tailwind CSS**: For responsive styling and consistent UI
+* **Vercel**: For deployment and hosting
 
-### **Completed**
+### Calendar Implementation
 
-- **Waiting List**: Waiting list for the platform
+* Implemented dynamic month navigation
+* Handled different month lengths
+* Calculated calendar layouts based on weekdays
+* Added interactive date selection
+* Managed calendar state using React
+
+### Responsive Design
+
+* Built a responsive calendar layout
+* Optimized the interface for desktop and smaller screens
+* Used reusable UI components
+* Maintained consistent spacing and interaction patterns
+
+## Technical Challenges & Solutions
+
+### Challenge 1: Calendar Logic
+
+* **Problem**: Different months have different numbers of days and starting weekdays.
+* **Solution**: Implemented dynamic date calculations to generate the correct calendar layout.
+
+### Challenge 2: Date Navigation
+
+* **Problem**: Users need to move smoothly between months without losing the selected state.
+* **Solution**: Built reusable navigation logic for changing and tracking the active month.
+
+### Challenge 3: Responsive UI
+
+* **Problem**: Calendar layouts can become difficult to use on smaller screens.
+* **Solution**: Designed the interface with responsive Tailwind CSS layouts and adaptive components.
+
+## Performance Optimizations
+
+* Used reusable React components
+* Kept date calculations lightweight
+* Minimized unnecessary rendering
+* Optimized the responsive layout
+* Deployed through Vercel for fast delivery
+
+## Future Technical Improvements
+
+* Add recurring events
+* Add reminders and notifications
+* Add drag-and-drop events
+* Add Google Calendar integration
+* Add authentication and personal calendars
+* Add weekly and daily calendar views
