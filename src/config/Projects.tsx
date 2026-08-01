@@ -21,7 +21,7 @@ export const projects: Project[] = [
     title: 'SocialAi',
     description:
       'A full-stack AI-powered social media content generation platform that helps users create captions, post ideas, hashtags, and platform-specific ',
-    image: '/project/notesbuddy.png',
+    image: '/project/',
     link: 'https://social-ai-dusky.vercel.app/',
     technologies: [
       { name: 'Next.js', icon: <NextJs key="nextjs" /> },
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     title: 'TrialShopy (Portfolio)',
     description:
       'A full-stack AI-powered social media content generation platform that helps users create captions, post ideas, hashtags, and platform-specific ',
-    image: '/project/notesbuddy.png',
+    image: '/project/',
     link: 'https://nexus-ai-mayank.vercel.app/',
     technologies: [
       { name: 'Next.js', icon: <NextJs key="nextjs" /> },
@@ -63,7 +63,7 @@ export const projects: Project[] = [
     title: 'LaunchDeck',
     description:
       'An all-in-one developer toolkit for generating SEO metadata, OG images, favicons, and converting data formats directly in the browser.',
-    image: '/project/appwrite.png',
+    image: '/project/',
     link: 'https://launchdeck.vercel.app/',
     technologies: [
       { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
@@ -75,14 +75,14 @@ export const projects: Project[] = [
     ],
     live: 'https://launchdeck.vercel.app/',
     details: true,
-    projectDetailsPageSlug: '/projects/LaunchDeck',
+    projectDetailsPageSlug: '/projects/launchdeck',
     isWorking: true,
   },
   {
     title: 'CSV Importer',
     description:
       'A web-based tool for uploading, validating, and processing CSV data for CRM and marketing workflows.',
-    image: '/project/syncify.png',
+    image: '/project/',
     link: 'https://csv-importer-mayank.vercel.app/',
     technologies: [
       { name: 'React', icon: <ReactIcon key="react" /> },
@@ -101,7 +101,7 @@ export const projects: Project[] = [
     title: 'Calendar App',
     description:
       'A responsive interactive calendar for viewing dates, creating monthly events, and managing schedules with an intuitive interface.',
-    image: '/project/pasandida.png',
+    image: '/project/',
     link: 'https://calender-mauve-one.vercel.app/',
     technologies: [
       { name: 'Next.js', icon: <NextJs key="nextjs" /> },

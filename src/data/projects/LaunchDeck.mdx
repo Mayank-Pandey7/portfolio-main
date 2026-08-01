@@ -1,59 +1,78 @@
 ---
-title: 'Appwrite MCP Server'
-description: 'MCP server for Appwrite database operations with 7 powerful tools.'
-image: '/project/appwrite.png'
+title: 'LaunchDeck'
+description: 'A developer toolkit for generating SEO metadata, OG images, favicons, and converting data formats directly in the browser.'
+image: '/project/launchdeck.png'
 technologies:
-  ['TypeScript', 'Bun', 'Appwrite', 'Vercel', 'Zod', 'Model Context Protocol']
-github: 'https://github.com/ramxcodes/mcp-server'
-live: 'https://mcp.ramx.in/'
-timeline: '5 Hours'
-role: 'Backend Developer'
-team: 'Solo'
-status: 'Completed'
+  - 'Next.js'
+  - 'TypeScript'
+  - 'React'
+  - 'Tailwind CSS'
+  - 'Shadcn UI'
+  - 'Vercel'
+github: ''
+live: 'https://launchdeck.vercel.app/'
+timeline: '3 Week'
+role: 'Full Stack Developer'
+team: 'Group (5 friends)'
+status: 'completed'
 featured: true
 challenges:
-  ['Protocol Implementation', 'Database Integration', 'Real-time Operations']
-learnings: ['MCP Protocol', 'Server Architecture', 'Database Operations']
+  - 'Tool Integration'
+  - 'Client-Side Processing'
+  - 'File Handling'
+  - 'Responsive UI'
+learnings:
+  - 'Next.js'
+  - 'TypeScript'
+  - 'SEO Optimization'
+  - 'Image Generation'
+  - 'Data Conversion'
 isPublished: true
 ---
 
 ## Overview
 
-The **Appwrite MCP Server** is a powerful Model Context Protocol server that enables seamless integration of database operations into applications. Built with TypeScript and powered by Appwrite, this server provides 7 tools for basic database operations (It's just a demo, not a production ready server).
+LaunchDeck is an all-in-one developer toolkit designed to simplify common tasks involved in building and launching web applications.
+
+It provides a collection of useful browser-based utilities for generating SEO metadata, creating Open Graph images, generating favicons, and converting data between different formats.
 
 ## Key Features
 
-### **Tools i've implemented**
+### SEO Tools
 
-- **Creator Info**: Get detailed information about the developer
-- **Get Document**: Retrieve documents by unique ID
-- **List Documents**: Browse all documents with pagination
-- **Create Document**: Add new documents to collections
-- **Update Document**: Modify existing document data
-- **Delete Document**: Remove documents safely
-- **Upsert Document**: Create or update with single operation
+* **SEO Metadata Generator:** Generate optimized metadata for web applications
+* **Open Graph Generator:** Create OG images for better social media previews
+* **Favicon Generator:** Generate favicon assets for websites
+* **Meta Tags:** Create essential HTML metadata for search engines and social platforms
 
-## API Endpoints
+### Developer Utilities
 
-### **Core Endpoints**
+* **Data Converter:** Convert data between commonly used formats
+* **Browser-Based Processing:** Perform various operations directly in the browser
+* **Instant Preview:** Preview generated assets and metadata before using them
+
+### Developer Experience
+
+* **Simple Interface:** Clean and intuitive UI for quickly accessing tools
+* **Responsive Design:** Works across desktop, tablet, and mobile devices
+* **Fast Processing:** Lightweight client-side utilities for quick results
+
+## Tech Stack
 
 ```typescript
-// Main MCP endpoint
-GET /api/tools - Get all tools
-
-POST /api/tools/{toolName} - Run tool
+Frontend: Next.js, React, TypeScript
+Styling: Tailwind CSS, Shadcn UI
+Deployment: Vercel
 ```
 
-### **Tool Operations**
+## Core Modules
 
 ```typescript
-// Document CRUD operations
-tools: {
-  getDocument: "Retrieve single document",
-  listDocuments: "Get paginated document list",
-  createDocument: "Add new document",
-  updateDocument: "Modify existing document",
-  deleteDocument: "Remove document",
-  upsertDocument: "Create or update document"
+modules: {
+  seoGenerator: "Generate SEO metadata and meta tags",
+  ogGenerator: "Create Open Graph images",
+  faviconGenerator: "Generate website favicons",
+  dataConverter: "Convert data between different formats",
+  preview: "Preview generated assets before deployment"
 }
 ```
