@@ -3,7 +3,7 @@ export const certificates = [
     file: '/blog/Certificate2.png',
     title: 'Certification: Blockchain Basics',
     issuer: 'Cyfrin Updraft',
-    date: '2025-06-02',
+    date: '2026-06-02',
   },
   {
     file: '/blog/Certificate1.png',
