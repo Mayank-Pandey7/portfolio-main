@@ -20,8 +20,8 @@ export const projects: Project[] = [
   {
     title: 'SocialAi',
     description:
-      'A full-stack AI-powered social media content generation platform that helps users create captions, post ideas, hashtags, and platform-specific ',
-    image: '/project/',
+      'A full-stack AI-powered social media content generation platform that helps users create captions, post ideas, hashtags, and platform-specific content.',
+    image: '/project/notesbuddy.png',
     link: 'https://social-ai-dusky.vercel.app/',
     technologies: [
       { name: 'Next.js', icon: <NextJs key="nextjs" /> },
@@ -41,8 +41,8 @@ export const projects: Project[] = [
   {
     title: 'TrialShopy (Portfolio)',
     description:
-      'A full-stack AI-powered social media content generation platform that helps users create captions, post ideas, hashtags, and platform-specific ',
-    image: '/project/',
+      'An intelligent AI assistant and showcase workspace empowering modern commerce and interactive application flows.',
+    image: '/project/appwrite.png',
     link: 'https://nexus-ai-mayank.vercel.app/',
     technologies: [
       { name: 'Next.js', icon: <NextJs key="nextjs" /> },
@@ -63,7 +63,7 @@ export const projects: Project[] = [
     title: 'LaunchDeck',
     description:
       'An all-in-one developer toolkit for generating SEO metadata, OG images, favicons, and converting data formats directly in the browser.',
-    image: '/project/',
+    image: '/project/intent.png',
     link: 'https://launchdeck.vercel.app/',
     technologies: [
       { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
@@ -82,7 +82,7 @@ export const projects: Project[] = [
     title: 'CSV Importer',
     description:
       'A web-based tool for uploading, validating, and processing CSV data for CRM and marketing workflows.',
-    image: '/project/',
+    image: '/project/syncify.png',
     link: 'https://csv-importer-mayank.vercel.app/',
     technologies: [
       { name: 'React', icon: <ReactIcon key="react" /> },
@@ -101,7 +101,7 @@ export const projects: Project[] = [
     title: 'Calendar App',
     description:
       'A responsive interactive calendar for viewing dates, creating monthly events, and managing schedules with an intuitive interface.',
-    image: '/project/',
+    image: '/project/ramspace.png',
     link: 'https://calender-mauve-one.vercel.app/',
     technologies: [
       { name: 'Next.js', icon: <NextJs key="nextjs" /> },
@@ -115,7 +115,7 @@ export const projects: Project[] = [
     live: 'https://calender-mauve-one.vercel.app/',
     details: true,
     projectDetailsPageSlug: '/projects/calander',
-    isWorking: true, // Currently in development
+    isWorking: true,
   },
   {
     title: "I'm a chill guy",
@@ -129,7 +129,7 @@ export const projects: Project[] = [
       { name: 'Vercel', icon: <Vercel key="vercel" /> },
       { name: 'Tailwind CSS', icon: <TailwindCss key="tailwindcss" /> },
       { name: 'Netlify', icon: <Netlify key="netlify" /> },
-      { name: 'GitHub', icon: <Github key="github" /> },
+      { name: 'Github', icon: <Github key="github" /> },
     ],
     github: '',
     live: '',
