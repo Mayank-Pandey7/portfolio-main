@@ -247,7 +247,3 @@ function ExperienceDetails({ experience }: { experience: Experience }) {
     </div>
   );
 }
-/ /   E x p e r i e n c e   c a r d   r e s p o n s i v e   l a y o u t  
- / /   P i n   e x p a n d   a r r o w   b u t t o n  
- / /   D a t e   a n d   l o c a t i o n   f l e x   r o w  
- 
