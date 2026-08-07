@@ -96,19 +96,74 @@ export default function Github() {
         setIsLoading(true);
         setHasError(false);
 
-        const response = await fetch('/api/github/contributions', {
-          signal: controller.signal,
-          headers: {
-            Accept: 'application/json',
-          },
-          cache: 'no-store',
-        });
+        let data: ContributionResponse;
 
-        if (!response.ok) {
-          throw new Error('Failed to fetch GitHub contributions');
+        try {
+          const response = await fetch('/api/github/contributions', {
+            signal: controller.signal,
+            headers: {
+              Accept: 'application/json',
+            },
+            cache: 'no-store',
+          });
+
+          if (!response.ok) {
+            throw new Error('API route failed');
+          }
+
+          data = await response.json();
+        } catch {
+          // Direct client-side fallback if internal API route fails
+          const fallbackRes = await fetch(
+            `https://github-contributions-api.jogruber.de/v4/${githubConfig.username}?y=last`,
+            { signal: controller.signal },
+          );
+
+          if (!fallbackRes.ok) {
+            throw new Error('Direct fallback failed');
+          }
+
+          const fallbackData = await fallbackRes.json();
+          const days: { date: string; count: number; level: number }[] =
+            fallbackData.contributions || [];
+
+          const colors = githubConfig.theme.dark;
+
+          const weeksMap = new Map<string, any[]>();
+          days.forEach((day) => {
+            const [y, m, dNum] = day.date.split('-').map(Number);
+            const d = new Date(Date.UTC(y, m - 1, dNum));
+            const sunday = new Date(d);
+            sunday.setUTCDate(sunday.getUTCDate() - sunday.getUTCDay());
+            const weekKey = sunday.toISOString().split('T')[0];
+
+            if (!weeksMap.has(weekKey)) {
+              weeksMap.set(weekKey, []);
+            }
+
+            weeksMap.get(weekKey)!.push({
+              date: day.date,
+              contributionCount: day.count,
+              contributionLevel: `LEVEL_${day.level}`,
+              color: colors[day.level] || colors[0],
+              weekday: d.getUTCDay(),
+            });
+          });
+
+          data = {
+            username: githubConfig.username,
+            totalContributions:
+              fallbackData.total?.lastYear ??
+              days.reduce((acc, d) => acc + d.count, 0),
+            colors: [...colors],
+            weeks: Array.from(weeksMap.entries()).map(
+              ([firstDay, contributionDays]) => ({
+                firstDay,
+                contributionDays,
+              }),
+            ),
+          };
         }
-
-        const data: ContributionResponse = await response.json();
 
         const contributionDays = data.weeks.flatMap(
           (week) => week.contributionDays,

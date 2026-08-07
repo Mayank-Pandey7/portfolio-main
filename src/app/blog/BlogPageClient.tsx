@@ -2,159 +2,103 @@
 
 import { BlogList } from '@/components/blog/BlogList';
 import Container from '@/components/common/Container';
-import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
-import { useHapticFeedback } from '@/hooks/use-haptic-feedback';
-import { useUmami } from '@/hooks/use-umami';
 import { BlogPostPreview } from '@/types/blog';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 interface BlogPageClientProps {
   initialPosts: BlogPostPreview[];
   initialTags: string[];
 }
 
-const getBlogPostsByTagClient = (
-  posts: BlogPostPreview[],
-  tag: string,
-): BlogPostPreview[] => {
-  return posts.filter((post) =>
-    post.frontmatter.tags.some(
-      (postTag) => postTag.toLowerCase() === tag.toLowerCase(),
-    ),
-  );
-};
-
 export function BlogPageClient({
   initialPosts,
   initialTags,
 }: BlogPageClientProps) {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const { triggerHaptic, isMobile } = useHapticFeedback();
-  const { trackEvent } = useUmami();
-
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const [filteredPosts, setFilteredPosts] = useState(initialPosts);
 
-  // Get tag from URL params on mount
-  useEffect(() => {
-    const tagParam = searchParams.get('tag');
-    if (tagParam) {
-      setSelectedTag(tagParam);
-      const filtered = getBlogPostsByTagClient(initialPosts, tagParam);
-      setFilteredPosts(filtered);
-    } else {
-      setSelectedTag(null);
-      setFilteredPosts(initialPosts);
-    }
-  }, [searchParams, initialPosts]);
-
-  // Handle tag click
-  const handleTagClick = (tag: string) => {
-    if (isMobile()) {
-      triggerHaptic('light');
-    }
-
-    trackEvent({
-      name: 'button_click',
-      data: {
-        buttonId: 'blog_tag_filter',
-        section: 'blog',
-        action: selectedTag === tag ? `clear:${tag}` : tag,
-      },
-    });
-
-    if (selectedTag === tag) {
-      setSelectedTag(null);
-      setFilteredPosts(initialPosts);
-      router.replace('/blog');
-    } else {
-      setSelectedTag(tag);
-      const filtered = getBlogPostsByTagClient(initialPosts, tag);
-      setFilteredPosts(filtered);
-      router.replace(`/blog?tag=${encodeURIComponent(tag)}`);
-    }
-  };
-
-  const getTagPostCount = (tag: string) => {
-    return initialPosts.filter((post) =>
+  // Calculate post count for each tag
+  const tagCounts = initialTags.map((tag) => ({
+    name: tag,
+    count: initialPosts.filter((post) =>
       post.frontmatter.tags.some(
-        (postTag) => postTag.toLowerCase() === tag.toLowerCase(),
+        (t) => t.toLowerCase() === tag.toLowerCase(),
       ),
-    ).length;
-  };
+    ).length,
+  }));
+
+  const filteredPosts = selectedTag
+    ? initialPosts.filter((post) =>
+        post.frontmatter.tags.some(
+          (t) => t.toLowerCase() === selectedTag.toLowerCase(),
+        ),
+      )
+    : initialPosts;
 
   return (
-    <Container className="py-16">
-      <div className="space-y-8">
-        {/* Header */}
-        <div className="space-y-4 text-center">
-          <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
-            Blogs
-          </h1>
-          <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
-            Thoughts, tutorials, and insights on engineering, and programming.
-          </p>
-        </div>
-
-        <Separator />
-
-        {/* Tags */}
-        {initialTags.length > 0 && (
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold">Popular Tags</h2>
-              {selectedTag && (
-                <button
-                  onClick={() => handleTagClick(selectedTag)}
-                  className="text-muted-foreground hover:text-foreground text-sm underline"
-                >
-                  Clear filter
-                </button>
-              )}
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {initialTags.map((tag) => {
-                const postCount = getTagPostCount(tag);
-                const isSelected = selectedTag === tag;
-                return (
-                  <button
-                    key={tag}
-                    onClick={() => handleTagClick(tag)}
-                    className="transition-colors"
-                  >
-                    <Badge
-                      variant={isSelected ? 'default' : 'outline'}
-                      className="hover:bg-accent hover:text-accent-foreground tag-inner-shadow cursor-pointer capitalize"
-                    >
-                      {tag} ({postCount})
-                    </Badge>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        {/* Blog Posts */}
-        <div className="space-y-6">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-semibold">
-              {selectedTag ? `Posts tagged "${selectedTag}"` : 'Latest Posts'}
-              {filteredPosts.length > 0 && (
-                <span className="text-muted-foreground ml-2 text-sm font-normal">
-                  ({filteredPosts.length}{' '}
-                  {filteredPosts.length === 1 ? 'post' : 'posts'})
-                </span>
-              )}
-            </h2>
-          </div>
-
-          <BlogList posts={filteredPosts} />
-        </div>
+    <Container className="mx-auto max-w-3xl py-10 space-y-8">
+      {/* Title & Tagline */}
+      <div className="space-y-4 text-center">
+        <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
+          Blog
+        </h1>
+        <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
+          Thoughts, tutorials, and insights on engineering and programming.
+        </p>
       </div>
+
+      {/* Category Pills Bar (Horizontal Single Line Scroll) */}
+      <div className="flex items-center gap-2 overflow-x-auto py-1 flex-nowrap [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        {/* All Pill */}
+        <button
+          onClick={() => setSelectedTag(null)}
+          className={`flex shrink-0 whitespace-nowrap items-center gap-2 rounded-full px-3.5 py-1 text-sm font-medium transition-colors cursor-pointer ${
+            selectedTag === null
+              ? 'bg-neutral-200 text-black font-semibold'
+              : 'bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-foreground'
+          }`}
+        >
+          <span>All</span>
+          <span
+            className={`text-xs px-2 py-0.5 rounded-full ${
+              selectedTag === null
+                ? 'bg-black/15 text-black font-bold'
+                : 'bg-neutral-800 text-neutral-400'
+            }`}
+          >
+            {initialPosts.length}
+          </span>
+        </button>
+
+        {/* Individual Tag Pills */}
+        {tagCounts.map(({ name, count }) => {
+          const isActive = selectedTag?.toLowerCase() === name.toLowerCase();
+          return (
+            <button
+              key={name}
+              onClick={() => setSelectedTag(isActive ? null : name)}
+              className={`flex shrink-0 whitespace-nowrap items-center gap-2 rounded-full px-3.5 py-1 text-sm font-medium transition-colors cursor-pointer capitalize ${
+                isActive
+                  ? 'bg-neutral-200 text-black font-semibold'
+                  : 'bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-foreground'
+              }`}
+            >
+              <span>{name}</span>
+              <span
+                className={`text-xs px-2 py-0.5 rounded-full ${
+                  isActive
+                    ? 'bg-black/15 text-black font-bold'
+                    : 'bg-neutral-800 text-neutral-400'
+                }`}
+              >
+                {count}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Blog List */}
+      <BlogList posts={filteredPosts} />
     </Container>
   );
 }

@@ -14,7 +14,12 @@ export default function Blog() {
     <Container className="mt-20">
       <SectionHeading subHeading="Featured" heading="Blogs" />
 
-      <BlogList posts={posts.slice(0, 3)} className="mt-6" />
+      <BlogList
+        posts={posts.slice(0, 3)}
+        className="mt-6"
+        disableBlur={true}
+        showTags={false}
+      />
 
       <div className="mt-8 flex justify-center">
         <Button

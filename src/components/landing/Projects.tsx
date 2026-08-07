@@ -14,7 +14,12 @@ export default function Projects() {
     <Container className="mt-20">
       <SectionHeading subHeading="Featured" heading="Projects" />
 
-      <ProjectList className="mt-8" projects={projects.slice(0, 3)} />
+      <ProjectList
+        className="mt-8"
+        projects={projects.slice(0, 3)}
+        disableBlur={true}
+        showTechnologies={false}
+      />
       <div className="mt-8 flex justify-center">
         <Button
           variant="outline"

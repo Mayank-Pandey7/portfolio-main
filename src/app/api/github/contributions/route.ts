@@ -49,22 +49,27 @@ async function fetchFallback() {
   const yearAgoStr = yearAgo.toISOString().split('T')[0];
 
   const recentDays = days.filter((d) => d.date >= yearAgoStr);
-  const totalContributions = recentDays.reduce((acc, d) => acc + d.count, 0);
+  const totalContributions =
+    data.total?.lastYear ?? recentDays.reduce((acc, d) => acc + d.count, 0);
+
+  const colors = ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'];
 
   const weeksMap = new Map<
-  string,
-  {
-    date: string;
-    contributionCount: number;
-    contributionLevel: string;
-    color: string;
-    weekday: number;
-  }[]
->();
+    string,
+    {
+      date: string;
+      contributionCount: number;
+      contributionLevel: string;
+      color: string;
+      weekday: number;
+    }[]
+  >();
+
   recentDays.forEach((day) => {
-    const d = new Date(`${day.date}T00:00:00`);
+    const [y, m, dNum] = day.date.split('-').map(Number);
+    const d = new Date(Date.UTC(y, m - 1, dNum));
     const sunday = new Date(d);
-    sunday.setDate(sunday.getDate() - sunday.getDay());
+    sunday.setUTCDate(sunday.getUTCDate() - sunday.getUTCDay());
     const weekKey = sunday.toISOString().split('T')[0];
 
     if (!weeksMap.has(weekKey)) {
@@ -74,8 +79,8 @@ async function fetchFallback() {
       date: day.date,
       contributionCount: day.count,
       contributionLevel: `LEVEL_${day.level}`,
-      color: '#0e4429',
-      weekday: d.getDay(),
+      color: colors[day.level] || colors[0],
+      weekday: d.getUTCDay(),
     });
   });
 
@@ -89,7 +94,7 @@ async function fetchFallback() {
   return {
     username: USERNAME,
     totalContributions,
-    colors: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
+    colors,
     weeks,
   };
 }

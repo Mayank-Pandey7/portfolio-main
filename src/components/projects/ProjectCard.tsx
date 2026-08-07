@@ -4,7 +4,7 @@ import { useUmami } from '@/hooks/use-umami';
 import type { AnalyticsEventData } from '@/types/analytics';
 import { type Project } from '@/types/project';
 import { Link } from 'next-view-transitions';
-import React, { useState } from 'react';
+import React from 'react';
 
 import ArrowRight from '../svgs/ArrowRight';
 import Github from '../svgs/Github';
@@ -13,10 +13,19 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 
 interface ProjectCardProps {
   project: Project;
+  isDimmed?: boolean;
+  onHover?: () => void;
+  onLeave?: () => void;
+  showTechnologies?: boolean;
 }
 
-export function ProjectCard({ project }: ProjectCardProps) {
-  const [isOpen, setIsOpen] = useState(false);
+export function ProjectCard({
+  project,
+  isDimmed = false,
+  onHover,
+  onLeave,
+  showTechnologies = true,
+}: ProjectCardProps) {
   const { trackEvent } = useUmami();
 
   const projectId =
@@ -37,33 +46,42 @@ export function ProjectCard({ project }: ProjectCardProps) {
     });
 
   return (
-    <div className="group flex flex-col">
+    <Link
+      href={project.projectDetailsPageSlug}
+      onClick={() => trackProject('view_details')}
+      className={`group block py-2 transition-all duration-300 ease-in-out cursor-pointer ${
+        isDimmed
+          ? 'opacity-100 blur-none scale-100 sm:opacity-35 sm:blur-[4px] sm:scale-[0.99]'
+          : 'opacity-100 blur-0 scale-100'
+      }`}
+      onMouseEnter={onHover}
+      onMouseLeave={onLeave}
+    >
       {/* Project Row */}
-      <div className="flex flex-col gap-2 py-3">
-        <div className="flex min-w-0 flex-col">
-          {/* Title + Links + Status + Arrow */}
+      <div className="flex items-start justify-between gap-6">
+        <div className="min-w-0 flex-1 space-y-1.5">
+          {/* Title + Links + Status */}
           <div className="flex flex-wrap items-center gap-2">
-            <Link
-              href={project.projectDetailsPageSlug}
-              onClick={() => trackProject('view_details')}
-            >
-              <h3 className="hover:text-primary text-lg font-bold transition-colors">
-                {project.title}
-              </h3>
-            </Link>
+            <h3 className="group-hover:text-primary text-lg font-bold transition-colors">
+              {project.title}
+            </h3>
 
             {/* Website */}
             {project.link && (
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Link
+                  <a
                     href={project.link}
                     target="_blank"
-                    className="hover:text-foreground size-4 text-neutral-500 transition-colors"
-                    onClick={() => trackProject('visit_website')}
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground size-4 text-neutral-500 transition-colors p-0.5"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      trackProject('visit_website');
+                    }}
                   >
                     <Website />
-                  </Link>
+                  </a>
                 </TooltipTrigger>
                 <TooltipContent>Visit Website</TooltipContent>
               </Tooltip>
@@ -73,22 +91,26 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {project.github && (
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Link
+                  <a
                     href={project.github}
                     target="_blank"
-                    className="hover:text-foreground size-4 text-neutral-500 transition-colors"
-                    onClick={() => trackProject('visit_github')}
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground size-4 text-neutral-500 transition-colors p-0.5"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      trackProject('visit_github');
+                    }}
                   >
                     <Github />
-                  </Link>
+                  </a>
                 </TooltipTrigger>
                 <TooltipContent>View GitHub</TooltipContent>
               </Tooltip>
             )}
 
-            {/* Status */}
+            {/* Status (Desktop Only) */}
             <div
-              className={`flex items-center gap-1 rounded-md px-2 py-1 text-xs ${
+              className={`hidden sm:flex items-center gap-1 rounded-md px-2 py-0.5 text-xs ${
                 project.isWorking ? 'bg-green-500/10' : 'bg-red-500/10'
               }`}
             >
@@ -100,79 +122,38 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
               {project.isWorking ? 'All Systems Operational' : 'Building'}
             </div>
-
-            {/* Expand Arrow */}
-            <button
-              type="button"
-              onClick={() => setIsOpen((prev) => !prev)}
-              aria-expanded={isOpen}
-              aria-label={
-                isOpen
-                  ? `Hide ${project.title} details`
-                  : `Show ${project.title} details`
-              }
-              className="hover:text-foreground cursor-pointer text-lg text-neutral-500 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-            >
-              <span
-                className={`inline-block transition-transform duration-300 ${
-                  isOpen ? 'rotate-90' : ''
-                }`}
-              >
-                &gt;
-              </span>
-            </button>
           </div>
 
           {/* Description */}
-          <p className="text-secondary text-sm font-normal">
+          <p className="text-secondary text-sm font-normal leading-relaxed">
             {project.description}
           </p>
-        </div>
-      </div>
 
-      {/* Expandable Details */}
-      <div
-        className={`grid transition-all duration-300 ease-in-out ${
-          isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-        }`}
-      >
-        <div className="overflow-hidden">
-          <div className="pb-5">
-            {/* Technologies */}
-            <div className="pt-2">
-              <h4 className="mb-3 text-sm font-semibold">Technologies</h4>
-
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((technology, index) => (
-                  <Tooltip key={index}>
-                    <TooltipTrigger asChild>
-                      <div className="size-6 transition-all duration-300 hover:scale-120 hover:cursor-pointer">
-                        {technology.icon}
-                      </div>
-                    </TooltipTrigger>
-
-                    <TooltipContent>
-                      <p>{technology.name}</p>
-                    </TooltipContent>
-                  </Tooltip>
-                ))}
-              </div>
+          {/* Technology Icons */}
+          {showTechnologies && project.technologies && project.technologies.length > 0 && (
+            <div className="flex flex-wrap items-center gap-2 pt-1">
+              {project.technologies.map((technology, index) => (
+                <Tooltip key={index}>
+                  <TooltipTrigger asChild>
+                    <div className="size-5 transition-transform duration-200 hover:scale-125 cursor-pointer">
+                      {technology.icon}
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{technology.name}</p>
+                  </TooltipContent>
+                </Tooltip>
+              ))}
             </div>
-
-            {/* View Details */}
-            <div className="mt-4">
-              <Link
-                href={project.projectDetailsPageSlug}
-                className="text-secondary hover:text-primary inline-flex items-center gap-2 text-sm underline-offset-4 transition-colors hover:underline"
-                onClick={() => trackProject('view_details')}
-              >
-                View Details
-                <ArrowRight className="size-4" />
-              </Link>
-            </div>
-          </div>
+          )}
         </div>
+
+        {/* View Details Link on Right */}
+        <span className="hidden sm:inline-flex shrink-0 items-center gap-1.5 pt-1 text-sm font-medium text-neutral-400 transition-colors group-hover:text-foreground">
+          View details{' '}
+          <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+        </span>
       </div>
-    </div>
+    </Link>
   );
 }
