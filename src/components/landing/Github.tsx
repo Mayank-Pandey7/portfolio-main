@@ -129,7 +129,16 @@ export default function Github() {
 
           const colors = githubConfig.theme.dark;
 
-          const weeksMap = new Map<string, any[]>();
+          const weeksMap = new Map<
+            string,
+            {
+              date: string;
+              contributionCount: number;
+              contributionLevel: string;
+              color: string;
+              weekday: number;
+            }[]
+          >();
           days.forEach((day) => {
             const [y, m, dNum] = day.date.split('-').map(Number);
             const d = new Date(Date.UTC(y, m - 1, dNum));
