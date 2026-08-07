@@ -14,8 +14,8 @@ import { Button } from '../ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 
 const buttonIcons = {
-  CV: CV,
-  Chat: Chat,
+  CV,
+  Chat,
 };
 
 export default function Hero() {
@@ -27,102 +27,119 @@ export default function Hero() {
     return parts.map((part) => {
       if (part.type === 'skill' && 'skill' in part && part.skill) {
         const SkillComponent =
-          skillComponents[part.skill.component as keyof typeof skillComponents];
+          skillComponents[
+            part.skill.component as keyof typeof skillComponents
+          ];
+
         return (
           <Skill key={part.key} name={part.skill.name} href={part.skill.href}>
             <SkillComponent />
           </Skill>
         );
-      } else if (part.type === 'bold' && 'text' in part) {
+      }
+
+      if (part.type === 'bold' && 'text' in part) {
         return (
           <b key={part.key} className="text-primary whitespace-pre-wrap">
             {part.text}
           </b>
         );
-      } else if (part.type === 'text' && 'text' in part) {
+      }
+
+      if (part.type === 'text' && 'text' in part) {
         return (
           <span key={part.key} className="whitespace-pre-wrap">
             {part.text}
           </span>
         );
       }
+
       return null;
     });
   };
 
   return (
-    <Container className="mx-auto max-w-5xl">
-      {/* Image */}
-      <Image
-        src={avatar}
-        alt="hero"
-        width={100}
-        height={100}
-        className="size-24 rounded-full bg-blue-300 dark:bg-yellow-300"
-      />
+    <Container className="pt-0">
+      <div className="max-w-3xl">
+        <div className="flex items-center gap-4">
+          <Image
+            src={avatar}
+            alt={name}
+            width={120}
+            height={120}
+            priority
+            className="relative -top-2 size-24 object-contain sm:-top-3 sm:size-28"
+          />
+          <div className="min-w-0">
+            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              {name}
+            </h1>
 
-      {/* Text Area */}
-      <div className="mt-8 flex flex-col gap-2">
-        <h1 className="text-4xl font-bold">
-          Hi, I&apos;m {name} — <span className="text-secondary">{title}</span>
-        </h1>
+            <p className="text-secondary mt-1 text-base sm:text-lg">
+              {title}
+            </p>
+          </div>
+        </div>
 
-        <div className="mt-4 flex flex-wrap items-center gap-x-1.5 gap-y-2 text-base whitespace-pre-wrap text-neutral-500 md:text-lg">
+        <div className="text-secondary mt-6 flex flex-wrap items-center gap-x-1.5 gap-y-2 text-base leading-relaxed sm:text-lg">
           {renderDescription()}
         </div>
-      </div>
 
-      {/* Buttons */}
-      <div className="mt-8 flex gap-4">
-        {buttons.map((button, index) => {
-          const IconComponent =
-            buttonIcons[button.icon as keyof typeof buttonIcons];
-          return (
-            <Button
-              key={index}
-              variant={button.variant as 'outline' | 'default'}
-              className={cn(
-                button.variant === 'outline' && 'inset-shadow-indigo-500',
-                button.variant === 'default' && 'inset-shadow-indigo-500',
-              )}
-              track={{
-                name: 'button_click',
-                data: { buttonId: button.text, section: 'hero' },
-              }}
-            >
-              {IconComponent && <IconComponent />}
-              <Link href={button.href}>{button.text}</Link>
-            </Button>
-          );
-        })}
-      </div>
+        <div className="mt-6 flex flex-wrap gap-3">
+          {buttons.map((button, index) => {
+            const IconComponent =
+              buttonIcons[button.icon as keyof typeof buttonIcons];
 
-      {/* Social Links */}
-      <div className="mt-8 flex gap-2">
-        {socialLinks.map((link) => (
-          <Tooltip key={link.name} delayDuration={0}>
-            <TooltipTrigger asChild>
-              <TrackedLink
-                href={link.href}
-                key={link.name}
-                className="text-secondary flex items-center gap-2"
+            return (
+              <Button
+                key={index}
+                variant={button.variant as 'outline' | 'default'}
+                size="sm"
+                className={cn(
+                  button.variant === 'outline' && 'inset-shadow-indigo-500',
+                  button.variant === 'default' && 'inset-shadow-indigo-500',
+                )}
                 track={{
-                  name: 'external_link_click',
+                  name: 'button_click',
                   data: {
-                    url: link.href,
-                    text: link.name,
-                    location: 'hero_social',
+                    buttonId: button.text,
+                    section: 'hero',
                   },
                 }}
               >
-                <span className="size-6">{link.icon}</span>
-              </TrackedLink>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>{link.name}</p>
-            </TooltipContent>
-          </Tooltip>
-        ))}
+                {IconComponent && <IconComponent />}
+                <Link href={button.href}>{button.text}</Link>
+              </Button>
+            );
+          })}
+        </div>
+
+        <div className="mt-6 flex items-center gap-3">
+          {socialLinks.map((link) => (
+            <Tooltip key={link.name} delayDuration={0}>
+              <TooltipTrigger asChild>
+                <TrackedLink
+                  href={link.href}
+                  className="text-secondary transition-colors hover:text-foreground"
+                  track={{
+                    name: 'external_link_click',
+                    data: {
+                      url: link.href,
+                      text: link.name,
+                      location: 'hero_social',
+                    },
+                  }}
+                >
+                  <span className="block size-5">{link.icon}</span>
+                </TrackedLink>
+              </TooltipTrigger>
+
+              <TooltipContent>
+                <p>{link.name}</p>
+              </TooltipContent>
+            </Tooltip>
+          ))}
+        </div>
       </div>
     </Container>
   );

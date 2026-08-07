@@ -2,7 +2,7 @@ import { getPublishedBlogPosts } from '@/lib/blog';
 import { Link } from 'next-view-transitions';
 import React from 'react';
 
-import { BlogCard } from '../blog/BlogCard';
+import { BlogList } from '../blog/BlogList';
 import Container from '../common/Container';
 import SectionHeading from '../common/SectionHeading';
 import { Button } from '../ui/button';
@@ -13,11 +13,9 @@ export default function Blog() {
   return (
     <Container className="mt-20">
       <SectionHeading subHeading="Featured" heading="Blogs" />
-      <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-        {posts.slice(0, 2).map((post) => (
-          <BlogCard key={post.slug} post={post} />
-        ))}
-      </div>
+
+      <BlogList posts={posts.slice(0, 3)} className="mt-6" />
+
       <div className="mt-8 flex justify-center">
         <Button
           variant="outline"
