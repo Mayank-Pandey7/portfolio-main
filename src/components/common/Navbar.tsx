@@ -1,5 +1,4 @@
 import { navbarConfig } from '@/config/Navbar';
-import { Link } from 'next-view-transitions';
 import React from 'react';
 
 import Container from './Container';
