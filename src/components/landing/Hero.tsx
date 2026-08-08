@@ -62,27 +62,27 @@ export default function Hero() {
   return (
     <Container className="pt-0">
       <div className="w-full max-w-full">
-        <div className="flex items-center gap-3.5 sm:gap-4">
+        <div className="flex items-center gap-3.5 sm:gap-5">
           <Image
             src={avatar}
             alt={name}
             width={120}
             height={120}
             priority
-            className="size-16 object-contain sm:size-20 shrink-0"
+            className="size-18 object-contain sm:size-24 shrink-0"
           />
           <div className="min-w-0 flex-1">
-            <h1 className="text-xl font-bold tracking-tight sm:text-2xl md:text-3xl">
+            <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
               {name}
             </h1>
 
-            <p className="text-secondary mt-0.5 text-xs sm:mt-1 sm:text-sm">
+            <p className="text-secondary mt-0.5 text-sm sm:mt-1 sm:text-base font-medium">
               {title}
             </p>
           </div>
         </div>
 
-        <div className="text-secondary mt-3 flex flex-wrap items-center gap-x-1.5 gap-y-1.5 text-xs leading-relaxed sm:mt-4 sm:text-sm">
+        <div className="text-secondary mt-3.5 flex flex-wrap items-center gap-x-1.5 gap-y-1.5 text-sm leading-relaxed sm:mt-4 sm:text-base">
           {renderDescription()}
         </div>
 
@@ -90,7 +90,7 @@ export default function Hero() {
         <SpotifyNowPlaying />
 
         {/* Social Links */}
-        <div className="mt-3 flex items-center gap-2 sm:mt-3.5 sm:gap-2.5">
+        <div className="mt-3.5 flex items-center gap-2.5 sm:mt-4 sm:gap-3">
           {socialLinks.map((link) => (
             <Tooltip key={link.name} delayDuration={0}>
               <TooltipTrigger asChild>
@@ -106,7 +106,7 @@ export default function Hero() {
                     },
                   }}
                 >
-                  <span className="block size-4.5 sm:size-5">{link.icon}</span>
+                  <span className="block size-5 sm:size-5.5">{link.icon}</span>
                 </TrackedLink>
               </TooltipTrigger>
 

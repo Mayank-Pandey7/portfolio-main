@@ -24,9 +24,9 @@ export default function About() {
           className="border-secondary size-36 shrink-0 rounded-md border-2 bg-blue-300 object-cover sm:size-44 dark:bg-yellow-300"
         />
         <div className="min-w-0 flex-1">
-          <h3 className="text-xl font-bold sm:text-2xl">{about.name}</h3>
-          <p className="text-secondary mt-2 text-sm leading-relaxed sm:mt-3 sm:text-base">{about.description}</p>
-          <p className="text-secondary mt-5 text-sm font-bold sm:mt-6 sm:text-base">Skills</p>
+          <h3 className="text-2xl font-bold sm:text-3xl">{about.name}</h3>
+          <p className="text-secondary mt-2 text-base leading-relaxed sm:mt-3 sm:text-lg">{about.description}</p>
+          <p className="text-secondary mt-5 text-base font-bold sm:mt-6 sm:text-lg">Skills</p>
           <div className="mt-2.5 flex flex-wrap gap-2.5 sm:gap-3">
             {mySkills.map((skill) => (
               <Tooltip key={skill.key}>
