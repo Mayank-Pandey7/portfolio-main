@@ -58,20 +58,7 @@ export const heroConfig = {
   },
 
 
-  buttons: [
-    {
-      variant: 'outline',
-      text: 'Resume / CV',
-      href: '/resume',
-      icon: 'CV',
-    },
-    {
-      variant: 'default',
-      text: 'Get in touch',
-      href: '/contact',
-      icon: 'Chat',
-    },
-  ],
+  buttons: [],
 };
 
 export const socialLinks = [

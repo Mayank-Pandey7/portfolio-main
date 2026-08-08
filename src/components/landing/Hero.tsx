@@ -113,36 +113,38 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* Buttons: Resume & Contact */}
-        <div className="mt-5 flex flex-wrap gap-2.5 sm:mt-6 sm:gap-3">
-          {buttons.map((button, index) => {
-            const IconComponent =
-              buttonIcons[button.icon as keyof typeof buttonIcons];
+        {/* Buttons: Resume & Contact (if specified) */}
+        {buttons && buttons.length > 0 && (
+          <div className="mt-5 flex flex-wrap gap-2.5 sm:mt-6 sm:gap-3">
+            {buttons.map((button, index) => {
+              const IconComponent =
+                buttonIcons[button.icon as keyof typeof buttonIcons];
 
-            return (
-              <Button
-                key={index}
-                variant={button.variant as 'outline' | 'default'}
-                size="sm"
-                className={cn(
-                  'px-3 py-1.5 text-xs sm:text-sm',
-                  button.variant === 'outline' && 'inset-shadow-indigo-500',
-                  button.variant === 'default' && 'inset-shadow-indigo-500',
-                )}
-                track={{
-                  name: 'button_click',
-                  data: {
-                    buttonId: button.text,
-                    section: 'hero',
-                  },
-                }}
-              >
-                {IconComponent && <IconComponent />}
-                <Link href={button.href}>{button.text}</Link>
-              </Button>
-            );
-          })}
-        </div>
+              return (
+                <Button
+                  key={index}
+                  variant={button.variant as 'outline' | 'default'}
+                  size="sm"
+                  className={cn(
+                    'px-3 py-1.5 text-xs sm:text-sm',
+                    button.variant === 'outline' && 'inset-shadow-indigo-500',
+                    button.variant === 'default' && 'inset-shadow-indigo-500',
+                  )}
+                  track={{
+                    name: 'button_click',
+                    data: {
+                      buttonId: button.text,
+                      section: 'hero',
+                    },
+                  }}
+                >
+                  {IconComponent && <IconComponent />}
+                  <Link href={button.href}>{button.text}</Link>
+                </Button>
+              );
+            })}
+          </div>
+        )}
       </div>
     </Container>
   );
