@@ -11,11 +11,11 @@ import { Button } from '../ui/button';
 
 export default function Projects() {
   return (
-    <Container className="mt-12 sm:mt-20">
+    <Container className="mt-10 sm:mt-14">
       <SectionHeading heading="Projects" />
 
       <ProjectList
-        className="mt-8"
+        className="mt-4 sm:mt-5"
         projects={projects.slice(0, 3)}
         disableBlur={true}
         showTechnologies={false}

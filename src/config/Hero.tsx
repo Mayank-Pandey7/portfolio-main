@@ -1,7 +1,9 @@
 import Github from '@/components/svgs/Github';
+import Instagram from '@/components/svgs/Instagram';
 import LinkedIn from '@/components/svgs/LinkedIn';
 import Mail from '@/components/svgs/Mail';
 import X from '@/components/svgs/X';
+import YouTube from '@/components/svgs/YouTube';
 import Bun from '@/components/technologies/Bun';
 import JavaScript from '@/components/technologies/JavaScript';
 import MongoDB from '@/components/technologies/MongoDB';
@@ -81,8 +83,18 @@ export const socialLinks = [
     icon: <Github />,
   },
   {
+    name: 'YouTube',
+    href: 'https://www.youtube.com/@nomad.mayank',
+    icon: <YouTube />,
+  },
+  {
+    name: 'Instagram',
+    href: 'https://www.instagram.com/mayank__pandeyy',
+    icon: <Instagram />,
+  },
+  {
     name: 'Email',
-    href: 'mailto:mayankpandey0717@gmial.com',
+    href: 'mailto:mayankpandey0717@gmail.com',
     icon: <Mail />,
   },
 ];

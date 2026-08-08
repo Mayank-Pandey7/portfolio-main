@@ -11,8 +11,8 @@ export default function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div>
-      {subHeading && <p className="text-secondary text-sm">{subHeading}</p>}
-      <h2 className="text-2xl font-bold">{heading}</h2>
+      {subHeading && <p className="text-secondary text-xs sm:text-sm">{subHeading}</p>}
+      <h2 className="text-xl font-bold tracking-tight sm:text-2xl">{heading}</h2>
     </div>
   );
 }

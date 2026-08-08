@@ -12,16 +12,16 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 
 export default function About() {
   return (
-    <Container className="mt-12 sm:mt-20">
+    <Container className="mt-10 sm:mt-14">
       <SectionHeading subHeading="About" heading="Me" />
       {/* About me */}
-      <div className="mt-6 flex flex-col gap-5 sm:mt-8 md:flex-row md:items-start md:gap-8">
+      <div className="mt-4 flex flex-col gap-4 sm:mt-6 md:flex-row md:items-start md:gap-6">
         <Image
           src="/assets/logo.png"
           alt="About"
           width={240}
           height={240}
-          className="border-secondary size-40 shrink-0 rounded-md border-2 bg-blue-300 object-cover sm:size-48 md:size-52 dark:bg-yellow-300"
+          className="border-secondary size-36 shrink-0 rounded-md border-2 bg-blue-300 object-cover sm:size-44 dark:bg-yellow-300"
         />
         <div className="min-w-0 flex-1">
           <h3 className="text-xl font-bold sm:text-2xl">{about.name}</h3>

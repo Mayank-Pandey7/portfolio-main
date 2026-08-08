@@ -150,13 +150,13 @@ export function ExperienceCard({
           </div>
         </div>
 
-        <div className="text-secondary flex w-full flex-row items-center justify-between pt-1.5 text-xs sm:w-auto sm:flex-col sm:items-end sm:justify-start sm:pt-0 sm:text-right sm:text-sm">
+        <div className="text-secondary flex flex-wrap items-baseline justify-between gap-x-2 text-xs sm:flex-col sm:items-end sm:justify-start sm:text-right sm:text-sm">
           <p className="shrink-0 font-medium">
             {experience.startDate} -{' '}
             {experience.isCurrent ? 'Present' : experience.endDate}
           </p>
 
-          <p className="text-muted-foreground shrink-0 text-right text-xs">
+          <p className="text-muted-foreground shrink-0 text-xs">
             {experience.location}
           </p>
         </div>

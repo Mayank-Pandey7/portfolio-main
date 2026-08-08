@@ -318,7 +318,7 @@ export default function Github() {
   const colors = githubConfig.theme.dark;
 
   return (
-    <Container className="mt-12 sm:mt-20">
+    <Container className="mt-10 sm:mt-14">
       <div className="space-y-4 sm:space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
