@@ -61,31 +61,31 @@ export default function Hero() {
   return (
     <Container className="pt-0">
       <div className="max-w-3xl">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3.5 sm:gap-5">
           <Image
             src={avatar}
             alt={name}
             width={120}
             height={120}
             priority
-            className="relative -top-2 size-24 object-contain sm:-top-3 sm:size-28"
+            className="relative -top-1 size-20 object-contain sm:-top-3 sm:size-28 shrink-0"
           />
-          <div className="min-w-0">
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+          <div className="min-w-0 flex-1">
+            <h1 className="text-2xl font-bold tracking-tight sm:text-4xl">
               {name}
             </h1>
 
-            <p className="text-secondary mt-1 text-base sm:text-lg">
+            <p className="text-secondary mt-0.5 text-sm sm:mt-1 sm:text-lg">
               {title}
             </p>
           </div>
         </div>
 
-        <div className="text-secondary mt-6 flex flex-wrap items-center gap-x-1.5 gap-y-2 text-base leading-relaxed sm:text-lg">
+        <div className="text-secondary mt-4 flex flex-wrap items-center gap-x-1.5 gap-y-1.5 text-sm leading-relaxed sm:mt-6 sm:text-lg">
           {renderDescription()}
         </div>
 
-        <div className="mt-6 flex flex-wrap gap-3">
+        <div className="mt-5 flex flex-wrap gap-2.5 sm:mt-6 sm:gap-3">
           {buttons.map((button, index) => {
             const IconComponent =
               buttonIcons[button.icon as keyof typeof buttonIcons];
@@ -96,6 +96,7 @@ export default function Hero() {
                 variant={button.variant as 'outline' | 'default'}
                 size="sm"
                 className={cn(
+                  'px-3 py-1.5 text-xs sm:text-sm',
                   button.variant === 'outline' && 'inset-shadow-indigo-500',
                   button.variant === 'default' && 'inset-shadow-indigo-500',
                 )}
@@ -114,13 +115,13 @@ export default function Hero() {
           })}
         </div>
 
-        <div className="mt-6 flex items-center gap-3">
+        <div className="mt-5 flex items-center gap-3 sm:mt-6 sm:gap-4">
           {socialLinks.map((link) => (
             <Tooltip key={link.name} delayDuration={0}>
               <TooltipTrigger asChild>
                 <TrackedLink
                   href={link.href}
-                  className="text-secondary transition-colors hover:text-foreground"
+                  className="text-secondary transition-colors hover:text-foreground p-0.5"
                   track={{
                     name: 'external_link_click',
                     data: {

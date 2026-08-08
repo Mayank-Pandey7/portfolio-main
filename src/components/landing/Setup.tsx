@@ -25,9 +25,9 @@ const setup = [
 
 export default function Setup() {
   return (
-    <Container className="mt-10">
+    <Container className="mt-10 sm:mt-16">
       <SectionHeading subHeading="Development" heading="Setup" />
-      <div className="mt-8 flex flex-col gap-4">
+      <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:gap-4">
         {setup.map((item) => (
           <TrackedLink
             className="group"
@@ -38,17 +38,17 @@ export default function Setup() {
               data: { buttonId: item.name, section: 'setup' },
             }}
           >
-            <Card className="flex flex-row items-center justify-between gap-4 px-4 py-2">
-              <div className="bg-muted flex items-center justify-center rounded-md p-2">
+            <Card className="flex flex-row items-center justify-between gap-3 px-3.5 py-2.5 sm:gap-4 sm:px-4 sm:py-3">
+              <div className="bg-muted flex shrink-0 items-center justify-center rounded-md p-2">
                 {item.icon}
               </div>
-              <div className="flex w-full flex-col">
-                <h3 className="text-base font-semibold">{item.name}</h3>
-                <p className="text-muted-foreground text-sm">
+              <div className="flex min-w-0 flex-1 flex-col">
+                <h3 className="text-sm font-semibold sm:text-base">{item.name}</h3>
+                <p className="text-muted-foreground truncate text-xs sm:text-sm">
                   {item.description}
                 </p>
               </div>
-              <ArrowRight className="hidden size-4 transition-all duration-300 group-hover:block" />
+              <ArrowRight className="size-4 shrink-0 text-neutral-400 transition-transform group-hover:translate-x-1" />
             </Card>
           </TrackedLink>
         ))}

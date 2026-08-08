@@ -11,7 +11,7 @@ export default function Blog() {
   const posts = getPublishedBlogPosts();
 
   return (
-    <Container className="mt-20">
+    <Container className="mt-12 sm:mt-20">
       <SectionHeading subHeading="Featured" heading="Blogs" />
 
       <BlogList

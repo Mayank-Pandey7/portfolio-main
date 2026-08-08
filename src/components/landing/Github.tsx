@@ -318,16 +318,16 @@ export default function Github() {
   const colors = githubConfig.theme.dark;
 
   return (
-    <Container className="mt-20">
-      <div className="space-y-6">
+    <Container className="mt-12 sm:mt-20">
+      <div className="space-y-4 sm:space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-foreground text-2xl font-bold">
+            <h2 className="text-foreground text-xl font-bold sm:text-2xl">
               {githubConfig.title}
             </h2>
 
-            <p className="text-muted-foreground text-sm">
+            <p className="text-muted-foreground text-xs sm:text-sm">
               <b>{githubConfig.username}</b>&apos;s {githubConfig.subtitle}
             </p>
           </div>
@@ -345,7 +345,7 @@ export default function Github() {
 
         {/* Loading */}
         {isLoading && (
-          <div className="border-border bg-background rounded-xl border p-8">
+          <div className="border-border bg-background rounded-xl border p-6 sm:p-8">
             <div className="flex flex-col items-center justify-center gap-3">
               <div className="border-muted-foreground/30 border-t-foreground h-6 w-6 animate-spin rounded-full border-2" />
 
@@ -362,9 +362,9 @@ export default function Github() {
 
         {/* Error */}
         {!isLoading && hasError && (
-          <div className="text-muted-foreground border-border rounded-xl border-2 border-dashed p-8 text-center">
-            <div className="bg-muted mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
-              <GithubIcon className="h-8 w-8" />
+          <div className="text-muted-foreground border-border rounded-xl border-2 border-dashed p-6 text-center sm:p-8">
+            <div className="bg-muted mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full sm:h-16 sm:w-16">
+              <GithubIcon className="h-7 w-7 sm:h-8 sm:w-8" />
             </div>
 
             <p className="text-foreground mb-2 font-medium">
@@ -391,7 +391,7 @@ export default function Github() {
 
         {/* Contribution Graph */}
         {!isLoading && !hasError && (
-          <div className="border-border bg-background rounded-xl border p-5">
+          <div className="border-border bg-background rounded-xl border p-3.5 sm:p-5">
             <div
               ref={scrollContainerRef}
               className="overflow-x-auto pb-2 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-muted-foreground/20 hover:[&::-webkit-scrollbar-thumb]:bg-muted-foreground/40"
