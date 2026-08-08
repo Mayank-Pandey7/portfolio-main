@@ -77,30 +77,30 @@ const ProjectMeta = ({
   status?: string;
 }) => {
   return (
-    <div className="bg-muted/20 my-6 grid gap-4 rounded-lg border p-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="bg-muted/20 my-6 grid grid-cols-2 gap-3 rounded-lg border p-3.5 sm:grid-cols-2 sm:gap-4 sm:p-4 lg:grid-cols-4">
       {timeline && (
         <div>
-          <h5 className="text-muted-foreground text-sm font-semibold">
+          <h5 className="text-muted-foreground text-xs font-semibold sm:text-sm">
             Timeline
           </h5>
-          <p className="text-sm">{timeline}</p>
+          <p className="text-xs font-medium sm:text-sm">{timeline}</p>
         </div>
       )}
       {role && (
         <div>
-          <h5 className="text-muted-foreground text-sm font-semibold">Role</h5>
-          <p className="text-sm">{role}</p>
+          <h5 className="text-muted-foreground text-xs font-semibold sm:text-sm">Role</h5>
+          <p className="text-xs font-medium sm:text-sm">{role}</p>
         </div>
       )}
       {team && (
         <div>
-          <h5 className="text-muted-foreground text-sm font-semibold">Team</h5>
-          <p className="text-sm">{team}</p>
+          <h5 className="text-muted-foreground text-xs font-semibold sm:text-sm">Team</h5>
+          <p className="text-xs font-medium sm:text-sm">{team}</p>
         </div>
       )}
       {status && (
         <div>
-          <h5 className="text-muted-foreground text-sm font-semibold">
+          <h5 className="text-muted-foreground text-xs font-semibold sm:text-sm">
             Status
           </h5>
           <Badge
@@ -111,6 +111,7 @@ const ProjectMeta = ({
                   ? 'secondary'
                   : 'outline'
             }
+            className="text-[11px] sm:text-xs"
           >
             {status.charAt(0).toUpperCase() + status.slice(1)}
           </Badge>
@@ -123,17 +124,17 @@ const ProjectMeta = ({
 // Custom Challenges component
 const Challenges = ({ challenges }: { challenges: string[] }) => {
   return (
-    <div className="my-6 rounded-lg border border-yellow-200 bg-yellow-50 p-4 dark:border-yellow-800 dark:bg-yellow-950/20">
-      <h4 className="mb-3 text-lg font-semibold text-yellow-800 dark:text-yellow-200">
+    <div className="my-6 rounded-lg border border-yellow-200 bg-yellow-50 p-3.5 sm:p-4 dark:border-yellow-800 dark:bg-yellow-950/20">
+      <h4 className="mb-3 text-base sm:text-lg font-semibold text-yellow-800 dark:text-yellow-200">
         Key Challenges
       </h4>
       <ul className="space-y-2">
         {challenges.map((challenge, index) => (
           <li
             key={index}
-            className="flex items-start gap-2 text-sm text-yellow-700 dark:text-yellow-300"
+            className="flex items-start gap-2 text-xs sm:text-sm text-yellow-700 dark:text-yellow-300"
           >
-            <span className="mt-1 block size-1.5 rounded-full bg-yellow-500 dark:bg-yellow-400" />
+            <span className="mt-1 block size-1.5 shrink-0 rounded-full bg-yellow-500 dark:bg-yellow-400" />
             {challenge}
           </li>
         ))}
@@ -145,17 +146,17 @@ const Challenges = ({ challenges }: { challenges: string[] }) => {
 // Custom Learnings component
 const Learnings = ({ learnings }: { learnings: string[] }) => {
   return (
-    <div className="my-6 rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-950/20">
-      <h4 className="mb-3 text-lg font-semibold text-green-800 dark:text-green-200">
+    <div className="my-6 rounded-lg border border-green-200 bg-green-50 p-3.5 sm:p-4 dark:border-green-800 dark:bg-green-950/20">
+      <h4 className="mb-3 text-base sm:text-lg font-semibold text-green-800 dark:text-green-200">
         Key Learnings
       </h4>
       <ul className="space-y-2">
         {learnings.map((learning, index) => (
           <li
             key={index}
-            className="flex items-start gap-2 text-sm text-green-700 dark:text-green-300"
+            className="flex items-start gap-2 text-xs sm:text-sm text-green-700 dark:text-green-300"
           >
-            <span className="mt-1 block size-1.5 rounded-full bg-green-500 dark:bg-green-400" />
+            <span className="mt-1 block size-1.5 shrink-0 rounded-full bg-green-500 dark:bg-green-400" />
             {learning}
           </li>
         ))}
@@ -180,7 +181,7 @@ export const ProjectComponents = {
       alt={alt}
       width={800}
       height={400}
-      className="rounded-lg"
+      className="h-auto w-full max-w-full rounded-lg object-cover"
       {...props}
     />
   ),
@@ -191,7 +192,7 @@ export const ProjectComponents = {
     children: React.ReactNode;
     [key: string]: unknown;
   }) => (
-    <h1 className="mb-6 text-4xl font-bold" {...props}>
+    <h1 className="mb-4 text-2xl font-bold sm:text-4xl" {...props}>
       {children}
     </h1>
   ),
@@ -202,7 +203,7 @@ export const ProjectComponents = {
     children: React.ReactNode;
     [key: string]: unknown;
   }) => (
-    <h2 className="mt-8 mb-4 text-3xl font-semibold" {...props}>
+    <h2 className="mt-6 mb-3 text-xl font-semibold sm:text-3xl" {...props}>
       {children}
     </h2>
   ),
@@ -213,7 +214,7 @@ export const ProjectComponents = {
     children: React.ReactNode;
     [key: string]: unknown;
   }) => (
-    <h3 className="mt-6 mb-3 text-2xl font-medium" {...props}>
+    <h3 className="mt-5 mb-2.5 text-lg font-medium sm:text-2xl" {...props}>
       {children}
     </h3>
   ),

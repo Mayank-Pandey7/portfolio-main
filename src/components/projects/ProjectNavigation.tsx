@@ -19,14 +19,14 @@ export function ProjectNavigation({ previous, next }: ProjectNavigationProps) {
     <div className="space-y-6">
       <Separator />
 
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-3 sm:gap-4 sm:grid-cols-2">
         {/* Previous Project */}
-        <div className={`${next ? '' : 'md:col-span-2'}`}>
+        <div className={`${next ? '' : 'sm:col-span-2'}`}>
           {previous ? (
             <Button
               variant="outline"
               asChild
-              className="group h-auto w-full justify-start p-4 text-left"
+              className="group h-auto w-full justify-start p-3 sm:p-4 text-left"
               track={{
                 name: 'button_click',
                 data: {
@@ -37,29 +37,29 @@ export function ProjectNavigation({ previous, next }: ProjectNavigationProps) {
               }}
             >
               <Link href={`/projects/${previous.slug}`}>
-                <div className="flex items-center gap-3">
-                  <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
-                  <div>
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <ArrowLeft className="size-4 shrink-0 transition-transform group-hover:-translate-x-1" />
+                  <div className="min-w-0 flex-1">
                     <div className="text-muted-foreground text-xs">
                       Previous Project
                     </div>
-                    <div className="font-medium">{previous.title}</div>
+                    <div className="truncate text-xs font-medium sm:text-sm">{previous.title}</div>
                   </div>
                 </div>
               </Link>
             </Button>
           ) : (
-            <div className="h-16" />
+            <div className="hidden sm:block h-16" />
           )}
         </div>
 
         {/* Next Project */}
-        <div className={`${previous ? '' : 'md:col-span-2'}`}>
+        <div className={`${previous ? '' : 'sm:col-span-2'}`}>
           {next ? (
             <Button
               variant="outline"
               asChild
-              className="group h-auto w-full justify-end p-4 text-right"
+              className="group h-auto w-full justify-end p-3 sm:p-4 text-right"
               track={{
                 name: 'button_click',
                 data: {
@@ -70,19 +70,19 @@ export function ProjectNavigation({ previous, next }: ProjectNavigationProps) {
               }}
             >
               <Link href={`/projects/${next.slug}`}>
-                <div className="flex items-center gap-3">
-                  <div>
+                <div className="flex items-center justify-end gap-2.5 sm:gap-3">
+                  <div className="min-w-0 flex-1">
                     <div className="text-muted-foreground text-xs">
                       Next Project
                     </div>
-                    <div className="font-medium">{next.title}</div>
+                    <div className="truncate text-xs font-medium sm:text-sm">{next.title}</div>
                   </div>
-                  <ArrowUUpRight className="size-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowUUpRight className="size-4 shrink-0 transition-transform group-hover:translate-x-1" />
                 </div>
               </Link>
             </Button>
           ) : (
-            <div className="h-16" />
+            <div className="hidden sm:block h-16" />
           )}
         </div>
       </div>

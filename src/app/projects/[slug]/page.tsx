@@ -79,14 +79,14 @@ export default async function ProjectCaseStudyPage({
   const relatedProjects = await getRelatedProjectCaseStudies(slug, 2);
 
   return (
-    <Container className="py-16">
-      <div className="space-y-12">
+    <Container className="py-8 sm:py-16">
+      <div className="space-y-8 sm:space-y-12">
         {/* Back Button */}
         <div>
           <Button
             variant="ghost"
             asChild
-            className="group"
+            className="group px-2.5 sm:px-4"
             track={{
               name: 'button_click',
               data: { buttonId: 'project_back', section: 'project_detail' },
@@ -116,12 +116,12 @@ export default async function ProjectCaseStudyPage({
           <div className="space-y-6">
             <Separator />
             <div className="space-y-6">
-              <h2 className="text-2xl font-semibold">Related Projects</h2>
-              <div className="grid gap-6 md:grid-cols-2">
+              <h2 className="text-xl font-semibold sm:text-2xl">Related Projects</h2>
+              <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
                 {relatedProjects.map((project) => (
                   <div
                     key={project.slug}
-                    className="group bg-card hover:bg-muted/50 rounded-lg border p-6 transition-colors"
+                    className="group bg-card hover:bg-muted/50 rounded-lg border p-4 sm:p-6 transition-colors"
                   >
                     <TrackedLink
                       href={`/projects/${project.slug}`}

@@ -71,49 +71,52 @@ export function ProjectContent({ frontmatter, content }: ProjectContentProps) {
             )}
           </div>
 
-          <h1 className="text-4xl leading-tight font-bold lg:text-5xl">
+          <h1 className="text-2xl font-bold leading-tight sm:text-4xl lg:text-5xl">
             {title}
           </h1>
 
-          <p className="text-muted-foreground text-xl">{description}</p>
+          <p className="text-muted-foreground text-base sm:text-xl leading-relaxed">
+            {description}
+          </p>
 
           {/* Project Meta Information */}
-          <div className="bg-muted/20 grid gap-4 rounded-lg border p-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="bg-muted/20 grid grid-cols-2 gap-3 rounded-lg border p-3.5 sm:grid-cols-2 sm:gap-4 sm:p-4 lg:grid-cols-4">
             <div>
-              <h5 className="text-muted-foreground text-sm font-semibold">
+              <h5 className="text-muted-foreground text-xs font-semibold sm:text-sm">
                 Timeline
               </h5>
-              <p className="text-sm">{timeline}</p>
+              <p className="text-xs font-medium sm:text-sm">{timeline}</p>
             </div>
             <div>
-              <h5 className="text-muted-foreground text-sm font-semibold">
+              <h5 className="text-muted-foreground text-xs font-semibold sm:text-sm">
                 Role
               </h5>
-              <p className="text-sm">{role}</p>
+              <p className="text-xs font-medium sm:text-sm">{role}</p>
             </div>
             {team && (
               <div>
-                <h5 className="text-muted-foreground text-sm font-semibold">
+                <h5 className="text-muted-foreground text-xs font-semibold sm:text-sm">
                   Team
                 </h5>
-                <p className="text-sm">{team}</p>
+                <p className="text-xs font-medium sm:text-sm">{team}</p>
               </div>
             )}
             <div>
-              <h5 className="text-muted-foreground text-sm font-semibold">
+              <h5 className="text-muted-foreground text-xs font-semibold sm:text-sm">
                 Status
               </h5>
-              <Badge variant={statusVariant} className="text-xs">
+              <Badge variant={statusVariant} className="text-[11px] sm:text-xs">
                 {status.charAt(0).toUpperCase() + status.slice(1)}
               </Badge>
             </div>
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2.5 sm:gap-3">
             {live && (
               <Button
                 asChild
+                className="w-full sm:w-auto"
                 track={{
                   name: 'external_link_click',
                   data: {
@@ -127,7 +130,7 @@ export function ProjectContent({ frontmatter, content }: ProjectContentProps) {
                   href={live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2"
+                  className="flex items-center justify-center gap-2"
                 >
                   <Website className="size-4" />
                   Live Demo
@@ -138,6 +141,7 @@ export function ProjectContent({ frontmatter, content }: ProjectContentProps) {
               <Button
                 variant="outline"
                 asChild
+                className="w-full sm:w-auto"
                 track={{
                   name: 'external_link_click',
                   data: {
@@ -151,7 +155,7 @@ export function ProjectContent({ frontmatter, content }: ProjectContentProps) {
                   href={github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2"
+                  className="flex items-center justify-center gap-2"
                 >
                   <Github className="size-4" />
                   Source Code
