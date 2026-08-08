@@ -8,7 +8,7 @@ export async function GET() {
   try {
     const nowPlayingData = await getNowPlaying();
 
-    if (nowPlayingData && nowPlayingData.is_playing && nowPlayingData.item) {
+    if (nowPlayingData && nowPlayingData.item) {
       const track = nowPlayingData.item;
       const title = track.name;
       const artist = track.artists
@@ -17,15 +17,16 @@ export async function GET() {
       const album = track.album.name;
       const albumImageUrl = track.album.images[0]?.url ?? '';
       const songUrl = track.external_urls.spotify;
+      const isPlaying = Boolean(nowPlayingData.is_playing);
 
       return NextResponse.json({
-        isPlaying: true,
+        isPlaying,
         title,
         artist,
         album,
         albumImageUrl,
         songUrl,
-        status: 'Currently playing',
+        status: isPlaying ? 'Currently playing' : 'Last played',
       });
     }
 

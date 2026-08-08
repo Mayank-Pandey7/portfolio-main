@@ -42,7 +42,7 @@ export default function SpotifyNowPlaying() {
     };
 
     fetchNowPlaying();
-    const interval = setInterval(fetchNowPlaying, 15000);
+    const interval = setInterval(fetchNowPlaying, 5000);
 
     return () => {
       isMounted = false;
