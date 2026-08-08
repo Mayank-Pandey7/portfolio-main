@@ -1,5 +1,4 @@
 import Container from '@/components/common/Container';
-import { TrackedLink } from '@/components/common/TrackedLink';
 import { ProjectContent } from '@/components/projects/ProjectContent';
 import { ProjectNavigation } from '@/components/projects/ProjectNavigation';
 import ArrowLeft from '@/components/svgs/ArrowLeft';
@@ -10,7 +9,6 @@ import {
   getProjectCaseStudyBySlug,
   getProjectCaseStudySlugs,
   getProjectNavigation,
-  getRelatedProjectCaseStudies,
 } from '@/lib/project';
 import { Metadata } from 'next';
 import { Link } from 'next-view-transitions';
@@ -76,7 +74,6 @@ export default async function ProjectCaseStudyPage({
   }
 
   const navigation = await getProjectNavigation(slug);
-  const relatedProjects = await getRelatedProjectCaseStudies(slug, 2);
 
   return (
     <Container className="py-8 sm:py-16">
@@ -110,80 +107,6 @@ export default async function ProjectCaseStudyPage({
           previous={navigation.previous}
           next={navigation.next}
         />
-
-        {/* Related Projects */}
-        {relatedProjects.length > 0 && (
-          <div className="space-y-6">
-            <Separator />
-            <div className="space-y-6">
-              <h2 className="text-xl font-semibold sm:text-2xl">Related Projects</h2>
-              <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
-                {relatedProjects.map((project) => (
-                  <div
-                    key={project.slug}
-                    className="group bg-card hover:bg-muted/50 rounded-lg border p-4 sm:p-6 transition-colors"
-                  >
-                    <TrackedLink
-                      href={`/projects/${project.slug}`}
-                      track={{
-                        name: 'button_click',
-                        data: {
-                          buttonId: 'related_project',
-                          section: 'project_detail',
-                          action: project.slug,
-                        },
-                      }}
-                    >
-                      <div className="space-y-3">
-                        <div className="flex items-center gap-2">
-                          <h3 className="group-hover:text-primary text-lg font-semibold">
-                            {project.frontmatter.title}
-                          </h3>
-                          <div className="text-xs">
-                            <div
-                              className={`inline-block rounded px-2 py-1 text-xs font-medium ${
-                                project.frontmatter.status === 'completed'
-                                  ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400'
-                                  : project.frontmatter.status === 'in-progress'
-                                    ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400'
-                                    : 'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-400'
-                              }`}
-                            >
-                              {project.frontmatter.status
-                                .charAt(0)
-                                .toUpperCase() +
-                                project.frontmatter.status.slice(1)}
-                            </div>
-                          </div>
-                        </div>
-                        <p className="text-muted-foreground line-clamp-2 text-sm">
-                          {project.frontmatter.description}
-                        </p>
-                        <div className="flex flex-wrap gap-1">
-                          {project.frontmatter.technologies
-                            .slice(0, 3)
-                            .map((tech) => (
-                              <span
-                                key={tech}
-                                className="bg-muted rounded px-2 py-1 text-xs"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                          {project.frontmatter.technologies.length > 3 && (
-                            <span className="bg-muted rounded px-2 py-1 text-xs">
-                              +{project.frontmatter.technologies.length - 3}
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    </TrackedLink>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* Back to Projects CTA */}
         <div className="text-center">
