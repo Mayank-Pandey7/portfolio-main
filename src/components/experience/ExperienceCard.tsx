@@ -58,7 +58,7 @@ export function ExperienceCard({
               </h3>
 
               {experience.isCurrent && (
-                <div className="flex shrink-0 items-center gap-1 rounded-md border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-emerald-500">
+                <div className="hidden sm:flex shrink-0 items-center gap-1 rounded-md border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-emerald-500">
                   <div className="size-1.5 shrink-0 animate-pulse rounded-full bg-emerald-500" />
                   Working
                 </div>
@@ -154,9 +154,18 @@ export function ExperienceCard({
               )}
             </div>
 
-            <p className="text-muted-foreground mt-1 text-xs font-normal sm:text-sm leading-snug">
-              {experience.position}
-            </p>
+            <div className="mt-1 flex flex-wrap items-center gap-1.5">
+              <p className="text-muted-foreground text-xs font-normal sm:text-sm leading-snug">
+                {experience.position}
+              </p>
+
+              {experience.isCurrent && (
+                <div className="flex sm:hidden shrink-0 items-center gap-1 rounded-md border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-emerald-500">
+                  <div className="size-1.5 shrink-0 animate-pulse rounded-full bg-emerald-500" />
+                  Working
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
