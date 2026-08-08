@@ -8,6 +8,7 @@ import React from 'react';
 import Container from '../common/Container';
 import Skill from '../common/Skill';
 import { TrackedLink } from '../common/TrackedLink';
+import SpotifyNowPlaying from '../spotify/SpotifyNowPlaying';
 import CV from '../svgs/CV';
 import Chat from '../svgs/Chat';
 import { Button } from '../ui/button';
@@ -85,8 +86,11 @@ export default function Hero() {
           {renderDescription()}
         </div>
 
+        {/* Spotify Row */}
+        <SpotifyNowPlaying />
+
         {/* Social Links */}
-        <div className="mt-5 flex items-center gap-3.5 sm:mt-6 sm:gap-4">
+        <div className="mt-4 flex items-center gap-3.5 sm:mt-5 sm:gap-4">
           {socialLinks.map((link) => (
             <Tooltip key={link.name} delayDuration={0}>
               <TooltipTrigger asChild>
