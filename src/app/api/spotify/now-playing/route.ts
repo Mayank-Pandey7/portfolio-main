@@ -1,3 +1,4 @@
+import { spotifyConfig } from '@/config/Hero';
 import { getNowPlaying, getRecentlyPlayed } from '@/lib/spotify';
 import { NextResponse } from 'next/server';
 
@@ -60,22 +61,22 @@ export async function GET() {
 
     return NextResponse.json({
       isPlaying: false,
-      title: 'São Paulo (feat. Anitta)',
-      artist: 'The Weeknd, Anitta',
-      album: 'São Paulo',
+      title: spotifyConfig.song,
+      artist: spotifyConfig.artist,
+      album: spotifyConfig.song,
       albumImageUrl: '',
-      songUrl: 'https://open.spotify.com/search/S%C3%A3o%20Paulo%20The%20Weeknd',
+      songUrl: spotifyConfig.href,
       status: 'Last played',
     });
   } catch (error) {
     console.error('Spotify API Route Error:', error);
     return NextResponse.json({
       isPlaying: false,
-      title: 'São Paulo (feat. Anitta)',
-      artist: 'The Weeknd, Anitta',
-      album: 'São Paulo',
+      title: spotifyConfig.song,
+      artist: spotifyConfig.artist,
+      album: spotifyConfig.song,
       albumImageUrl: '',
-      songUrl: 'https://open.spotify.com/search/S%C3%A3o%20Paulo%20The%20Weeknd',
+      songUrl: spotifyConfig.href,
       status: 'Last played',
     });
   }

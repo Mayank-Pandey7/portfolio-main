@@ -101,7 +101,7 @@ export const socialLinks = [
 
 export const spotifyConfig = {
   status: 'Last played',
-  song: 'Arz Kiya Hai',
-  artist: 'Anuv Jain',
-  href: 'https://open.spotify.com/album/5JnqJs94bARmhFoOSW3H5h',
+  song: 'Rubaru (from "Khuda Haafiz")',
+  artist: 'Vishal Mishra, Asees Kaur',
+  href: 'https://open.spotify.com/search/Rubaru%20Vishal%20Mishra',
 };
