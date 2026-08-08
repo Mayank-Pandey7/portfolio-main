@@ -63,7 +63,7 @@ export default function SpotifyNowPlaying() {
           )}
         </div>
 
-        <span className="text-secondary font-normal select-none">
+        <span className="font-semibold text-foreground/90 select-none">
           {data.isPlaying ? 'Currently playing' : 'Last played'}
         </span>
         <span className="text-neutral-400 select-none">—</span>
