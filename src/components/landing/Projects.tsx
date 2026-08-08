@@ -12,7 +12,7 @@ import { Button } from '../ui/button';
 export default function Projects() {
   return (
     <Container className="mt-12 sm:mt-20">
-      <SectionHeading subHeading="Featured" heading="Projects" />
+      <SectionHeading heading="Projects" />
 
       <ProjectList
         className="mt-8"

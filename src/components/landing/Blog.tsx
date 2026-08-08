@@ -12,7 +12,7 @@ export default function Blog() {
 
   return (
     <Container className="mt-12 sm:mt-20">
-      <SectionHeading subHeading="Featured" heading="Blogs" />
+      <SectionHeading heading="Blogs" />
 
       <BlogList
         posts={posts.slice(0, 3)}
