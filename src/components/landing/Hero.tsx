@@ -61,7 +61,7 @@ export default function Hero() {
 
   return (
     <Container className="pt-0">
-      <div className="max-w-3xl">
+      <div className="w-full max-w-full">
         <div className="flex items-center gap-3.5 sm:gap-4">
           <Image
             src={avatar}
