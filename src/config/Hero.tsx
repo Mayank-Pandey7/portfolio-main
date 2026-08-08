@@ -26,15 +26,20 @@ export const skillComponents = {
   JavaScript: JavaScript,
 };
 
+export type HeroButton = {
+  variant: 'outline' | 'default';
+  text: string;
+  href: string;
+  icon: string;
+};
+
 export const heroConfig = {
-  
   name: 'Mayank Pandey',
   title: 'Full Stack Web Developer.',
   avatar: '/assets/logo.png',
 
-  
   skills: [
-     {
+    {
       name: 'React',
       href: 'https://react.dev/',
       component: 'ReactIcon',
@@ -51,14 +56,12 @@ export const heroConfig = {
     },
   ],
 
-  
   description: {
     template:
       'Love to build cool stuff using {skills:0}, {skills:1} and {skills:2}.',
   },
 
-
-  buttons: [],
+  buttons: [] as HeroButton[],
 };
 
 export const socialLinks = [
