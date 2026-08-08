@@ -12,7 +12,7 @@ export default function Experience() {
     <Container className="mt-10 sm:mt-14">
       <SectionHeading heading="Experience" />
       <div className="mt-4 flex flex-col gap-5 sm:gap-6">
-        {experiences.slice(0, 2).map((experience: Experience) => (
+        {experiences.slice(0, 3).map((experience: Experience) => (
           <ExperienceCard key={experience.company} experience={experience} showImage={false} showSocials={false} />
         ))}
       </div>
