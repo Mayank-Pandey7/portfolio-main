@@ -7,12 +7,13 @@ import { TrackedLink } from './TrackedLink';
 
 export default function Navbar() {
   return (
-    <Container className="sticky top-0 z-20 rounded-md py-4 backdrop-blur-md bg-background/80">
-      <div className="flex items-center justify-between px-6">
-        <div className="flex items-center gap-5">
+    <Container className="sticky top-0 z-20 rounded-md py-3.5 sm:py-4 backdrop-blur-md bg-background/80">
+      <div className="flex items-center justify-between px-2 sm:px-6">
+        <div className="flex items-center gap-3 sm:gap-5">
+          {/* Home Link (Desktop only) */}
           <TrackedLink
             href="/"
-            className="text-sm font-medium transition-colors hover:text-primary"
+            className="hidden sm:inline-block text-sm font-medium transition-colors hover:text-primary"
             track={{
               name: 'button_click',
               data: {
@@ -24,12 +25,12 @@ export default function Navbar() {
             Home
           </TrackedLink>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm">
             {navbarConfig.navItems.map((item) => (
               <TrackedLink
                 key={item.label}
                 href={item.href}
-                className="text-sm transition-colors hover:text-primary"
+                className="text-xs sm:text-sm font-medium transition-colors hover:text-primary"
                 track={{
                   name: 'button_click',
                   data: {
@@ -44,7 +45,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <ThemeToggleButton variant="circle" start="top-right" blur />
         </div>
       </div>
