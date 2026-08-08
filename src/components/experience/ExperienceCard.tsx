@@ -29,7 +29,7 @@ export function ExperienceCard({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="group flex flex-col border-b border-neutral-200/50 pb-6 last:border-0 last:pb-0 dark:border-neutral-800/60">
+    <div className="group flex flex-col pb-4 last:pb-0">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex min-w-0 flex-1 items-start gap-3 sm:gap-4">
           <Image

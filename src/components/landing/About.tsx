@@ -1,9 +1,13 @@
 import { about, mySkills } from '@/config/About';
+import { CertificateIcon } from '@phosphor-icons/react/dist/ssr';
+import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
 
 import Container from '../common/Container';
 import SectionHeading from '../common/SectionHeading';
+import { TrackedLink } from '../common/TrackedLink';
+import { Card } from '../ui/card';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 
 export default function About() {
@@ -34,6 +38,34 @@ export default function About() {
                 <TooltipContent>{skill.key}</TooltipContent>
               </Tooltip>
             ))}
+          </div>
+
+          <div className="mt-6 sm:mt-8">
+            <TrackedLink
+              className="group"
+              href="/journey/certificates"
+              track={{
+                name: 'button_click',
+                data: {
+                  buttonId: 'Certificates & Achievements',
+                  section: 'about',
+                  action: '/journey/certificates',
+                },
+              }}
+            >
+              <Card className="flex flex-row items-center justify-between gap-3 px-3.5 py-2.5 sm:gap-4 sm:px-4 sm:py-3">
+                <div className="bg-muted flex shrink-0 items-center justify-center rounded-md p-2">
+                  <CertificateIcon className="size-4" />
+                </div>
+                <div className="flex min-w-0 flex-1 flex-col">
+                  <h3 className="text-sm font-semibold sm:text-base">Certificates & Achievements</h3>
+                  <p className="text-muted-foreground truncate text-xs sm:text-sm">
+                    A curated list of certificates and achievements.
+                  </p>
+                </div>
+                <ArrowRight className="size-4 shrink-0 text-neutral-400 transition-transform group-hover:translate-x-1" />
+              </Card>
+            </TrackedLink>
           </div>
         </div>
       </div>
