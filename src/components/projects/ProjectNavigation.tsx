@@ -1,5 +1,4 @@
 import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
 import { Link } from 'next-view-transitions';
 
 import ArrowLeft from '../svgs/ArrowLeft';
@@ -16,9 +15,7 @@ export function ProjectNavigation({ previous, next }: ProjectNavigationProps) {
   }
 
   return (
-    <div className="space-y-6">
-      <Separator />
-
+    <div>
       <div className="grid gap-3 sm:gap-4 sm:grid-cols-2">
         {/* Previous Project */}
         <div className={`${next ? '' : 'sm:col-span-2'}`}>

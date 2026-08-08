@@ -3,7 +3,6 @@ import { ProjectContent } from '@/components/projects/ProjectContent';
 import { ProjectNavigation } from '@/components/projects/ProjectNavigation';
 import ArrowLeft from '@/components/svgs/ArrowLeft';
 import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
 import { siteConfig } from '@/config/Meta';
 import {
   getProjectCaseStudyBySlug,
@@ -107,14 +106,6 @@ export default async function ProjectCaseStudyPage({
           previous={navigation.previous}
           next={navigation.next}
         />
-
-        {/* Back to Projects CTA */}
-        <div className="text-center">
-          <Separator className="mb-8" />
-          <Button asChild size="lg">
-            <Link href="/projects">View All Projects</Link>
-          </Button>
-        </div>
       </div>
     </Container>
   );
