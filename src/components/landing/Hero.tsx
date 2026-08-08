@@ -85,6 +85,35 @@ export default function Hero() {
           {renderDescription()}
         </div>
 
+        {/* Social Links */}
+        <div className="mt-5 flex items-center gap-3.5 sm:mt-6 sm:gap-4">
+          {socialLinks.map((link) => (
+            <Tooltip key={link.name} delayDuration={0}>
+              <TooltipTrigger asChild>
+                <TrackedLink
+                  href={link.href}
+                  className="text-secondary transition-colors hover:text-foreground p-0.5"
+                  track={{
+                    name: 'external_link_click',
+                    data: {
+                      url: link.href,
+                      text: link.name,
+                      location: 'hero_social',
+                    },
+                  }}
+                >
+                  <span className="block size-5">{link.icon}</span>
+                </TrackedLink>
+              </TooltipTrigger>
+
+              <TooltipContent>
+                <p>{link.name}</p>
+              </TooltipContent>
+            </Tooltip>
+          ))}
+        </div>
+
+        {/* Buttons: Resume & Contact */}
         <div className="mt-5 flex flex-wrap gap-2.5 sm:mt-6 sm:gap-3">
           {buttons.map((button, index) => {
             const IconComponent =
@@ -113,33 +142,6 @@ export default function Hero() {
               </Button>
             );
           })}
-        </div>
-
-        <div className="mt-5 flex items-center gap-3 sm:mt-6 sm:gap-4">
-          {socialLinks.map((link) => (
-            <Tooltip key={link.name} delayDuration={0}>
-              <TooltipTrigger asChild>
-                <TrackedLink
-                  href={link.href}
-                  className="text-secondary transition-colors hover:text-foreground p-0.5"
-                  track={{
-                    name: 'external_link_click',
-                    data: {
-                      url: link.href,
-                      text: link.name,
-                      location: 'hero_social',
-                    },
-                  }}
-                >
-                  <span className="block size-5">{link.icon}</span>
-                </TrackedLink>
-              </TooltipTrigger>
-
-              <TooltipContent>
-                <p>{link.name}</p>
-              </TooltipContent>
-            </Tooltip>
-          ))}
         </div>
       </div>
     </Container>

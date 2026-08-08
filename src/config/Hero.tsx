@@ -29,7 +29,7 @@ export const skillComponents = {
 export const heroConfig = {
   
   name: 'Mayank Pandey',
-  title: 'Full Stack web developer.',
+  title: 'Full Stack Web Developer.',
   avatar: '/assets/logo.png',
 
   
