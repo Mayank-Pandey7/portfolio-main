@@ -98,7 +98,7 @@ export function BlogPageClient({
       </div>
 
       {/* Blog List */}
-      <BlogList posts={filteredPosts} />
+      <BlogList posts={filteredPosts} showDescription={true} />
     </Container>
   );
 }

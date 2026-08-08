@@ -60,7 +60,7 @@ export function BlogCard({
 
           {/* Subtitle / Excerpt */}
           {showDescription && description && (
-            <p className="text-sm leading-relaxed text-neutral-400">
+            <p className="line-clamp-1 text-sm leading-relaxed text-neutral-400">
               {description}
             </p>
           )}
