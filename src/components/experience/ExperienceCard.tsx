@@ -16,6 +16,8 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 interface ExperienceCardProps {
   experience: Experience;
   expandable?: boolean;
+  showImage?: boolean;
+  showSocials?: boolean;
 }
 
 const parseDescription = (text: string): string => {
@@ -25,6 +27,8 @@ const parseDescription = (text: string): string => {
 export function ExperienceCard({
   experience,
   expandable = true,
+  showImage = true,
+  showSocials = true,
 }: ExperienceCardProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -32,13 +36,15 @@ export function ExperienceCard({
     <div className="group flex flex-col pb-4 last:pb-0">
       <div className="flex w-full items-start justify-between gap-3">
         <div className="flex min-w-0 flex-1 items-start gap-3 sm:gap-4">
-          <Image
-            src={experience.image}
-            alt={experience.company}
-            width={100}
-            height={100}
-            className="size-10 shrink-0 rounded-md object-cover sm:size-12"
-          />
+          {showImage && (
+            <Image
+              src={experience.image}
+              alt={experience.company}
+              width={100}
+              height={100}
+              className="size-10 shrink-0 rounded-md object-cover sm:size-12"
+            />
+          )}
 
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
@@ -58,64 +64,68 @@ export function ExperienceCard({
                 </div>
               )}
 
-              {experience.website && (
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href={experience.website}
-                      target="_blank"
-                      className="hover:text-foreground size-4 shrink-0 text-neutral-500 transition-colors"
-                    >
-                      <Website />
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent>Visit Website</TooltipContent>
-                </Tooltip>
-              )}
+              {showSocials && (
+                <>
+                  {experience.website && (
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Link
+                          href={experience.website}
+                          target="_blank"
+                          className="hover:text-foreground size-4 shrink-0 text-neutral-500 transition-colors"
+                        >
+                          <Website />
+                        </Link>
+                      </TooltipTrigger>
+                      <TooltipContent>Visit Website</TooltipContent>
+                    </Tooltip>
+                  )}
 
-              {experience.x && (
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href={experience.x}
-                      target="_blank"
-                      className="hover:text-foreground size-4 shrink-0 text-neutral-500 transition-colors"
-                    >
-                      <X />
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent>Follow on X</TooltipContent>
-                </Tooltip>
-              )}
+                  {experience.x && (
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Link
+                          href={experience.x}
+                          target="_blank"
+                          className="hover:text-foreground size-4 shrink-0 text-neutral-500 transition-colors"
+                        >
+                          <X />
+                        </Link>
+                      </TooltipTrigger>
+                      <TooltipContent>Follow on X</TooltipContent>
+                    </Tooltip>
+                  )}
 
-              {experience.linkedin && (
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href={experience.linkedin}
-                      target="_blank"
-                      className="hover:text-foreground size-4 shrink-0 text-neutral-500 transition-colors"
-                    >
-                      <LinkedIn />
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent>Connect on LinkedIn</TooltipContent>
-                </Tooltip>
-              )}
+                  {experience.linkedin && (
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Link
+                          href={experience.linkedin}
+                          target="_blank"
+                          className="hover:text-foreground size-4 shrink-0 text-neutral-500 transition-colors"
+                        >
+                          <LinkedIn />
+                        </Link>
+                      </TooltipTrigger>
+                      <TooltipContent>Connect on LinkedIn</TooltipContent>
+                    </Tooltip>
+                  )}
 
-              {experience.github && (
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href={experience.github}
-                      target="_blank"
-                      className="hover:text-foreground size-4 shrink-0 text-neutral-500 transition-colors"
-                    >
-                      <Github />
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent>View GitHub</TooltipContent>
-                </Tooltip>
+                  {experience.github && (
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Link
+                          href={experience.github}
+                          target="_blank"
+                          className="hover:text-foreground size-4 shrink-0 text-neutral-500 transition-colors"
+                        >
+                          <Github />
+                        </Link>
+                      </TooltipTrigger>
+                      <TooltipContent>View GitHub</TooltipContent>
+                    </Tooltip>
+                  )}
+                </>
               )}
 
               {expandable && (

@@ -52,7 +52,7 @@ export const experiences: Experience[] = [
       'Integrated and optimized backend API connections, implementing efficient data fetching strategies and error handling mechanisms.',
       'Enhanced user experience and interface design through implementation of consistent design systems, accessibility standards, and performance optimizations.',
     ],
-    startDate: 'July 2026',
+    startDate: 'Jul 26',
     endDate: 'Present',
     technologies: [
       {
@@ -111,8 +111,8 @@ export const experiences: Experience[] = [
       'Improved frontend performance, responsiveness, and accessibility using modern React development practices.',
       'Worked with Git and GitHub in a collaborative development workflow, participating in code reviews and feature development.',
     ],
-    startDate: 'July 2025',
-    endDate: 'Sep 2025',
+    startDate: 'Jul 25',
+    endDate: 'Sep 25',
     technologies: [
       {
         name: 'React',
@@ -151,8 +151,8 @@ export const experiences: Experience[] = [
       'Gained experience in frontend development, ensuring responsive design.',
       
     ],
-    startDate: 'Oct 2024',
-    endDate: 'June 2025',
+    startDate: 'Oct 24',
+    endDate: 'Jun 25',
     technologies: [
       {
         name: 'Next.js',
@@ -220,8 +220,8 @@ export const experiences: Experience[] = [
       'Collaborated with cross-functional teams to deliver high-quality software on time.',
       'Design & Developed multiple websites for clients.',
     ],
-    startDate: 'Aug 2024',
-    endDate: 'Sep 2024',
+    startDate: 'Aug 24',
+    endDate: 'Sep 24',
     website: 'https://www.octanet.in',
     technologies: [
       {

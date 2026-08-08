@@ -10,7 +10,7 @@ export default function Container({
 }) {
   return (
     <div
-      className={`animate-fade-in-blur container mx-auto max-w-3xl px-4 ${className}`}
+      className={`animate-fade-in-blur container mx-auto max-w-3xl px-2.5 sm:px-6 ${className}`}
       {...props}
     >
       {children}
