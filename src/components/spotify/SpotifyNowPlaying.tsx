@@ -51,13 +51,8 @@ export default function SpotifyNowPlaying() {
   }, []);
 
   return (
-    <div className="mt-4 sm:mt-5">
-      <a
-        href={data.songUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group inline-flex flex-wrap items-center gap-1.5 text-xs sm:text-sm transition-colors"
-      >
+    <div className="mt-3.5 sm:mt-4">
+      <div className="inline-flex flex-wrap items-center gap-1.5 text-xs sm:text-sm">
         <div className="relative flex items-center justify-center shrink-0">
           <SpotifyIcon className="size-4 sm:size-4.5 text-[#1DB954]" />
           {data.isPlaying && (
@@ -68,14 +63,20 @@ export default function SpotifyNowPlaying() {
           )}
         </div>
 
-        <span className="font-semibold text-foreground/90">
+        <span className="text-secondary font-normal select-none">
           {data.isPlaying ? 'Currently playing' : 'Last played'}
         </span>
-        <span className="text-neutral-400">—</span>
-        <span className="text-neutral-400 group-hover:text-foreground transition-colors truncate max-w-[280px] sm:max-w-[420px]">
+        <span className="text-neutral-400 select-none">—</span>
+
+        <a
+          href={data.songUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-neutral-400 hover:text-foreground transition-colors truncate max-w-[280px] sm:max-w-[420px] hover:underline"
+        >
           {data.title} · {data.artist}
-        </span>
-      </a>
+        </a>
+      </div>
     </div>
   );
 }
