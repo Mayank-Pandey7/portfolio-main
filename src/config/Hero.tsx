@@ -101,7 +101,7 @@ export const socialLinks = [
 
 export const spotifyConfig = {
   status: 'Last played',
-  song: 'São Paulo (feat. Anitta)',
-  artist: 'The Weeknd, Anitta',
-  href: 'https://open.spotify.com/search/S%C3%A3o%20Paulo%20The%20Weeknd',
+  song: 'Arz Kiya Hai',
+  artist: 'Anuv Jain',
+  href: 'https://open.spotify.com/album/5JnqJs94bARmhFoOSW3H5h',
 };

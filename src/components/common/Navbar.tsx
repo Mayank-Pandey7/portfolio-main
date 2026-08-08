@@ -10,10 +10,10 @@ export default function Navbar() {
     <Container className="sticky top-0 z-20 rounded-md py-3.5 sm:py-4 backdrop-blur-md bg-background/80">
       <div className="flex items-center justify-between px-2 sm:px-6">
         <div className="flex items-center gap-3 sm:gap-5">
-          {/* Home Link (Desktop only) */}
+          {/* Home Link */}
           <TrackedLink
             href="/"
-            className="hidden sm:inline-block text-sm font-medium transition-colors hover:text-primary"
+            className="text-xs sm:text-sm font-medium transition-colors hover:text-primary"
             track={{
               name: 'button_click',
               data: {

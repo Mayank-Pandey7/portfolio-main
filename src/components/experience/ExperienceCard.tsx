@@ -30,7 +30,7 @@ export function ExperienceCard({
 
   return (
     <div className="group flex flex-col pb-4 last:pb-0">
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+      <div className="flex w-full items-start justify-between gap-3">
         <div className="flex min-w-0 flex-1 items-start gap-3 sm:gap-4">
           <Image
             src={experience.image}
@@ -50,6 +50,13 @@ export function ExperienceCard({
               >
                 {experience.company}
               </h3>
+
+              {experience.isCurrent && (
+                <div className="flex shrink-0 items-center gap-1 rounded-md border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-emerald-500">
+                  <div className="size-1.5 shrink-0 animate-pulse rounded-full bg-emerald-500" />
+                  Working
+                </div>
+              )}
 
               {experience.website && (
                 <Tooltip>
@@ -111,13 +118,6 @@ export function ExperienceCard({
                 </Tooltip>
               )}
 
-              {experience.isCurrent && (
-                <div className="flex shrink-0 items-center gap-1 rounded-md border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-medium whitespace-nowrap text-emerald-500">
-                  <div className="size-1.5 shrink-0 animate-pulse rounded-full bg-emerald-500" />
-                  Working
-                </div>
-              )}
-
               {expandable && (
                 <button
                   type="button"
@@ -150,13 +150,13 @@ export function ExperienceCard({
           </div>
         </div>
 
-        <div className="text-secondary flex flex-wrap items-baseline justify-between gap-x-2 text-xs sm:flex-col sm:items-end sm:justify-start sm:text-right sm:text-sm">
-          <p className="shrink-0 font-medium">
+        <div className="flex shrink-0 flex-col items-end text-right text-xs text-secondary sm:text-sm">
+          <p className="font-normal whitespace-nowrap text-neutral-400">
             {experience.startDate} -{' '}
             {experience.isCurrent ? 'Present' : experience.endDate}
           </p>
 
-          <p className="text-muted-foreground shrink-0 text-xs">
+          <p className="text-muted-foreground mt-0.5 text-xs whitespace-nowrap">
             {experience.location}
           </p>
         </div>
