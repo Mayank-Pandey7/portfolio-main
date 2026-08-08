@@ -50,7 +50,7 @@ export function ExperienceCard({
             <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
               <h3
                 className={cn(
-                  'text-base font-bold tracking-tight sm:text-lg',
+                  'text-base font-bold tracking-tight sm:text-lg leading-snug',
                   experience.isBlur ? 'blur-[5px]' : 'blur-none',
                 )}
               >
@@ -154,19 +154,19 @@ export function ExperienceCard({
               )}
             </div>
 
-            <p className="text-muted-foreground mt-0.5 text-xs font-normal sm:text-sm">
+            <p className="text-muted-foreground mt-1 text-xs font-normal sm:text-sm leading-snug">
               {experience.position}
             </p>
           </div>
         </div>
 
-        <div className="flex shrink-0 flex-col items-end text-right text-xs text-secondary sm:text-sm">
-          <p className="font-normal whitespace-nowrap text-neutral-400">
+        <div className="flex shrink-0 flex-col items-end text-right text-xs sm:text-sm">
+          <p className="font-normal whitespace-nowrap text-neutral-400 leading-snug">
             {experience.startDate} -{' '}
             {experience.isCurrent ? 'Present' : experience.endDate}
           </p>
 
-          <p className="text-muted-foreground mt-0.5 text-xs whitespace-nowrap">
+          <p className="text-muted-foreground mt-1 text-xs whitespace-nowrap leading-snug">
             {experience.location}
           </p>
         </div>
