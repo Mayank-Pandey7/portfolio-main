@@ -1,6 +1,7 @@
 'use client';
 
 import SpotifyIcon from '@/components/svgs/Spotify';
+import { spotifyConfig } from '@/config/Hero';
 import React, { useEffect, useState } from 'react';
 
 interface SpotifyData {
@@ -15,10 +16,10 @@ interface SpotifyData {
 
 const fallbackData: SpotifyData = {
   isPlaying: false,
-  title: 'São Paulo (feat. Anitta)',
-  artist: 'The Weeknd, Anitta',
-  songUrl: 'https://open.spotify.com/search/S%C3%A3o%20Paulo%20The%20Weeknd',
-  status: 'Last played',
+  title: spotifyConfig.song,
+  artist: spotifyConfig.artist,
+  songUrl: spotifyConfig.href,
+  status: spotifyConfig.status,
 };
 
 export default function SpotifyNowPlaying() {

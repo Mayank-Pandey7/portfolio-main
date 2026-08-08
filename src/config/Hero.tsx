@@ -60,7 +60,7 @@ export const heroConfig = {
 
   description: {
     template:
-      'Love to build cool stuff using {skills:0}, {skills:1} and {skills:2}.',
+      'Love to build cool stuff.',
   },
 
   buttons: [] as HeroButton[],
