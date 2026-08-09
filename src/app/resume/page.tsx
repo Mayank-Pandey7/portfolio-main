@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { generateMetadata as getMetadata } from '@/config/Meta';
 import { resumeConfig } from '@/config/Resume';
-import { Download, ExternalLink } from 'lucide-react';
+import { Download } from 'lucide-react';
 import { Metadata } from 'next';
 import React from 'react';
 
@@ -39,18 +39,11 @@ export default function ResumePage() {
             </p>
           </div>
 
-          <div className="flex w-full flex-wrap items-center justify-center gap-2.5 sm:w-auto">
+          <div className="flex w-full items-center justify-center sm:w-auto">
             <Button variant="default" size="sm" asChild className="gap-2 text-xs sm:text-sm">
               <a href={directUrl} target="_blank" rel="noopener noreferrer">
                 <Download className="size-4" />
                 <span>Download PDF</span>
-              </a>
-            </Button>
-
-            <Button variant="outline" size="sm" asChild className="gap-2 text-xs sm:text-sm">
-              <a href={directUrl} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="size-4" />
-                <span>Open in New Tab</span>
               </a>
             </Button>
           </div>
