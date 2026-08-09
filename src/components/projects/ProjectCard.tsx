@@ -51,7 +51,7 @@ export function ProjectCard({
       onClick={() => trackProject('view_details')}
       className={`group block py-2 transition-all duration-300 ease-in-out cursor-pointer ${
         isDimmed
-          ? 'opacity-100 blur-none scale-100 sm:opacity-65 sm:blur-[0.5px] sm:scale-[0.995]'
+          ? 'opacity-100 blur-none scale-100 sm:opacity-55 sm:blur-[1.0px] sm:scale-[0.995]'
           : 'opacity-100 blur-0 scale-100'
       }`}
       onMouseEnter={onHover}
