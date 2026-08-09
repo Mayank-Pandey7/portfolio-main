@@ -45,7 +45,7 @@ export function BlogCard({
       }}
       className={`group block py-2.5 last:border-0 transition-all duration-300 ease-in-out ${
         isDimmed
-          ? 'opacity-100 blur-none scale-100 sm:opacity-35 sm:blur-[4px] sm:scale-[0.99]'
+          ? 'opacity-100 blur-none scale-100 sm:opacity-65 sm:blur-[0.5px] sm:scale-[0.995]'
           : 'opacity-100 blur-0 scale-100'
       }`}
       onMouseEnter={onHover}
