@@ -39,7 +39,6 @@ export function ProjectList({
           project={project}
           isDimmed={!disableBlur && hoveredTitle !== null && hoveredTitle !== project.title}
           onHover={() => !disableBlur && setHoveredTitle(project.title)}
-          onLeave={() => !disableBlur && setHoveredTitle(null)}
           showTechnologies={showTechnologies}
         />
       ))}

@@ -44,7 +44,6 @@ export function BlogList({
           post={post}
           isDimmed={!disableBlur && hoveredSlug !== null && hoveredSlug !== post.slug}
           onHover={() => !disableBlur && setHoveredSlug(post.slug)}
-          onLeave={() => !disableBlur && setHoveredSlug(null)}
           showTags={showTags}
           showDescription={showDescription}
         />
