@@ -13,8 +13,7 @@
     "format:all": "bun run format:prettierrc && bun run format:prettierrcjson",
     "prepare": "husky",
     "knip": "knip",
-    "test-telegram": "bun src/validate/testTelegram.ts",
-    "spotify-token": "node scripts/get-spotify-token.mjs"
+    "test-telegram": "bun src/validate/testTelegram.ts"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
