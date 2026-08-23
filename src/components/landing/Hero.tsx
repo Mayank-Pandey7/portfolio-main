@@ -63,14 +63,14 @@ export default function Hero() {
   return (
     <Container className="pt-0">
       <div className="max-w-3xl">
-        <div className="flex items-center gap-3.5 sm:gap-5">
+        <div className="flex items-end gap-3.5 sm:gap-5">
           <Image
             src={avatar}
             alt={name}
             width={120}
             height={120}
             priority
-            className="size-18 shrink-0 object-contain sm:size-24"
+            className="size-16 shrink-0 object-contain sm:size-20"
           />
           <div className="min-w-0 flex-1">
             <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">

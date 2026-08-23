@@ -135,11 +135,11 @@ export default function GlitchText({
             : undefined
         }
         className={cn(
-          'absolute inset-0 flex items-center transition-all duration-150',
+          'text-foreground absolute inset-0 flex items-center transition-all duration-150',
           isAltText && 'font-noto-serif-jp font-semibold tracking-wide',
           isGlitching &&
             'text-foreground [text-shadow:1px_0_rgba(59,130,246,0.6),-1px_0_rgba(239,68,68,0.6)]',
-          isHovered && !isGlitching && 'text-primary',
+          isHovered && !isGlitching && 'text-foreground font-bold',
         )}
       >
         {displayText}

@@ -52,10 +52,10 @@ export default function SpotifyNowPlaying() {
   }, []);
 
   return (
-    <div className="mt-3.5 sm:mt-4 max-w-full overflow-hidden">
-      <div className="flex w-full min-w-0 items-center gap-1.5 text-xs sm:text-sm whitespace-nowrap">
-        <div className="relative flex items-center justify-center shrink-0">
-          <SpotifyIcon className="size-4 sm:size-4.5 text-[#1DB954]" />
+    <div className="mt-3.5 max-w-full overflow-hidden sm:mt-4">
+      <div className="flex w-full min-w-0 items-center gap-1.5 text-xs whitespace-nowrap sm:text-sm">
+        <div className="relative flex shrink-0 items-center justify-center">
+          <SpotifyIcon className="size-4 text-[#1DB954] sm:size-4.5" />
           {data.isPlaying && (
             <span className="absolute -top-0.5 -right-0.5 flex size-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#1DB954] opacity-75"></span>
@@ -64,16 +64,18 @@ export default function SpotifyNowPlaying() {
           )}
         </div>
 
-        <span className="shrink-0 font-semibold text-foreground/90 select-none">
+        <span className="text-foreground/90 shrink-0 font-semibold select-none">
           {data.isPlaying ? 'Currently playing' : 'Last played'}
         </span>
-        <span className="shrink-0 text-neutral-400 select-none">—</span>
+        <span className="shrink-0 text-neutral-500 select-none dark:text-neutral-400">
+          —
+        </span>
 
         <a
           href={data.songUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="min-w-0 flex-1 truncate text-neutral-400 transition-colors hover:text-foreground hover:underline"
+          className="hover:text-foreground min-w-0 flex-1 truncate text-neutral-600 transition-colors hover:underline dark:text-neutral-400"
         >
           {data.title} · {data.artist}
         </a>

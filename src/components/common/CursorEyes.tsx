@@ -268,14 +268,14 @@ export default function CursorEyes({
         ref={leftEyeRef}
         className={cn(
           'relative flex items-center justify-center overflow-hidden transition-all duration-150',
-          'bg-[radial-gradient(circle_at_35%_25%,#ffffff_0%,#f4f5f8_50%,#d5d8e2_90%,#b8bdcc_100%)]',
+          'bg-[radial-gradient(circle_at_35%_25%,#ffffff_0%,#f0f2f7_50%,#d8dce8_90%,#c2c8d8_100%)]',
           'dark:bg-[radial-gradient(circle_at_35%_25%,#ffffff_0%,#edf0f7_45%,#c8cde0_85%,#9da5be_100%)]',
-          'border-[1.5px] border-zinc-800/85 dark:border-zinc-700',
-          'shadow-[0_3px_8px_-1px_rgba(0,0,0,0.3),inset_0_2px_4px_rgba(255,255,255,0.9),inset_0_-2px_4px_rgba(0,0,0,0.22),inset_1px_0_2px_rgba(0,0,0,0.1)]',
+          'border-[1.5px] border-zinc-400/80 dark:border-zinc-700',
+          'shadow-[0_2px_6px_rgba(0,0,0,0.12),inset_0_2px_4px_rgba(255,255,255,1),inset_0_-2px_4px_rgba(0,0,0,0.15)] dark:shadow-[0_3px_8px_-1px_rgba(0,0,0,0.3),inset_0_2px_4px_rgba(255,255,255,0.9),inset_0_-2px_4px_rgba(0,0,0,0.22),inset_1px_0_2px_rgba(0,0,0,0.1)]',
           config.eye,
           isBlinking && 'scale-y-[0.08] duration-75',
           isHovered &&
-            'border-zinc-950 shadow-[0_4px_12px_-1px_rgba(0,0,0,0.38),inset_0_2px_4px_rgba(255,255,255,0.95),inset_0_-2px_4px_rgba(0,0,0,0.25)] dark:border-zinc-400',
+            'border-zinc-800 shadow-[0_3px_10px_rgba(0,0,0,0.2),inset_0_2px_4px_rgba(255,255,255,1)] dark:border-zinc-400 dark:shadow-[0_4px_12px_-1px_rgba(0,0,0,0.38),inset_0_2px_4px_rgba(255,255,255,0.95),inset_0_-2px_4px_rgba(0,0,0,0.25)]',
         )}
       >
         <div
@@ -307,14 +307,14 @@ export default function CursorEyes({
         ref={rightEyeRef}
         className={cn(
           'relative flex items-center justify-center overflow-hidden transition-all duration-150',
-          'bg-[radial-gradient(circle_at_35%_25%,#ffffff_0%,#f4f5f8_50%,#d5d8e2_90%,#b8bdcc_100%)]',
+          'bg-[radial-gradient(circle_at_35%_25%,#ffffff_0%,#f0f2f7_50%,#d8dce8_90%,#c2c8d8_100%)]',
           'dark:bg-[radial-gradient(circle_at_35%_25%,#ffffff_0%,#edf0f7_45%,#c8cde0_85%,#9da5be_100%)]',
-          'border-[1.5px] border-zinc-800/85 dark:border-zinc-700',
-          'shadow-[0_3px_8px_-1px_rgba(0,0,0,0.3),inset_0_2px_4px_rgba(255,255,255,0.9),inset_0_-2px_4px_rgba(0,0,0,0.22),inset_1px_0_2px_rgba(0,0,0,0.1)]',
+          'border-[1.5px] border-zinc-400/80 dark:border-zinc-700',
+          'shadow-[0_2px_6px_rgba(0,0,0,0.12),inset_0_2px_4px_rgba(255,255,255,1),inset_0_-2px_4px_rgba(0,0,0,0.15)] dark:shadow-[0_3px_8px_-1px_rgba(0,0,0,0.3),inset_0_2px_4px_rgba(255,255,255,0.9),inset_0_-2px_4px_rgba(0,0,0,0.22),inset_1px_0_2px_rgba(0,0,0,0.1)]',
           config.eye,
           isBlinking && 'scale-y-[0.08] duration-75',
           isHovered &&
-            'border-zinc-950 shadow-[0_4px_12px_-1px_rgba(0,0,0,0.38),inset_0_2px_4px_rgba(255,255,255,0.95),inset_0_-2px_4px_rgba(0,0,0,0.25)] dark:border-zinc-400',
+            'border-zinc-800 shadow-[0_3px_10px_rgba(0,0,0,0.2),inset_0_2px_4px_rgba(255,255,255,1)] dark:border-zinc-400 dark:shadow-[0_4px_12px_-1px_rgba(0,0,0,0.38),inset_0_2px_4px_rgba(255,255,255,0.95),inset_0_-2px_4px_rgba(0,0,0,0.25)]',
         )}
       >
         <div
