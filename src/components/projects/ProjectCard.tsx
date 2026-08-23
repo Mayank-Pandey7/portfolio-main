@@ -46,25 +46,35 @@ export function ProjectCard({
     });
 
   return (
-    <Link
-      href={project.projectDetailsPageSlug}
-      onClick={() => trackProject('view_details')}
-      className={`group block py-2 transition-all duration-300 ease-in-out cursor-pointer ${
+    <div
+      className={`group relative block py-2 transition-all duration-300 ease-in-out ${
         isDimmed
-          ? 'opacity-100 blur-none scale-100 sm:opacity-55 sm:blur-[1.0px] sm:scale-[0.995]'
-          : 'opacity-100 blur-0 scale-100'
+          ? 'scale-100 opacity-100 blur-none sm:scale-[0.995] sm:opacity-55 sm:blur-[1.0px]'
+          : 'blur-0 scale-100 opacity-100'
       }`}
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
-      {/* Project Row */}
-      <div className="flex items-start justify-between gap-6">
-        <div className="min-w-0 flex-1 space-y-1.5">
+      {/* Background Stretched Link to Project Details */}
+      <Link
+        href={project.projectDetailsPageSlug}
+        onClick={() => trackProject('view_details')}
+        className="absolute inset-0 z-0 cursor-pointer rounded-lg"
+        aria-label={`View ${project.title} details`}
+      />
+
+      {/* Project Row Content */}
+      <div className="pointer-events-none relative z-10 flex items-start justify-between gap-6">
+        <div className="pointer-events-auto min-w-0 flex-1 space-y-1.5">
           {/* Title + Links + Status */}
           <div className="flex flex-wrap items-center gap-2">
-            <h3 className="group-hover:text-primary text-lg font-bold transition-colors">
-              {project.title}
-            </h3>
+            <Link
+              href={project.projectDetailsPageSlug}
+              onClick={() => trackProject('view_details')}
+              className="group-hover:text-primary cursor-pointer text-lg font-bold transition-colors"
+            >
+              <h3>{project.title}</h3>
+            </Link>
 
             {/* Website */}
             {project.link && (
@@ -74,7 +84,7 @@ export function ProjectCard({
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-foreground size-4 text-neutral-500 transition-colors p-0.5"
+                    className="hover:text-foreground size-4 p-0.5 text-neutral-500 transition-colors"
                     onClick={(e) => {
                       e.stopPropagation();
                       trackProject('visit_website');
@@ -95,7 +105,7 @@ export function ProjectCard({
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-foreground size-4 text-neutral-500 transition-colors p-0.5"
+                    className="hover:text-foreground size-4 p-0.5 text-neutral-500 transition-colors"
                     onClick={(e) => {
                       e.stopPropagation();
                       trackProject('visit_github');
@@ -110,7 +120,7 @@ export function ProjectCard({
 
             {/* Status (Desktop Only) */}
             <div
-              className={`hidden sm:flex items-center gap-1 rounded-md px-2 py-0.5 text-xs ${
+              className={`hidden items-center gap-1 rounded-md px-2 py-0.5 text-xs sm:flex ${
                 project.isWorking ? 'bg-green-500/10' : 'bg-red-500/10'
               }`}
             >
@@ -125,35 +135,37 @@ export function ProjectCard({
           </div>
 
           {/* Description */}
-          <p className="text-secondary text-sm font-normal leading-relaxed">
+          <p className="text-secondary text-sm leading-relaxed font-normal">
             {project.description}
           </p>
 
           {/* Technology Icons */}
-          {showTechnologies && project.technologies && project.technologies.length > 0 && (
-            <div className="flex flex-wrap items-center gap-2 pt-1">
-              {project.technologies.map((technology, index) => (
-                <Tooltip key={index}>
-                  <TooltipTrigger asChild>
-                    <div className="size-5 transition-transform duration-200 hover:scale-125 cursor-pointer">
-                      {technology.icon}
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>{technology.name}</p>
-                  </TooltipContent>
-                </Tooltip>
-              ))}
-            </div>
-          )}
+          {showTechnologies &&
+            project.technologies &&
+            project.technologies.length > 0 && (
+              <div className="flex flex-wrap items-center gap-2 pt-1">
+                {project.technologies.map((technology, index) => (
+                  <Tooltip key={index}>
+                    <TooltipTrigger asChild>
+                      <div className="size-5 cursor-pointer transition-transform duration-200 hover:scale-125">
+                        {technology.icon}
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{technology.name}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                ))}
+              </div>
+            )}
         </div>
 
         {/* View Details Link on Right */}
-        <span className="hidden sm:inline-flex shrink-0 items-center gap-1.5 pt-1 text-sm font-medium text-neutral-400 transition-colors group-hover:text-foreground">
+        <span className="group-hover:text-foreground pointer-events-none hidden shrink-0 items-center gap-1.5 pt-1 text-sm font-medium text-neutral-400 transition-colors sm:inline-flex">
           View details{' '}
           <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
         </span>
       </div>
-    </Link>
+    </div>
   );
 }

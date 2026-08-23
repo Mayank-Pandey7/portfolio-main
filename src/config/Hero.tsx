@@ -15,7 +15,6 @@ import ReactIcon from '@/components/technologies/ReactIcon';
 // Technology Components
 import TypeScript from '@/components/technologies/TypeScript';
 
-
 export const skillComponents = {
   TypeScript: TypeScript,
   ReactIcon: ReactIcon,
@@ -37,6 +36,7 @@ export type HeroButton = {
 
 export const heroConfig = {
   name: 'Mayank Pandey',
+  chineseName: '潘迪·玛扬克',
   title: 'Full Stack Web Developer.',
   avatar: '/assets/logo.png',
 
@@ -59,8 +59,7 @@ export const heroConfig = {
   ],
 
   description: {
-    template:
-      'Love to build cool stuff.',
+    template: 'Love to build cool stuff.',
   },
 
   buttons: [] as HeroButton[],

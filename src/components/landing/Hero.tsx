@@ -6,6 +6,8 @@ import Image from 'next/image';
 import React from 'react';
 
 import Container from '../common/Container';
+import CursorEyes from '../common/CursorEyes';
+import GlitchText from '../common/GlitchText';
 import Skill from '../common/Skill';
 import { TrackedLink } from '../common/TrackedLink';
 import SpotifyNowPlaying from '../spotify/SpotifyNowPlaying';
@@ -20,7 +22,8 @@ const buttonIcons = {
 };
 
 export default function Hero() {
-  const { name, title, avatar, skills, description, buttons } = heroConfig;
+  const { name, chineseName, title, avatar, skills, description, buttons } =
+    heroConfig;
 
   const renderDescription = () => {
     const parts = parseTemplate(description.template, skills);
@@ -28,9 +31,7 @@ export default function Hero() {
     return parts.map((part) => {
       if (part.type === 'skill' && 'skill' in part && part.skill) {
         const SkillComponent =
-          skillComponents[
-            part.skill.component as keyof typeof skillComponents
-          ];
+          skillComponents[part.skill.component as keyof typeof skillComponents];
 
         return (
           <Skill key={part.key} name={part.skill.name} href={part.skill.href}>
@@ -69,16 +70,20 @@ export default function Hero() {
             width={120}
             height={120}
             priority
-            className="size-18 object-contain sm:size-24 shrink-0"
+            className="size-18 shrink-0 object-contain sm:size-24"
           />
           <div className="min-w-0 flex-1">
             <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
-              {name}
+              <GlitchText
+                originalText={name}
+                hoverText={chineseName || '潘迪·玛扬克'}
+              />
             </h1>
 
-            <p className="text-secondary mt-0.5 text-sm sm:mt-1 sm:text-base font-medium">
-              {title}
-            </p>
+            <div className="text-secondary mt-1 flex items-center gap-2 text-sm font-medium sm:text-base">
+              <p>{title}</p>
+              <CursorEyes size="xs" className="shrink-0" />
+            </div>
           </div>
         </div>
 
@@ -96,7 +101,7 @@ export default function Hero() {
               <TooltipTrigger asChild>
                 <TrackedLink
                   href={link.href}
-                  className="text-secondary transition-colors hover:text-foreground p-0.5"
+                  className="text-secondary hover:text-foreground p-0.5 transition-colors"
                   track={{
                     name: 'external_link_click',
                     data: {
