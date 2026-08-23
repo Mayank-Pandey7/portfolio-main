@@ -267,6 +267,6 @@
   font-size: calc(var(--blog-font-size) * 1.25);
 }
 
-.font-noto-serif-sc {
-  font-family: var(--font-noto-serif-sc), 'Noto Serif SC', serif !important;
+.font-noto-serif-jp {
+  font-family: var(--font-noto-serif-jp), 'Noto Serif JP', 'Noto Serif SC', serif !important;
 }

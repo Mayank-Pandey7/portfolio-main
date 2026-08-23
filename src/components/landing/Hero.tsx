@@ -22,7 +22,7 @@ const buttonIcons = {
 };
 
 export default function Hero() {
-  const { name, chineseName, title, avatar, skills, description, buttons } =
+  const { name, japaneseName, title, avatar, skills, description, buttons } =
     heroConfig;
 
   const renderDescription = () => {
@@ -76,7 +76,7 @@ export default function Hero() {
             <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
               <GlitchText
                 originalText={name}
-                hoverText={chineseName || '潘迪·玛扬克'}
+                hoverText={japaneseName || '守りたい'}
               />
             </h1>
 

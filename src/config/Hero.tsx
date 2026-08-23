@@ -36,7 +36,7 @@ export type HeroButton = {
 
 export const heroConfig = {
   name: 'Mayank Pandey',
-  chineseName: '潘迪·玛扬克',
+  japaneseName: '守りたい',
   title: 'Full Stack Web Developer.',
   avatar: '/assets/logo.png',
 
