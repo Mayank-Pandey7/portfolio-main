@@ -10,7 +10,6 @@ interface GlitchTextProps {
   durationMs?: number;
 }
 
-// Clean glyph pool that maintains consistent font metrics
 const GLYPHS = '01X#_\\/[]{}*+~-!?<>';
 
 export default function GlitchText({
@@ -45,7 +44,6 @@ export default function GlitchText({
       step++;
       const progress = Math.min(1, step / totalSteps);
 
-      // Smoothly interpolate the string length between fromLen and toLen
       const currentLength = Math.round(fromLen + (toLen - fromLen) * progress);
       const resolvedCount = Math.floor(progress * toLen);
 
@@ -119,7 +117,7 @@ export default function GlitchText({
       aria-label={`${originalText} (${hoverText})`}
       role="text"
     >
-      {/* Invisible placeholder preserving constant width and height to prevent hover boundary flicker */}
+      {/* Ghost Container for Width Stability */}
       <span
         className="pointer-events-none invisible select-none"
         aria-hidden="true"
@@ -127,7 +125,7 @@ export default function GlitchText({
         {originalText.length >= hoverText.length ? originalText : hoverText}
       </span>
 
-      {/* Actual visible text pinned inside the stable container */}
+      {/* Rendered Text */}
       <span
         style={
           isAltText

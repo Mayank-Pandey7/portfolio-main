@@ -6,9 +6,6 @@ import React, { useEffect, useRef, useState } from 'react';
 export interface CursorEyesProps {
   className?: string;
   size?: 'xxs' | 'xs' | 'sm' | 'md' | 'lg';
-  /**
-   * Optional manual trigger or customization
-   */
   interactive?: boolean;
 }
 
@@ -73,7 +70,6 @@ export default function CursorEyes({
   const [isBlinking, setIsBlinking] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  // Mutable tracking state kept outside React render loop
   const stateRef = useRef({
     mouseX: 0,
     mouseY: 0,
@@ -88,13 +84,12 @@ export default function CursorEyes({
 
   const config = sizeConfig[size] || sizeConfig.xs;
 
-  // Set up blinking cycle
+  // --- Blinking Cycle ---
   useEffect(() => {
     let isMounted = true;
     const state = stateRef.current;
 
     const scheduleNextBlink = () => {
-      // Natural blink interval: between 3.5s and 6.5s
       const nextInterval = 3500 + Math.random() * 3000;
 
       state.blinkTimeoutId = window.setTimeout(() => {
@@ -102,13 +97,10 @@ export default function CursorEyes({
 
         setIsBlinking(true);
 
-        const blinkDuration = 140; // Quick natural blink duration
-
         window.setTimeout(() => {
           if (!isMounted) return;
           setIsBlinking(false);
 
-          // 25% chance of an immediate playful double-blink
           if (Math.random() < 0.25) {
             window.setTimeout(() => {
               if (!isMounted) return;
@@ -122,7 +114,7 @@ export default function CursorEyes({
           } else {
             scheduleNextBlink();
           }
-        }, blinkDuration);
+        }, 140);
       }, nextInterval);
     };
 
@@ -136,12 +128,11 @@ export default function CursorEyes({
     };
   }, []);
 
-  // Set up mouse tracking & animation loop
+  // --- Mouse Tracking & Animation ---
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const state = stateRef.current;
 
-    // Detect touch-only devices
     const isTouch =
       'ontouchstart' in window ||
       navigator.maxTouchPoints > 0 ||
@@ -150,7 +141,6 @@ export default function CursorEyes({
     state.isTouchDevice = isTouch;
     state.lastMouseMoveTime = performance.now();
 
-    // Mouse / pointer handler
     const handlePointerMove = (e: MouseEvent | PointerEvent) => {
       state.mouseX = e.clientX;
       state.mouseY = e.clientY;
@@ -158,7 +148,6 @@ export default function CursorEyes({
       state.lastMouseMoveTime = performance.now();
     };
 
-    // Touch tap handler: glance at touch position smoothly
     const handleTouchStart = (e: TouchEvent) => {
       if (e.touches && e.touches.length > 0) {
         const touch = e.touches[0];
@@ -180,18 +169,15 @@ export default function CursorEyes({
 
     const { maxRadiusX, maxRadiusY } = config;
 
-    // Animation Loop
     const animate = (timestamp: number) => {
       const timeSinceMove = timestamp - state.lastMouseMoveTime;
       const isIdle =
         !state.hasMouseMoved || timeSinceMove > 2200 || state.isTouchDevice;
 
-      // Calculate for each eye
       const calculatePupilTarget = (eyeElement: HTMLDivElement | null) => {
         if (!eyeElement) return { targetX: 0, targetY: 0 };
 
         if (isIdle) {
-          // Subtle organic idle wandering using periodic trigonometry
           const idleTime = timestamp * 0.0012;
           const wanderX = Math.sin(idleTime * 1.1) * (maxRadiusX * 0.55);
           const wanderY =
@@ -207,23 +193,18 @@ export default function CursorEyes({
         const dy = state.mouseY - eyeCenterY;
         const angle = Math.atan2(dy, dx);
         const distance = Math.hypot(dx, dy);
-
-        // Distance attenuation factor: gives subtle response up close, full reach at distance
         const distanceFactor = Math.min(1, distance / 100);
 
-        // Clamped target within eye elliptical boundary
         const targetX = Math.cos(angle) * maxRadiusX * distanceFactor;
         const targetY = Math.sin(angle) * maxRadiusY * distanceFactor;
 
         return { targetX, targetY };
       };
 
-      // 1. Left Eye
       const leftTargets = calculatePupilTarget(leftEyeRef.current);
       state.leftPupil.targetX = leftTargets.targetX;
       state.leftPupil.targetY = leftTargets.targetY;
 
-      // Smooth interpolation (lerp) - 0.16 gives buttery smoothness without feeling laggy
       const lerpFactor = 0.16;
       state.leftPupil.currentX +=
         (state.leftPupil.targetX - state.leftPupil.currentX) * lerpFactor;
@@ -234,7 +215,6 @@ export default function CursorEyes({
         leftPupilRef.current.style.transform = `translate3d(${state.leftPupil.currentX.toFixed(2)}px, ${state.leftPupil.currentY.toFixed(2)}px, 0)`;
       }
 
-      // 2. Right Eye
       const rightTargets = calculatePupilTarget(rightEyeRef.current);
       state.rightPupil.targetX = rightTargets.targetX;
       state.rightPupil.targetY = rightTargets.targetY;
@@ -264,7 +244,6 @@ export default function CursorEyes({
     };
   }, [config, interactive]);
 
-  // Click on eye: quick playful wink!
   const handleEyeClick = () => {
     setIsBlinking(true);
     setTimeout(() => setIsBlinking(false), 200);
@@ -284,7 +263,7 @@ export default function CursorEyes({
       aria-label="Interactive animated 3D eyes following cursor"
       role="img"
     >
-      {/* Left Eye (3D Sphere) */}
+      {/* Left Eye */}
       <div
         ref={leftEyeRef}
         className={cn(
@@ -299,7 +278,6 @@ export default function CursorEyes({
             'border-zinc-950 shadow-[0_4px_12px_-1px_rgba(0,0,0,0.38),inset_0_2px_4px_rgba(255,255,255,0.95),inset_0_-2px_4px_rgba(0,0,0,0.25)] dark:border-zinc-400',
         )}
       >
-        {/* 3D Pupil / Iris */}
         <div
           ref={leftPupilRef}
           className={cn(
@@ -308,14 +286,12 @@ export default function CursorEyes({
             config.pupil,
           )}
         >
-          {/* Primary High-Gloss Specular Highlight */}
           <span
             className={cn(
               'absolute rounded-full bg-white opacity-95 shadow-[0_0_2px_rgba(255,255,255,0.9)]',
               config.glintPrimary,
             )}
           />
-          {/* Secondary Soft Ambient Highlight */}
           <span
             className={cn(
               'absolute rounded-full bg-white/45',
@@ -323,12 +299,10 @@ export default function CursorEyes({
             )}
           />
         </div>
-
-        {/* 3D Cornea Glass Gloss Overlay */}
         <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[linear-gradient(135deg,rgba(255,255,255,0.45)_0%,rgba(255,255,255,0.1)_35%,transparent_60%)]" />
       </div>
 
-      {/* Right Eye (3D Sphere) */}
+      {/* Right Eye */}
       <div
         ref={rightEyeRef}
         className={cn(
@@ -343,7 +317,6 @@ export default function CursorEyes({
             'border-zinc-950 shadow-[0_4px_12px_-1px_rgba(0,0,0,0.38),inset_0_2px_4px_rgba(255,255,255,0.95),inset_0_-2px_4px_rgba(0,0,0,0.25)] dark:border-zinc-400',
         )}
       >
-        {/* 3D Pupil / Iris */}
         <div
           ref={rightPupilRef}
           className={cn(
@@ -352,14 +325,12 @@ export default function CursorEyes({
             config.pupil,
           )}
         >
-          {/* Primary High-Gloss Specular Highlight */}
           <span
             className={cn(
               'absolute rounded-full bg-white opacity-95 shadow-[0_0_2px_rgba(255,255,255,0.9)]',
               config.glintPrimary,
             )}
           />
-          {/* Secondary Soft Ambient Highlight */}
           <span
             className={cn(
               'absolute rounded-full bg-white/45',
@@ -367,8 +338,6 @@ export default function CursorEyes({
             )}
           />
         </div>
-
-        {/* 3D Cornea Glass Gloss Overlay */}
         <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[linear-gradient(135deg,rgba(255,255,255,0.45)_0%,rgba(255,255,255,0.1)_35%,transparent_60%)]" />
       </div>
     </div>
