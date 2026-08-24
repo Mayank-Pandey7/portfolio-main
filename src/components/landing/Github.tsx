@@ -1,6 +1,7 @@
 'use client';
 
 import { githubConfig } from '@/config/Github';
+import { useTheme } from 'next-themes';
 import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
@@ -78,6 +79,7 @@ function getTooltipText(count: number, dateStr: string) {
 }
 
 export default function Github() {
+  const { resolvedTheme } = useTheme();
   const [contributions, setContributions] = useState<Contribution[]>([]);
   const [total, setTotal] = useState(0);
   const [hasError, setHasError] = useState(false);
@@ -127,7 +129,7 @@ export default function Github() {
           const days: { date: string; count: number; level: number }[] =
             fallbackData.contributions || [];
 
-          const colors = githubConfig.theme.dark;
+          const fallbackColors = githubConfig.theme.dark;
 
           const weeksMap = new Map<
             string,
@@ -154,7 +156,7 @@ export default function Github() {
               date: day.date,
               contributionCount: day.count,
               contributionLevel: `LEVEL_${day.level}`,
-              color: colors[day.level] || colors[0],
+              color: fallbackColors[day.level] || fallbackColors[0],
               weekday: d.getUTCDay(),
             });
           });
@@ -164,7 +166,7 @@ export default function Github() {
             totalContributions:
               fallbackData.total?.lastYear ??
               days.reduce((acc, d) => acc + d.count, 0),
-            colors: [...colors],
+            colors: [...fallbackColors],
             weeks: Array.from(weeksMap.entries()).map(
               ([firstDay, contributionDays]) => ({
                 firstDay,
@@ -315,7 +317,10 @@ export default function Github() {
     return filteredLabels;
   }, [weeks]);
 
-  const colors = githubConfig.theme.dark;
+  const colors =
+    resolvedTheme === 'light'
+      ? githubConfig.theme.light
+      : githubConfig.theme.dark;
 
   return (
     <Container className="mt-10 sm:mt-14">
@@ -394,15 +399,15 @@ export default function Github() {
           <div className="border-border bg-background rounded-xl border p-3.5 sm:p-5">
             <div
               ref={scrollContainerRef}
-              className="overflow-x-auto pb-2 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-muted-foreground/20 hover:[&::-webkit-scrollbar-thumb]:bg-muted-foreground/40"
+              className="[&::-webkit-scrollbar-thumb]:bg-muted-foreground/20 hover:[&::-webkit-scrollbar-thumb]:bg-muted-foreground/40 overflow-x-auto pb-2 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent"
             >
               <div className="min-w-[760px]">
                 {/* Month labels */}
-                <div className="mb-2 ml-9 grid grid-cols-[repeat(53,11px)] gap-[3px] text-xs h-4 relative">
+                <div className="relative mb-2 ml-9 grid h-4 grid-cols-[repeat(53,11px)] gap-[3px] text-xs">
                   {monthLabels.map((item) => (
                     <div
                       key={`${item.label}-${item.column}`}
-                      className="text-muted-foreground whitespace-nowrap text-xs select-none"
+                      className="text-muted-foreground text-xs whitespace-nowrap select-none"
                       style={{ gridColumnStart: item.column + 1 }}
                     >
                       {item.label}
@@ -437,7 +442,7 @@ export default function Github() {
                               return (
                                 <div
                                   key={day.date}
-                                  className="h-[11px] w-[11px] opacity-0 pointer-events-none"
+                                  className="pointer-events-none h-[11px] w-[11px] opacity-0"
                                 />
                               );
                             }
@@ -445,7 +450,7 @@ export default function Github() {
                               <Tooltip key={day.date}>
                                 <TooltipTrigger asChild>
                                   <div
-                                    className="h-[11px] w-[11px] rounded-[2px] transition-transform hover:scale-125 hover:z-10 hover:ring-1 hover:ring-white/40 cursor-pointer"
+                                    className="h-[11px] w-[11px] cursor-pointer rounded-[2px] transition-transform hover:z-10 hover:scale-125 hover:ring-1 hover:ring-black/20 dark:hover:ring-white/40"
                                     style={{
                                       backgroundColor:
                                         colors[day.level] || colors[0],
@@ -454,7 +459,7 @@ export default function Github() {
                                 </TooltipTrigger>
                                 <TooltipContent
                                   side="top"
-                                  className="border-border/50 bg-[#161b22] px-2.5 py-1 text-[11px] font-medium text-white shadow-xl"
+                                  className="border-border/50 bg-foreground text-background px-2.5 py-1 text-[11px] font-medium shadow-xl"
                                 >
                                   {getTooltipText(day.count, day.date)}
                                 </TooltipContent>
@@ -482,7 +487,7 @@ export default function Github() {
                   href="https://docs.github.com/articles/why-are-my-contributions-not-showing-on-my-profile"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-foreground hidden sm:inline hover:underline transition-colors text-[11px]"
+                  className="hover:text-foreground hidden text-[11px] transition-colors hover:underline sm:inline"
                 >
                   Learn how we count contributions
                 </Link>
