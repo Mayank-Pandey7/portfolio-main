@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @plugin "@tailwindcss/typography";
@@ -268,5 +269,5 @@
 }
 
 .font-noto-serif-jp {
-  font-family: var(--font-noto-serif-jp), 'Noto Serif JP', 'Noto Serif SC', serif !important;
+  font-family: 'Noto Serif JP', var(--font-noto-serif-jp), serif !important;
 }

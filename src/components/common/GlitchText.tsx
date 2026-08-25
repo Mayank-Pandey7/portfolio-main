@@ -107,8 +107,11 @@ export default function GlitchText({
 
   return (
     <span
+      style={{
+        fontFamily: '"Noto Serif JP", serif',
+      }}
       className={cn(
-        'relative inline-block cursor-pointer align-middle whitespace-nowrap select-none',
+        'relative inline-block cursor-pointer align-middle whitespace-nowrap select-none font-serif',
         className,
       )}
       onMouseEnter={handleMouseEnter}
@@ -117,26 +120,23 @@ export default function GlitchText({
       aria-label={`${originalText} (${hoverText})`}
       role="text"
     >
-      
       <span
-        className="pointer-events-none invisible select-none"
+        style={{
+          fontFamily: '"Noto Serif JP", serif',
+        }}
+        className="pointer-events-none invisible select-none font-serif"
         aria-hidden="true"
       >
         {originalText.length >= hoverText.length ? originalText : hoverText}
       </span>
 
-      
       <span
-        style={
-          isAltText
-            ? {
-                fontFamily: 'var(--font-noto-serif-jp), "Noto Serif JP", serif',
-              }
-            : undefined
-        }
+        style={{
+          fontFamily: '"Noto Serif JP", serif',
+        }}
         className={cn(
-          'text-foreground absolute inset-0 flex items-center transition-all duration-150',
-          isAltText && 'font-noto-serif-jp font-semibold tracking-wide',
+          'text-foreground absolute inset-0 flex items-center transition-all duration-150 font-serif',
+          isAltText && 'font-semibold tracking-wide',
           isGlitching &&
             'text-foreground [text-shadow:1px_0_rgba(59,130,246,0.6),-1px_0_rgba(239,68,68,0.6)]',
           isHovered && !isGlitching && 'text-foreground font-bold',

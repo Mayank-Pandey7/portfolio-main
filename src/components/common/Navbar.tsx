@@ -9,11 +9,8 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 w-full">
       
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-16 sm:h-20 -z-10 overflow-hidden">
-        
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-14 sm:h-16 -z-10 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/70 to-transparent" />
-        
-        
         <div
           className="absolute inset-0 backdrop-blur-sm [mask-image:linear-gradient(to_bottom,black_0%,black_70%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_70%,transparent_100%)]"
         />
@@ -25,7 +22,7 @@ export default function Navbar() {
         />
       </div>
 
-      <Container className="py-2.5 sm:py-3.5">
+      <Container className="py-2 sm:py-2.5">
         <div className="flex items-center justify-between px-1 sm:px-6">
           <div className="flex items-center gap-2.5 sm:gap-5">
             <TrackedLink
