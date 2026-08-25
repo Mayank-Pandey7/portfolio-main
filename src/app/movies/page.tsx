@@ -6,7 +6,7 @@ import React from 'react';
 export default function MoviesPage() {
   return (
     <Container className="mx-auto max-w-3xl py-10 space-y-8">
-      {/* Title & Description */}
+      
       <div className="space-y-3 text-center">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
           Movies & Shows
@@ -16,7 +16,7 @@ export default function MoviesPage() {
         </p>
       </div>
 
-      {/* Movies Grid */}
+      
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 md:grid-cols-4">
         {moviesData.map((movie) => (
           <div

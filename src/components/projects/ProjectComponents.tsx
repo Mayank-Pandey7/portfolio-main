@@ -1,7 +1,7 @@
 import Bun from '@/components/technologies/Bun';
 import JavaScript from '@/components/technologies/JavaScript';
 import MongoDB from '@/components/technologies/MongoDB';
-// Import technology components
+
 import NextJs from '@/components/technologies/NextJs';
 import NodeJs from '@/components/technologies/NodeJs';
 import PostgreSQL from '@/components/technologies/PostgreSQL';
@@ -14,7 +14,7 @@ import React from 'react';
 import { CodeCopyButton } from '../blog/CodeCopyButton';
 import Interactive3DImage from '../common/Interactive3DImage';
 
-// Technology mapping for dynamic components
+
 const TechnologyComponents: Record<string, React.ComponentType> = {
   'Next.js': NextJs,
   nextjs: NextJs,
@@ -37,7 +37,7 @@ const TechnologyComponents: Record<string, React.ComponentType> = {
   bun: Bun,
 };
 
-// Custom Technology component for displaying technology badges with icons
+
 const Technology = ({ name }: { name: string }) => {
   const TechComponent =
     TechnologyComponents[name] || TechnologyComponents[name.toLowerCase()];
@@ -50,7 +50,7 @@ const Technology = ({ name }: { name: string }) => {
   );
 };
 
-// Custom TechStack component for displaying multiple technologies
+
 const TechStack = ({ technologies }: { technologies: string[] }) => {
   return (
     <div className="bg-muted/20 my-6 rounded-lg border p-4">
@@ -64,7 +64,7 @@ const TechStack = ({ technologies }: { technologies: string[] }) => {
   );
 };
 
-// Custom ProjectMeta component for project information
+
 const ProjectMeta = ({
   timeline,
   role,
@@ -125,7 +125,7 @@ const ProjectMeta = ({
   );
 };
 
-// Custom Challenges component
+
 const Challenges = ({ challenges }: { challenges: string[] }) => {
   return (
     <div className="my-6 rounded-lg border border-yellow-200 bg-yellow-50 p-3.5 sm:p-4 dark:border-yellow-800 dark:bg-yellow-950/20">
@@ -147,7 +147,7 @@ const Challenges = ({ challenges }: { challenges: string[] }) => {
   );
 };
 
-// Custom Learnings component
+
 const Learnings = ({ learnings }: { learnings: string[] }) => {
   return (
     <div className="my-6 rounded-lg border border-green-200 bg-green-50 p-3.5 sm:p-4 dark:border-green-800 dark:bg-green-950/20">
@@ -354,7 +354,7 @@ export const ProjectComponents = {
     </blockquote>
   ),
 
-  // Project-specific components
+  
   Technology,
   TechStack,
   ProjectMeta,

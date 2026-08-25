@@ -28,7 +28,7 @@ export default function ResumePage() {
   return (
     <Container className="py-6 sm:py-10">
       <div className="space-y-5 sm:space-y-8">
-        {/* Title & Action Buttons */}
+        
         <div className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
           <div className="space-y-1">
             <h1 className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">
@@ -51,7 +51,7 @@ export default function ResumePage() {
 
         <Separator />
 
-        {/* Responsive PDF Viewer Container */}
+        
         <div className="relative w-full overflow-hidden rounded-xl border border-neutral-200/80 bg-neutral-100 dark:border-neutral-800/80 dark:bg-neutral-900 shadow-sm">
           <iframe
             src={resumeConfig.url}

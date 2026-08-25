@@ -14,7 +14,7 @@ export default function About() {
   return (
     <Container className="mt-10 sm:mt-14">
       <SectionHeading subHeading="About" heading="Me" />
-      {/* About me */}
+      
       <div className="mt-4 flex flex-col gap-4 sm:mt-6 md:flex-row md:items-start md:gap-6">
         <Image
           src="/assets/logo.png"
@@ -42,7 +42,7 @@ export default function About() {
         </div>
       </div>
 
-      {/* Certificates & Achievements - Full Length */}
+      
       <div className="mt-6 w-full sm:mt-8">
         <TrackedLink
           className="group block w-full"

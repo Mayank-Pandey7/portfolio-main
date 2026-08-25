@@ -117,7 +117,7 @@ export default function CTA({
         </div>
       </Container>
 
-      {/* Cal.com Dialog */}
+      
       <Dialog open={showCalPopup} onOpenChange={setShowCalPopup}>
         <DialogContent className="max-h-[90vh] max-w-[calc(100vw-2rem)] overflow-hidden sm:max-w-[calc(100vw-4rem)] md:max-w-4xl">
           <DialogHeader>

@@ -19,7 +19,7 @@ interface ProjectCaseStudyPageProps {
   }>;
 }
 
-// Generate static paths for all project case studies
+
 export async function generateStaticParams() {
   const slugs = getProjectCaseStudySlugs();
 
@@ -28,7 +28,7 @@ export async function generateStaticParams() {
   }));
 }
 
-// Generate metadata for each project case study
+
 export async function generateMetadata({
   params,
 }: ProjectCaseStudyPageProps): Promise<Metadata> {
@@ -77,7 +77,7 @@ export default async function ProjectCaseStudyPage({
   return (
     <Container className="py-8 sm:py-16">
       <div className="space-y-8 sm:space-y-12">
-        {/* Back Button */}
+        
         <div>
           <Button
             variant="ghost"
@@ -95,13 +95,13 @@ export default async function ProjectCaseStudyPage({
           </Button>
         </div>
 
-        {/* Project Content */}
+        
         <ProjectContent
           frontmatter={caseStudy.frontmatter}
           content={caseStudy.content}
         />
 
-        {/* Project Navigation */}
+        
         <ProjectNavigation
           previous={navigation.previous}
           next={navigation.next}

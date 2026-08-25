@@ -27,7 +27,7 @@ export default function SetupPage() {
   return (
     <Container className="py-8 md:py-16">
       <div className="space-y-6 md:space-y-8">
-        {/* Header */}
+        
         <div className="space-y-3 text-center md:space-y-4">
           <h1 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
             Setup
@@ -39,11 +39,11 @@ export default function SetupPage() {
         </div>
         <Separator />
 
-        {/* Steps */}
+        
         <div className="space-y-8 md:space-y-12">
           {steps.map((step) => (
             <div key={step.id} className="space-y-4 md:space-y-6">
-              {/* Step Header */}
+              
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
                 <div className="bg-muted flex w-fit items-center justify-center rounded-md border border-black/10 px-3 py-2 text-[#736F70] dark:border-white/10">
                   <span className="text-secondary text-sm font-medium">
@@ -60,7 +60,7 @@ export default function SetupPage() {
                 </div>
               </div>
 
-              {/* Step Content */}
+              
               <div className="ml-4 space-y-3 sm:ml-8 md:ml-16 md:space-y-4">
                 {step.content.map((item, index) => (
                   <div key={index} className="flex items-start gap-3">
@@ -121,7 +121,7 @@ export default function SetupPage() {
             </div>
           ))}
 
-          {/* Settings JSON Section */}
+          
           <div className="space-y-4 md:space-y-6">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
               <div className="bg-muted flex w-fit items-center justify-center rounded-md border border-black/10 p-2 text-[#736F70] dark:border-white/10">
@@ -186,7 +186,7 @@ export default function SetupPage() {
             </div>
           </div>
 
-          {/* Final Steps */}
+          
           <div className="space-y-4 md:space-y-6">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
               <div className="bg-muted flex w-fit items-center justify-center rounded-md border border-black/10 px-3 py-2 text-[#736F70] dark:border-white/10">

@@ -24,7 +24,7 @@ export function BlogContent({ frontmatter, content }: BlogContentProps) {
 
   return (
     <article className="mx-auto max-w-4xl">
-      {/* Hero Section */}
+      
       <header className="mb-8 space-y-6">
         <div className="relative aspect-video overflow-hidden rounded-lg">
           <Image
@@ -60,7 +60,7 @@ export function BlogContent({ frontmatter, content }: BlogContentProps) {
         <Separator />
       </header>
 
-      {/* Content */}
+      
       <div className="prose prose-neutral dark:prose-invert max-w-none">
         <MDXRemote
           source={content}

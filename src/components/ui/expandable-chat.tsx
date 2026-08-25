@@ -133,7 +133,7 @@ const ExpandableChatToggle: React.FC<ExpandableChatToggleProps> = ({
   const { triggerHaptic, isMobile } = useHapticFeedback();
 
   const handleToggle = () => {
-    // Trigger haptic feedback on mobile devices
+    
     if (isMobile()) {
       triggerHaptic('selection');
     }

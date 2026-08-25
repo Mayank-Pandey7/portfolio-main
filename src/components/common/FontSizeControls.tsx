@@ -19,7 +19,7 @@ export default function FontSizeControls() {
   const { triggerHaptic, isMobile } = useHapticFeedback();
   const { trackEvent } = useUmami();
 
-  // Load font size from localStorage on mount
+  
   useEffect(() => {
     const savedFontSize = localStorage.getItem('blog-font-size');
     if (savedFontSize) {
@@ -29,7 +29,7 @@ export default function FontSizeControls() {
     }
   }, []);
 
-  // Apply font size to the document
+  
   const applyFontSize = (size: number) => {
     if (typeof window !== 'undefined') {
       document.documentElement.style.setProperty(
@@ -39,7 +39,7 @@ export default function FontSizeControls() {
     }
   };
 
-  // Save to localStorage and apply
+  
   const updateFontSize = (newSize: number) => {
     const clampedSize = Math.max(12, Math.min(24, newSize));
     setFontSize(clampedSize);
@@ -82,10 +82,10 @@ export default function FontSizeControls() {
 
   return (
     <>
-      {/* Mobile: Drawer interface */}
+      
       <div className="md:hidden">
         <Drawer>
-          {/* Trigger button - bottom left */}
+          
           <DrawerTrigger asChild>
             <Button
               variant="outline"
@@ -97,7 +97,7 @@ export default function FontSizeControls() {
             </Button>
           </DrawerTrigger>
 
-          {/* Drawer content */}
+          
           <DrawerContent className="max-h-[60vh]">
             <DrawerHeader className="text-center">
               <DrawerTitle>Font Size Controls</DrawerTitle>
@@ -105,7 +105,7 @@ export default function FontSizeControls() {
 
             <div className="px-4 pb-6">
               <div className="flex flex-col items-center gap-6">
-                {/* Font size display */}
+                
                 <div className="text-center">
                   <div className="text-foreground mb-2 font-mono text-3xl font-bold">
                     {fontSize}px
@@ -115,7 +115,7 @@ export default function FontSizeControls() {
                   </div>
                 </div>
 
-                {/* Controls */}
+                
                 <div className="flex items-center gap-4">
                   <Button
                     variant="outline"
@@ -150,7 +150,7 @@ export default function FontSizeControls() {
                   </Button>
                 </div>
 
-                {/* Size range indicator */}
+                
                 <div className="w-full max-w-xs">
                   <div className="text-muted-foreground mb-2 flex justify-between text-xs">
                     <span>12px</span>
@@ -171,7 +171,7 @@ export default function FontSizeControls() {
         </Drawer>
       </div>
 
-      {/* Desktop: Original vertical controls */}
+      
       <div className="fixed top-1/2 right-6 z-50 hidden -translate-y-1/2 md:flex">
         <div className="bg-background/95 border-border rounded-lg border p-2 shadow-lg backdrop-blur-sm">
           <div className="flex flex-col items-center gap-3">

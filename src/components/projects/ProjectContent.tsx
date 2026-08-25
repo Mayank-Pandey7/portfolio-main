@@ -41,7 +41,7 @@ export function ProjectContent({ frontmatter, content }: ProjectContentProps) {
 
   return (
     <article className="mx-auto max-w-4xl">
-      {/* Hero Section */}
+      
       <header className="mb-8 space-y-6">
         <div className="relative aspect-video w-full">
           <Interactive3DImage
@@ -55,7 +55,7 @@ export function ProjectContent({ frontmatter, content }: ProjectContentProps) {
         </div>
 
         <div className="space-y-4">
-          {/* Project Status and Technologies */}
+          
           <div className="flex flex-wrap items-center gap-3">
             <Badge variant={statusVariant} className="text-sm">
               {status.charAt(0).toUpperCase() + status.slice(1)}
@@ -80,7 +80,7 @@ export function ProjectContent({ frontmatter, content }: ProjectContentProps) {
             {description}
           </p>
 
-          {/* Project Meta Information */}
+          
           <div className="bg-muted/20 grid grid-cols-2 gap-3 rounded-lg border p-3.5 sm:grid-cols-2 sm:gap-4 sm:p-4 lg:grid-cols-4">
             <div>
               <h5 className="text-muted-foreground text-xs font-semibold sm:text-sm">
@@ -112,7 +112,7 @@ export function ProjectContent({ frontmatter, content }: ProjectContentProps) {
             </div>
           </div>
 
-          {/* Action Buttons */}
+          
           <div className="flex flex-wrap gap-2.5 sm:gap-3">
             {live && (
               <Button
@@ -169,7 +169,7 @@ export function ProjectContent({ frontmatter, content }: ProjectContentProps) {
         <Separator />
       </header>
 
-      {/* Technology Stack */}
+      
       <div className="mb-8">
         <div className="bg-muted/20 rounded-lg border p-4">
           <h3 className="mb-3 text-lg font-semibold">Technology Stack</h3>
@@ -186,7 +186,7 @@ export function ProjectContent({ frontmatter, content }: ProjectContentProps) {
         </div>
       </div>
 
-      {/* Challenges and Learnings */}
+      
       {(challenges?.length || learnings?.length) && (
         <div className="mb-8 grid gap-6 md:grid-cols-2">
           {challenges && challenges.length > 0 && (
@@ -229,7 +229,7 @@ export function ProjectContent({ frontmatter, content }: ProjectContentProps) {
         </div>
       )}
 
-      {/* Content */}
+      
       <div className="prose prose-neutral dark:prose-invert max-w-none">
         <MDXRemote
           source={content}

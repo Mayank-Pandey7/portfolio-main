@@ -1,16 +1,4 @@
 ﻿# Developer Portfolio & Showcase
 
 Built with Next.js, TypeScript, and Tailwind CSS.
-<!-- update step 1 -->
-<!-- update step 2 -->
-<!-- update step 3 -->
-<!-- update step 4 -->
-<!-- update step 5 -->
-<!-- update step 6 -->
-<!-- update step 7 -->
-<!-- update step 8 -->
-<!-- update step 9 -->
-<!-- update step 10 -->
-<!-- update step 11 -->
-<!-- update step 12 -->
-<!-- update step 13 -->
+

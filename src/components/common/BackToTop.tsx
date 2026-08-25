@@ -13,7 +13,7 @@ export default function BackToTop() {
   const handleClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // Trigger haptic feedback on mobile devices
+    
     if (isMobile()) {
       triggerHaptic('light');
     }

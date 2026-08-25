@@ -12,7 +12,7 @@ import NodeJs from '@/components/technologies/NodeJs';
 import PostgreSQL from '@/components/technologies/PostgreSQL';
 import Prisma from '@/components/technologies/Prisma';
 import ReactIcon from '@/components/technologies/ReactIcon';
-// Technology Components
+
 import TypeScript from '@/components/technologies/TypeScript';
 
 export const skillComponents = {

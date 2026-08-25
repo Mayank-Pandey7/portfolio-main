@@ -84,7 +84,7 @@ export default function CursorEyes({
 
   const config = sizeConfig[size] || sizeConfig.xs;
 
-  // --- Blinking Cycle ---
+  
   useEffect(() => {
     let isMounted = true;
     const state = stateRef.current;
@@ -128,7 +128,7 @@ export default function CursorEyes({
     };
   }, []);
 
-  // --- Mouse Tracking & Animation ---
+  
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const state = stateRef.current;
@@ -263,7 +263,7 @@ export default function CursorEyes({
       aria-label="Interactive animated 3D eyes following cursor"
       role="img"
     >
-      {/* Left Eye */}
+      
       <div
         ref={leftEyeRef}
         className={cn(
@@ -302,7 +302,7 @@ export default function CursorEyes({
         <div className="pointer-events-none absolute inset-0 rounded-[inherit] bg-[linear-gradient(135deg,rgba(255,255,255,0.45)_0%,rgba(255,255,255,0.1)_35%,transparent_60%)]" />
       </div>
 
-      {/* Right Eye */}
+      
       <div
         ref={rightEyeRef}
         className={cn(

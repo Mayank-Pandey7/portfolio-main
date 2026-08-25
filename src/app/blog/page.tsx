@@ -31,7 +31,7 @@ function BlogPageLoading() {
   return (
     <Container className="py-16">
       <div className="space-y-8">
-        {/* Header Skeleton */}
+        
         <div className="space-y-4 text-center">
           <Skeleton className="mx-auto h-12 w-32" />
           <Skeleton className="mx-auto h-6 w-96" />
@@ -39,7 +39,7 @@ function BlogPageLoading() {
 
         <Separator />
 
-        {/* Tags Skeleton */}
+        
         <div className="space-y-4">
           <Skeleton className="h-6 w-32" />
           <div className="flex flex-wrap gap-2">
@@ -49,7 +49,7 @@ function BlogPageLoading() {
           </div>
         </div>
 
-        {/* Blog Posts Skeleton */}
+        
         <div className="space-y-6">
           <Skeleton className="h-8 w-48" />
           <div className="space-y-4">

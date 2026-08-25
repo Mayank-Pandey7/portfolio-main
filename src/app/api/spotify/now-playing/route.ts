@@ -31,7 +31,7 @@ export async function GET() {
       });
     }
 
-    // Fallback to recently played
+    
     const recentlyPlayedData = await getRecentlyPlayed();
 
     if (

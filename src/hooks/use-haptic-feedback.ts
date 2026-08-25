@@ -6,13 +6,13 @@ type HapticFeedbackType = 'light' | 'medium' | 'heavy' | 'selection' | 'impact';
 
 export const useHapticFeedback = () => {
   const triggerHaptic = useCallback((type: HapticFeedbackType = 'light') => {
-    // Check if we're in a browser environment and if haptic feedback is supported
+    
     if (typeof window === 'undefined') return;
 
     try {
-      // Check for Haptic Feedback API (modern browsers)
+      
       if ('vibrate' in navigator) {
-        let pattern: number | number[] = 10; // default light vibration
+        let pattern: number | number[] = 10; 
 
         switch (type) {
           case 'light':
@@ -35,7 +35,7 @@ export const useHapticFeedback = () => {
         navigator.vibrate(pattern);
       }
 
-      // For iOS devices with haptic feedback support
+      
       if (
         window.DeviceMotionEvent &&
         typeof (
@@ -44,7 +44,7 @@ export const useHapticFeedback = () => {
           }
         ).requestPermission === 'function'
       ) {
-        // iOS haptic feedback through AudioContext (workaround)
+        
         const AudioContextClass =
           window.AudioContext ||
           (window as unknown as { webkitAudioContext: typeof AudioContext })
@@ -71,7 +71,7 @@ export const useHapticFeedback = () => {
         oscillator.stop(audioContext.currentTime + 0.02);
       }
     } catch (error) {
-      // Silently fail if haptic feedback is not supported
+      
       console.debug('Haptic feedback not supported:', error);
     }
   }, []);

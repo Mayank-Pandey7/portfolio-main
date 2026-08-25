@@ -97,7 +97,7 @@ export default function CertificatesGallery({
         ))}
       </div>
 
-      {/* Fullscreen viewer */}
+      
       <Dialog
         open={!!active}
         onOpenChange={(open) => {

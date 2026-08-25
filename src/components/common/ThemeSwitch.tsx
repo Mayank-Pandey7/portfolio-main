@@ -70,8 +70,8 @@ export const useThemeToggle = ({
 
     if (typeof window === 'undefined') return;
 
-    // Toggle from the resolved theme (via isDark), not `theme`, so the switch
-    // is correct even when `theme === 'system'` and matches the tracked from/to.
+    
+    
     const switchTheme = () => {
       setTheme(isDark ? 'light' : 'dark');
     };
@@ -209,7 +209,7 @@ export const useThemeToggle = ({
   };
 };
 
-// ///////////////////////////////////////////////////////////////////////////
+
 
 export const ThemeToggleButton = ({
   className = '',
@@ -249,7 +249,7 @@ export const ThemeToggleButton = ({
   );
 };
 
-// ///////////////////////////////////////////////////////////////////////////
+
 
 export type AnimationVariant =
   'circle' | 'rectangle' | 'gif' | 'polygon' | 'circle-blur';
@@ -285,7 +285,7 @@ const getPositionCoords = (position: AnimationStart) => {
       return { cx: '20', cy: '0' };
     case 'bottom-center':
       return { cx: '20', cy: '40' };
-    // For directional positions, default to center (these are used for rectangle variant)
+    
     case 'bottom-up':
     case 'top-down':
     case 'left-right':
@@ -295,7 +295,7 @@ const getPositionCoords = (position: AnimationStart) => {
 };
 
 const generateSVG = (variant: AnimationVariant, start: AnimationStart) => {
-  // circle-blur variant handles center case differently, so check it first
+  
   if (variant === 'circle-blur') {
     if (start === 'center') {
       return `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><defs><filter id="blur"><feGaussianBlur stdDeviation="2"/></filter></defs><circle cx="20" cy="20" r="18" fill="white" filter="url(%23blur)"/></svg>`;
@@ -310,7 +310,7 @@ const generateSVG = (variant: AnimationVariant, start: AnimationStart) => {
 
   if (start === 'center') return;
 
-  // Rectangle variant doesn't use SVG masks, so return early
+  
   if (variant === 'rectangle') return '';
 
   const positionCoords = getPositionCoords(start);
@@ -624,7 +624,7 @@ export const createAnimation = (
             lightTo: 'polygon(-71% 50%, 50% 171%, 250% 71%, 150% -71%)',
           };
         default:
-          // Default to top-left behavior
+          
           return {
             darkFrom: 'polygon(50% -71%, -50% 71%, -50% 71%, 50% -71%)',
             darkTo: 'polygon(50% -71%, -50% 71%, 50% 171%, 171% 50%)',
@@ -686,7 +686,7 @@ export const createAnimation = (
     };
   }
 
-  // Handle circle variants with start positions using clip-path
+  
   if (variant === 'circle' && start !== 'center') {
     const getClipPathPosition = (position: AnimationStart) => {
       switch (position) {

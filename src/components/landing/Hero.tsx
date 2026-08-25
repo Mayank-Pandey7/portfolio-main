@@ -91,10 +91,10 @@ export default function Hero() {
           {renderDescription()}
         </div>
 
-        {/* Spotify Row */}
+        
         <SpotifyNowPlaying />
 
-        {/* Social Links */}
+        
         <div className="mt-3.5 flex items-center gap-2.5 sm:mt-4 sm:gap-3">
           {socialLinks.map((link) => (
             <Tooltip key={link.name} delayDuration={0}>
@@ -122,7 +122,7 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* Buttons: Resume & Contact (if specified) */}
+        
         {buttons && buttons.length > 0 && (
           <div className="mt-5 flex flex-wrap gap-2.5 sm:mt-6 sm:gap-3">
             {buttons.map((button, index) => {

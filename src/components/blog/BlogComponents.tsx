@@ -4,7 +4,7 @@ import React from 'react';
 import { CodeCopyButton } from './CodeCopyButton';
 
 export const BlogComponents = {
-  // Override default image component
+  
   img: ({
     src,
     alt,
@@ -23,7 +23,7 @@ export const BlogComponents = {
       {...props}
     />
   ),
-  // Custom heading with better styling
+  
   h1: ({
     children,
     ...props
@@ -57,7 +57,7 @@ export const BlogComponents = {
       {children}
     </h3>
   ),
-  // Custom paragraph styling
+  
   p: ({
     children,
     ...props
@@ -69,7 +69,7 @@ export const BlogComponents = {
       {children}
     </p>
   ),
-  // Custom list styling
+  
   ul: ({
     children,
     ...props
@@ -146,7 +146,7 @@ export const BlogComponents = {
       </div>
     );
   },
-  // Inline code styling (not affected by syntax highlighting)
+  
   code: ({
     children,
     className,
@@ -156,7 +156,7 @@ export const BlogComponents = {
     className?: string;
     [key: string]: unknown;
   }) => {
-    // If it's part of a pre block (syntax highlighted), don't apply inline styling
+    
     if (className?.includes('language-')) {
       return (
         <code className={className} {...props}>
@@ -165,14 +165,14 @@ export const BlogComponents = {
       );
     }
 
-    // Inline code styling
+    
     return (
       <code className="rounded px-2 py-1 font-mono text-sm" {...props}>
         {children}
       </code>
     );
   },
-  // Custom blockquote styling
+  
   blockquote: ({
     children,
     ...props

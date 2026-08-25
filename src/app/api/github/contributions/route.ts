@@ -135,7 +135,7 @@ export async function GET() {
       }
     }
 
-    // Fallback to public contributions API if token is absent, invalid, or API fails
+    
     const fallbackData = await fetchFallback();
     return NextResponse.json(fallbackData);
   } catch (error) {

@@ -24,7 +24,7 @@ export default function ProjectsPage() {
   return (
     <Container className="py-8 sm:py-16">
       <div className="space-y-6 sm:space-y-8">
-        {/* Header */}
+        
         <div className="space-y-3 text-center sm:space-y-4">
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
             Projects
@@ -36,7 +36,7 @@ export default function ProjectsPage() {
 
         <Separator />
 
-        {/* Projects */}
+        
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-semibold">

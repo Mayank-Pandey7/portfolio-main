@@ -57,7 +57,7 @@ function getDateRange() {
 
   const start = new Date(end);
   start.setDate(start.getDate() - 364);
-  start.setDate(start.getDate() - start.getDay()); // Always align to Sunday
+  start.setDate(start.getDate() - start.getDay()); 
 
   return { start, end };
 }
@@ -115,7 +115,7 @@ export default function Github() {
 
           data = await response.json();
         } catch {
-          // Direct client-side fallback if internal API route fails
+          
           const fallbackRes = await fetch(
             `https://github-contributions-api.jogruber.de/v4/${githubConfig.username}?y=last`,
             { signal: controller.signal },
@@ -217,7 +217,7 @@ export default function Github() {
     };
   }, []);
 
-  // Auto scroll to the right edge (latest month) when graph finishes loading
+  
   useEffect(() => {
     if (!isLoading && !hasError && scrollContainerRef.current) {
       const container = scrollContainerRef.current;
@@ -301,12 +301,12 @@ export default function Github() {
       const current = rawLabels[i];
       const next = rawLabels[i + 1];
 
-      // Skip label if it's too close to the next month label
+      
       if (next && next.column - current.column < 2) {
         continue;
       }
 
-      // Skip label if it's too close to the end of the year graph
+      
       if (current.column >= weeks.length - 2) {
         continue;
       }
@@ -325,7 +325,7 @@ export default function Github() {
   return (
     <Container className="mt-10 sm:mt-14">
       <div className="space-y-4 sm:space-y-6">
-        {/* Header */}
+        
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-foreground text-xl font-bold sm:text-2xl">
@@ -348,7 +348,7 @@ export default function Github() {
           </Link>
         </div>
 
-        {/* Loading */}
+        
         {isLoading && (
           <div className="border-border bg-background rounded-xl border p-6 sm:p-8">
             <div className="flex flex-col items-center justify-center gap-3">
@@ -365,7 +365,7 @@ export default function Github() {
           </div>
         )}
 
-        {/* Error */}
+        
         {!isLoading && hasError && (
           <div className="text-muted-foreground border-border rounded-xl border-2 border-dashed p-6 text-center sm:p-8">
             <div className="bg-muted mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full sm:h-16 sm:w-16">
@@ -394,7 +394,7 @@ export default function Github() {
           </div>
         )}
 
-        {/* Contribution Graph */}
+        
         {!isLoading && !hasError && (
           <div className="border-border bg-background rounded-xl border p-3.5 sm:p-5">
             <div
@@ -402,7 +402,7 @@ export default function Github() {
               className="[&::-webkit-scrollbar-thumb]:bg-muted-foreground/20 hover:[&::-webkit-scrollbar-thumb]:bg-muted-foreground/40 overflow-x-auto pb-2 [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent"
             >
               <div className="min-w-[760px]">
-                {/* Month labels */}
+                
                 <div className="relative mb-2 ml-9 grid h-4 grid-cols-[repeat(53,11px)] gap-[3px] text-xs">
                   {monthLabels.map((item) => (
                     <div
@@ -416,7 +416,7 @@ export default function Github() {
                 </div>
 
                 <div className="flex items-start">
-                  {/* Weekday labels */}
+                  
                   <div className="mr-2 grid grid-rows-7 gap-[3px] pt-0">
                     {githubConfig.weekdays.map((day, index) => (
                       <div
@@ -428,7 +428,7 @@ export default function Github() {
                     ))}
                   </div>
 
-                  {/* Contribution cells */}
+                  
                   <TooltipProvider delayDuration={0}>
                     <div className="flex gap-[3px]">
                       {weeks.map((week, weekIndex) => (
@@ -474,7 +474,7 @@ export default function Github() {
               </div>
             </div>
 
-            {/* Footer */}
+            
             <div className="text-muted-foreground mt-4 flex flex-col gap-3 text-xs sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-4">
                 <span>

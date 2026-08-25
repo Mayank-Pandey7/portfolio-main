@@ -27,7 +27,7 @@ export default function GearsPage() {
   return (
     <Container className="py-16">
       <div className="space-y-8">
-        {/* Header */}
+        
         <div className="space-y-4 text-center">
           <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
             Gears
@@ -38,7 +38,7 @@ export default function GearsPage() {
         </div>
         <Separator />
 
-        {/* Devices Section */}
+        
         <div className="space-y-4">
           <h2 className="text-2xl font-semibold">Devices</h2>
           <div className="flex flex-col flex-wrap gap-4">
@@ -55,7 +55,7 @@ export default function GearsPage() {
           </div>
         </div>
 
-        {/* Web Extensions Section */}
+        
         <div className="space-y-4 pt-10">
           <div className="flex items-center gap-4">
             <div className="bg-muted flex items-center justify-center rounded-md border border-black/10 p-2 text-[#736F70] dark:border-white/10">
@@ -93,7 +93,7 @@ export default function GearsPage() {
           </div>
         </div>
 
-        {/* Software Section */}
+        
         <div className="space-y-4 pt-10">
           <div className="flex items-center gap-4">
             <div className="bg-muted flex items-center justify-center rounded-md border border-black/10 p-2 text-[#736F70] dark:border-white/10">

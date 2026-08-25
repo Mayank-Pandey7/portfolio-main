@@ -5,9 +5,7 @@ import path from 'path';
 
 const blogDirectory = path.join(process.cwd(), 'src/data/blog');
 
-/**
- * Get all blog post files from the blog directory
- */
+
 export function getBlogPostSlugs(): string[] {
   if (!fs.existsSync(blogDirectory)) {
     return [];
@@ -19,9 +17,7 @@ export function getBlogPostSlugs(): string[] {
     .map((file) => file.replace(/\.mdx$/, ''));
 }
 
-/**
- * Get blog post by slug with full content
- */
+
 export function getBlogPostBySlug(slug: string): BlogPost | null {
   try {
     const fullPath = path.join(blogDirectory, `${slug}.mdx`);
@@ -33,7 +29,7 @@ export function getBlogPostBySlug(slug: string): BlogPost | null {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
-    // Validate frontmatter
+    
     const frontmatter = data as BlogFrontmatter;
     if (!frontmatter.title || !frontmatter.description) {
       throw new Error(`Invalid frontmatter in ${slug}.mdx`);
@@ -50,9 +46,7 @@ export function getBlogPostBySlug(slug: string): BlogPost | null {
   }
 }
 
-/**
- * Get all blog posts with frontmatter only (for listing page)
- */
+
 export function getAllBlogPosts(): BlogPostPreview[] {
   const slugs = getBlogPostSlugs();
 
@@ -68,7 +62,7 @@ export function getAllBlogPosts(): BlogPostPreview[] {
     })
     .filter((post): post is BlogPostPreview => post !== null)
     .sort((a, b) => {
-      // Sort by date, newest first
+      
       return (
         new Date(b.frontmatter.date).getTime() -
         new Date(a.frontmatter.date).getTime()
@@ -78,17 +72,13 @@ export function getAllBlogPosts(): BlogPostPreview[] {
   return posts;
 }
 
-/**
- * Get all published blog posts
- */
+
 export function getPublishedBlogPosts(): BlogPostPreview[] {
   const allPosts = getAllBlogPosts();
   return allPosts.filter((post) => post.frontmatter.isPublished);
 }
 
-/**
- * Get blog posts by tag
- */
+
 export function getBlogPostsByTag(tag: string): BlogPostPreview[] {
   const publishedPosts = getPublishedBlogPosts();
   return publishedPosts.filter((post) =>
@@ -98,9 +88,7 @@ export function getBlogPostsByTag(tag: string): BlogPostPreview[] {
   );
 }
 
-/**
- * Get all unique tags from published posts
- */
+
 export function getAllTags(): string[] {
   const publishedPosts = getPublishedBlogPosts();
   const tagsSet = new Set<string>();
@@ -114,9 +102,7 @@ export function getAllTags(): string[] {
   return Array.from(tagsSet).sort();
 }
 
-/**
- * Get related posts based on tags (excluding the current post)
- */
+
 export async function getRelatedPosts(
   currentSlug: string,
   maxPosts = 3,
@@ -131,7 +117,7 @@ export async function getRelatedPosts(
     tag.toLowerCase(),
   );
 
-  // Calculate relevance score based on shared tags
+  
   const postsWithScore = allPosts
     .filter((post) => post.slug !== currentSlug)
     .map((post) => {

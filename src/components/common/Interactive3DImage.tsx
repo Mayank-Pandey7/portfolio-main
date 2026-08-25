@@ -40,7 +40,7 @@ export default function Interactive3DImage({
   const [isPressed, setIsPressed] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  // --- Calculate 3D Tilt from Cursor / Touch ---
+  
   const handleMove = useCallback(
     (clientX: number, clientY: number, pressing: boolean = false) => {
       if (!containerRef.current) return;
@@ -51,11 +51,11 @@ export default function Interactive3DImage({
       const px = Math.max(0, Math.min(1, x / rect.width));
       const py = Math.max(0, Math.min(1, y / rect.height));
 
-      // Calculate tilt angles (-1 to 1 normalized)
+      
       const rotateX = ((py - 0.5) * -2 * maxTilt).toFixed(2);
       const rotateY = ((px - 0.5) * 2 * maxTilt).toFixed(2);
 
-      // Press depth (sinks in when clicked)
+      
       const currentDepth = pressing ? -Math.abs(depth * 1.5) : 8;
       const scale = pressing ? 0.96 : 1.015;
 
@@ -63,7 +63,7 @@ export default function Interactive3DImage({
         `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${currentDepth}px) scale3d(${scale}, ${scale}, ${scale})`,
       );
 
-      // Update Glare Position
+      
       setGlarePos({
         x: px * 100,
         y: py * 100,
@@ -97,7 +97,7 @@ export default function Interactive3DImage({
     setGlarePos((prev) => ({ ...prev, opacity: 0 }));
   };
 
-  // --- Touch Support ---
+  
   const onTouchMove = (e: TouchEvent<HTMLDivElement>) => {
     if (e.touches.length > 0) {
       setIsHovered(true);
@@ -127,7 +127,7 @@ export default function Interactive3DImage({
       style={{ perspective: 1000 }}
       className={`relative cursor-pointer overflow-hidden rounded-xl select-none [transform-style:preserve-3d] ${containerClassName}`}
     >
-      {/* 3D Transform Surface */}
+      
       <div
         style={{
           transform,
@@ -139,7 +139,7 @@ export default function Interactive3DImage({
         }}
         className="relative h-full w-full will-change-transform [transform-style:preserve-3d]"
       >
-        {/* Next.js Image */}
+        
         <Image
           src={src}
           alt={alt}
@@ -153,7 +153,7 @@ export default function Interactive3DImage({
           {...props}
         />
 
-        {/* Dynamic 3D Glare / Light Reflection Overlay */}
+        
         <div
           className="pointer-events-none absolute inset-0 rounded-xl transition-opacity duration-200"
           style={{
@@ -163,7 +163,7 @@ export default function Interactive3DImage({
           }}
         />
 
-        {/* 3D Press Inner Depth Shadow */}
+        
         <div
           className="pointer-events-none absolute inset-0 rounded-xl transition-opacity duration-100"
           style={{

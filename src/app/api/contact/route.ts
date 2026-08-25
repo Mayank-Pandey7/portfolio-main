@@ -14,7 +14,7 @@ const contactSchema = z.object({
 });
 
 function getClientIP(request: NextRequest): string {
-  // Get IP from various headers in order of preference
+  
   const forwarded = request.headers.get('x-forwarded-for');
   const realIP = request.headers.get('x-real-ip');
   const cfConnectingIP = request.headers.get('cf-connecting-ip');
@@ -40,7 +40,7 @@ function checkRateLimit(clientIP: string): {
   const clientData = rateLimitStore.get(clientIP);
 
   if (!clientData || now > clientData.resetTime) {
-    // First request or window expired
+    
     rateLimitStore.set(clientIP, {
       count: 1,
       resetTime: now + RATE_LIMIT_WINDOW,
@@ -52,7 +52,7 @@ function checkRateLimit(clientIP: string): {
     return { allowed: false, remaining: 0 };
   }
 
-  // Increment count
+  
   clientData.count++;
   rateLimitStore.set(clientIP, clientData);
 

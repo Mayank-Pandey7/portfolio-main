@@ -55,7 +55,7 @@ export function ProjectCard({
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
-      {/* Background Stretched Link to Project Details */}
+      
       <Link
         href={project.projectDetailsPageSlug}
         onClick={() => trackProject('view_details')}
@@ -63,10 +63,10 @@ export function ProjectCard({
         aria-label={`View ${project.title} details`}
       />
 
-      {/* Project Row Content */}
+      
       <div className="pointer-events-none relative z-10 flex items-start justify-between gap-6">
         <div className="pointer-events-auto min-w-0 flex-1 space-y-1.5">
-          {/* Title + Links + Status */}
+          
           <div className="flex flex-wrap items-center gap-2">
             <Link
               href={project.projectDetailsPageSlug}
@@ -76,7 +76,7 @@ export function ProjectCard({
               <h3>{project.title}</h3>
             </Link>
 
-            {/* Website */}
+            
             {project.link && (
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -97,7 +97,7 @@ export function ProjectCard({
               </Tooltip>
             )}
 
-            {/* GitHub */}
+            
             {project.github && (
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -118,7 +118,7 @@ export function ProjectCard({
               </Tooltip>
             )}
 
-            {/* Status (Desktop Only) */}
+            
             <div
               className={`hidden items-center gap-1 rounded-md px-2 py-0.5 text-xs sm:flex ${
                 project.isWorking ? 'bg-green-500/10' : 'bg-red-500/10'
@@ -134,12 +134,12 @@ export function ProjectCard({
             </div>
           </div>
 
-          {/* Description */}
+          
           <p className="text-secondary text-sm leading-relaxed font-normal">
             {project.description}
           </p>
 
-          {/* Technology Icons */}
+          
           {showTechnologies &&
             project.technologies &&
             project.technologies.length > 0 && (
@@ -160,7 +160,7 @@ export function ProjectCard({
             )}
         </div>
 
-        {/* View Details Link on Right */}
+        
         <span className="group-hover:text-foreground pointer-events-none hidden shrink-0 items-center gap-1.5 pt-1 text-sm font-medium text-neutral-400 transition-colors sm:inline-flex">
           View details{' '}
           <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />

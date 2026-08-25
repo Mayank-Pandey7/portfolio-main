@@ -10,9 +10,7 @@ import path from 'path';
 
 const projectsDirectory = path.join(process.cwd(), 'src/data/projects');
 
-/**
- * Get all project case study files from the projects directory
- */
+
 export function getProjectCaseStudySlugs(): string[] {
   if (!fs.existsSync(projectsDirectory)) {
     return [];
@@ -24,9 +22,7 @@ export function getProjectCaseStudySlugs(): string[] {
     .map((file) => file.replace(/\.mdx$/, ''));
 }
 
-/**
- * Get project case study by slug with full content
- */
+
 export function getProjectCaseStudyBySlug(
   slug: string,
 ): ProjectCaseStudy | null {
@@ -40,7 +36,7 @@ export function getProjectCaseStudyBySlug(
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
-    // Validate frontmatter
+    
     const frontmatter = data as ProjectCaseStudyFrontmatter;
     if (!frontmatter.title || !frontmatter.description) {
       throw new Error(`Invalid frontmatter in ${slug}.mdx`);
@@ -57,9 +53,7 @@ export function getProjectCaseStudyBySlug(
   }
 }
 
-/**
- * Get all project case studies with frontmatter only (for listing)
- */
+
 export function getAllProjectCaseStudies(): ProjectCaseStudyPreview[] {
   const slugs = getProjectCaseStudySlugs();
 
@@ -77,7 +71,7 @@ export function getAllProjectCaseStudies(): ProjectCaseStudyPreview[] {
       (caseStudy): caseStudy is ProjectCaseStudyPreview => caseStudy !== null,
     )
     .sort((a, b) => {
-      // Sort by featured first, then by title
+      
       if (a.frontmatter.featured && !b.frontmatter.featured) return -1;
       if (!a.frontmatter.featured && b.frontmatter.featured) return 1;
       return a.frontmatter.title.localeCompare(b.frontmatter.title);
@@ -86,9 +80,7 @@ export function getAllProjectCaseStudies(): ProjectCaseStudyPreview[] {
   return caseStudies;
 }
 
-/**
- * Get all published project case studies
- */
+
 export function getPublishedProjectCaseStudies(): ProjectCaseStudyPreview[] {
   const allCaseStudies = getAllProjectCaseStudies();
   return allCaseStudies.filter(
@@ -96,9 +88,7 @@ export function getPublishedProjectCaseStudies(): ProjectCaseStudyPreview[] {
   );
 }
 
-/**
- * Get project case studies by technology
- */
+
 export function getProjectCaseStudiesByTechnology(
   technology: string,
 ): ProjectCaseStudyPreview[] {
@@ -110,9 +100,7 @@ export function getProjectCaseStudiesByTechnology(
   );
 }
 
-/**
- * Get all unique technologies from published case studies
- */
+
 export function getAllTechnologies(): string[] {
   const publishedCaseStudies = getPublishedProjectCaseStudies();
   const technologiesSet = new Set<string>();
@@ -126,14 +114,12 @@ export function getAllTechnologies(): string[] {
   return Array.from(technologiesSet).sort();
 }
 
-/**
- * Get project navigation (next/previous) based on config Projects order
- */
+
 export function getProjectNavigation(currentSlug: string): {
   previous: { title: string; slug: string } | null;
   next: { title: string; slug: string } | null;
 } {
-  // Find current project in config
+  
   const currentProjectIndex = projects.findIndex(
     (project) => project.projectDetailsPageSlug === `/projects/${currentSlug}`,
   );
@@ -168,9 +154,7 @@ export function getProjectNavigation(currentSlug: string): {
   };
 }
 
-/**
- * Get related project case studies based on technologies (excluding the current one)
- */
+
 export function getRelatedProjectCaseStudies(
   currentSlug: string,
   maxProjects = 2,
@@ -185,7 +169,7 @@ export function getRelatedProjectCaseStudies(
     (tech) => tech.toLowerCase(),
   );
 
-  // Calculate relevance score based on shared technologies
+  
   const caseStudiesWithScore = allCaseStudies
     .filter((caseStudy) => caseStudy.slug !== currentSlug)
     .map((caseStudy) => {

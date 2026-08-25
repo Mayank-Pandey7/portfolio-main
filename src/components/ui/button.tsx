@@ -50,11 +50,7 @@ function Button({
 }: React.ComponentProps<'button'> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
-    /**
-     * Optional analytics event fired on click. Lets any button across the site
-     * opt into tracking with a single prop, e.g.
-     * `track={{ name: 'button_click', data: { buttonId: 'resume_download' } }}`.
-     */
+    
     track?: AnalyticsEvent;
   }) {
   const Comp = asChild ? Slot : 'button';

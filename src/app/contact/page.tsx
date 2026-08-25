@@ -25,7 +25,7 @@ export default function ContactPage() {
   return (
     <Container className="py-16">
       <div className="space-y-8">
-        {/* Header */}
+        
         <div className="space-y-4 text-center">
           <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
             {contactConfig.title}
@@ -36,7 +36,7 @@ export default function ContactPage() {
         </div>
         <Separator />
 
-        {/* Contact Form */}
+        
         <div className="mx-auto max-w-2xl">
           <ContactForm />
         </div>

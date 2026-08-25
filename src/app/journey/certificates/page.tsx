@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default function CertificatesPage() {
-  // Server-side: auto-discover certificate images placed under public/certificates
+  
   const certDir = path.join(process.cwd(), 'public', 'certificates');
   let discovered: {
     file: string;
@@ -35,15 +35,15 @@ export default function CertificatesPage() {
         }));
     }
   } catch {
-    // ignore errors and render configured certificates only
+    
     discovered = [];
   }
 
-  // Merge configured certificates with discovered ones (configured entries take precedence)
+  
   const configured = Array.isArray(configuredCertificates)
     ? configuredCertificates
     : [];
-  // Build map to avoid duplicates by file path
+  
   const map = new Map<
     string,
     { file: string; title?: string; issuer?: string; date?: string }
@@ -71,7 +71,7 @@ export default function CertificatesPage() {
         </div>
         <Separator />
 
-        {/* Certificates */}
+        
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-semibold">

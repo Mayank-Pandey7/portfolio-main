@@ -9,7 +9,7 @@ export interface PageMeta {
   twitterCard?: 'summary' | 'summary_large_image';
 }
 
-// Base site configuration
+
 export const siteConfig = {
   name: heroConfig.name,
   title: 'mynk Portfolio',
@@ -36,7 +36,7 @@ export const siteConfig = {
 };
 
 export const pageMetadata: Record<string, PageMeta> = {
-  // Home page
+  
   '/': {
     title: `${heroConfig.name} - ${heroConfig.title}`,
     description: `${about.description} Explore my projects, experience, and technical expertise.`,
@@ -51,7 +51,7 @@ export const pageMetadata: Record<string, PageMeta> = {
     twitterCard: 'summary_large_image',
   },
 
-  // Contact page
+  
   '/contact': {
     title: 'Contact - Get in Touch',
     description:
@@ -61,7 +61,7 @@ export const pageMetadata: Record<string, PageMeta> = {
     twitterCard: 'summary',
   },
 
-  // Work Experience page
+  
   '/work-experience': {
     title: 'Work Experience - Professional Journey',
     description:
@@ -77,7 +77,7 @@ export const pageMetadata: Record<string, PageMeta> = {
     twitterCard: 'summary_large_image',
   },
 
-  // Projects page
+  
   '/projects': {
     title: 'Projects - My Work & Projects Portfolio',
     description:
@@ -93,7 +93,7 @@ export const pageMetadata: Record<string, PageMeta> = {
     twitterCard: 'summary_large_image',
   },
 
-  // Blog page
+  
   '/blog': {
     title: 'Blog - Thoughts & Tutorials',
     description:
@@ -109,7 +109,7 @@ export const pageMetadata: Record<string, PageMeta> = {
     twitterCard: 'summary_large_image',
   },
 
-  // Resume page
+  
   '/resume': {
     title: 'Resume - Professional CV',
     description: `View and download ${heroConfig.name}'s professional resume and CV. Technical skills, experience, and qualifications.`,
@@ -125,7 +125,7 @@ export const pageMetadata: Record<string, PageMeta> = {
     twitterCard: 'summary',
   },
 
-  // Gears page
+  
   '/gears': {
     title: 'Gears - My Setup & Tools',
     description:
@@ -142,7 +142,7 @@ export const pageMetadata: Record<string, PageMeta> = {
     twitterCard: 'summary_large_image',
   },
 
-  // Setup page
+  
   '/setup': {
     title: 'Setup Guide - VS Code Configuration',
     description:
@@ -160,12 +160,12 @@ export const pageMetadata: Record<string, PageMeta> = {
   },
 };
 
-// Helper function to get metadata for a specific page
+
 export function getPageMetadata(pathname: string): PageMeta {
   return pageMetadata[pathname] || pageMetadata['/'];
 }
 
-// Helper function to generate complete metadata object for Next.js
+
 export function generateMetadata(pathname: string) {
   const pageMeta = getPageMetadata(pathname);
 

@@ -117,7 +117,7 @@ export default function GlitchText({
       aria-label={`${originalText} (${hoverText})`}
       role="text"
     >
-      {/* Ghost Container for Width Stability */}
+      
       <span
         className="pointer-events-none invisible select-none"
         aria-hidden="true"
@@ -125,7 +125,7 @@ export default function GlitchText({
         {originalText.length >= hoverText.length ? originalText : hoverText}
       </span>
 
-      {/* Rendered Text */}
+      
       <span
         style={
           isAltText

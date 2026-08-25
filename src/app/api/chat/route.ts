@@ -140,7 +140,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const validatedData = chatSchema.parse(body);
 
-    // Prepare the request body for Gemini REST API
+    
     const requestBody = {
       contents: [
         {
@@ -153,7 +153,7 @@ export async function POST(request: NextRequest) {
           ],
           role: 'model',
         },
-        // Add conversation history
+        
         ...validatedData.history.map((msg) => ({
           ...msg,
           parts: msg.parts.map((part) => ({
@@ -161,7 +161,7 @@ export async function POST(request: NextRequest) {
             text: msg.role === 'user' ? sanitizeInput(part.text) : part.text,
           })),
         })),
-        // Add current message
+        
         {
           parts: [{ text: sanitizeInput(validatedData.message) }],
           role: 'user',
@@ -200,7 +200,7 @@ export async function POST(request: NextRequest) {
                 const data = JSON.parse(event.data);
                 const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
                 if (text) {
-                  // Send as Server-Sent Event format
+                  
                   const sseData = `data: ${JSON.stringify({ text })}\n\n`;
                   controller.enqueue(encoder.encode(sseData));
                 }
@@ -224,7 +224,7 @@ export async function POST(request: NextRequest) {
             parser.feed(decoder.decode(value));
           }
 
-          // Send completion signal
+          
           controller.enqueue(encoder.encode('data: {"done": true}\n\n'));
           controller.close();
         } catch (error) {

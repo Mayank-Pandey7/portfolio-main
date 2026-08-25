@@ -53,19 +53,19 @@ export function BlogCard({
     >
       <div className="flex items-start justify-between gap-6">
         <div className="min-w-0 flex-1 space-y-2">
-          {/* Title */}
+          
           <h3 className="text-lg font-bold tracking-tight text-foreground transition-colors group-hover:text-primary">
             {title}
           </h3>
 
-          {/* Subtitle / Excerpt */}
+          
           {showDescription && description && (
             <p className="line-clamp-1 text-sm leading-relaxed text-neutral-400">
               {description}
             </p>
           )}
 
-          {/* Tags Badges */}
+          
           {showTags && tags && tags.length > 0 && (
             <div className="flex flex-wrap gap-1.5 pt-1">
               {tags.map((tag) => (
@@ -79,14 +79,14 @@ export function BlogCard({
             </div>
           )}
 
-          {/* Date with Calendar Icon */}
+          
           <div className="flex items-center gap-1.5 pt-0.5 text-xs text-neutral-400">
             <Calendar className="size-3.5 text-neutral-500" />
             <time dateTime={date}>{formattedDate}</time>
           </div>
         </div>
 
-        {/* Read More Link on Right (Hidden on mobile, visible on desktop) */}
+        
         <span className="hidden sm:inline-flex shrink-0 items-center gap-1.5 pt-1 text-sm font-medium text-neutral-400 transition-colors group-hover:text-foreground">
           Read more{' '}
           <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />

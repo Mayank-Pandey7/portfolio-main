@@ -16,7 +16,7 @@ export function BlogPageClient({
 }: BlogPageClientProps) {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
-  // Calculate post count for each tag
+  
   const tagCounts = initialTags.map((tag) => ({
     name: tag,
     count: initialPosts.filter((post) =>
@@ -36,7 +36,7 @@ export function BlogPageClient({
 
   return (
     <Container className="mx-auto max-w-3xl py-10 space-y-8">
-      {/* Title & Tagline */}
+      
       <div className="space-y-4 text-center">
         <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
           Blog
@@ -46,9 +46,9 @@ export function BlogPageClient({
         </p>
       </div>
 
-      {/* Category Pills Bar (Horizontal Single Line Scroll) */}
+      
       <div className="flex items-center gap-2 overflow-x-auto py-1 flex-nowrap [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-        {/* All Pill */}
+        
         <button
           onClick={() => setSelectedTag(null)}
           className={`flex shrink-0 whitespace-nowrap items-center gap-2 rounded-full px-3.5 py-1 text-sm font-medium transition-colors cursor-pointer ${
@@ -69,7 +69,7 @@ export function BlogPageClient({
           </span>
         </button>
 
-        {/* Individual Tag Pills */}
+        
         {tagCounts.map(({ name, count }) => {
           const isActive = selectedTag?.toLowerCase() === name.toLowerCase();
           return (
@@ -97,7 +97,7 @@ export function BlogPageClient({
         })}
       </div>
 
-      {/* Blog List */}
+      
       <BlogList posts={filteredPosts} showDescription={true} />
     </Container>
   );

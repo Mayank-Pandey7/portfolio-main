@@ -25,7 +25,7 @@ export default function WorkExperiencePage() {
   return (
     <Container className="py-16">
       <div className="space-y-8">
-        {/* Header */}
+        
         <div className="space-y-4 text-center">
           <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">
             Work Experience
@@ -37,7 +37,7 @@ export default function WorkExperiencePage() {
 
         <Separator />
 
-        {/* Work Experiences */}
+        
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-semibold">
