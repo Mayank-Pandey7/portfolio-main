@@ -32,6 +32,14 @@ export const useThemeToggle = ({
 
   const styleId = 'theme-transition-styles';
 
+  const cleanupStyles = useCallback(() => {
+    if (typeof window === 'undefined') return;
+    const styleElement = document.getElementById(styleId);
+    if (styleElement) {
+      styleElement.remove();
+    }
+  }, []);
+
   const updateStyles = useCallback((css: string) => {
     if (typeof window === 'undefined') return;
 
@@ -70,10 +78,25 @@ export const useThemeToggle = ({
 
     if (!document.startViewTransition) {
       switchTheme();
+      cleanupStyles();
       return;
     }
 
-    document.startViewTransition(switchTheme);
+    try {
+      const transition = document.startViewTransition(switchTheme);
+      transition?.ready?.catch?.(() => {});
+      transition?.finished
+        ?.then(() => {
+          cleanupStyles();
+        })
+        ?.catch(() => {
+          cleanupStyles();
+        });
+      setTimeout(cleanupStyles, 1200);
+    } catch {
+      switchTheme();
+      cleanupStyles();
+    }
   }, [
     setTheme,
     variant,
@@ -81,6 +104,7 @@ export const useThemeToggle = ({
     blur,
     gifUrl,
     updateStyles,
+    cleanupStyles,
     isDark,
     setIsDark,
     trackEvent,
@@ -101,11 +125,35 @@ export const useThemeToggle = ({
 
     if (!document.startViewTransition) {
       switchTheme();
+      cleanupStyles();
       return;
     }
 
-    document.startViewTransition(switchTheme);
-  }, [setTheme, variant, start, blur, gifUrl, updateStyles, setIsDark]);
+    try {
+      const transition = document.startViewTransition(switchTheme);
+      transition?.ready?.catch?.(() => {});
+      transition?.finished
+        ?.then(() => {
+          cleanupStyles();
+        })
+        ?.catch(() => {
+          cleanupStyles();
+        });
+      setTimeout(cleanupStyles, 1200);
+    } catch {
+      switchTheme();
+      cleanupStyles();
+    }
+  }, [
+    setTheme,
+    variant,
+    start,
+    blur,
+    gifUrl,
+    updateStyles,
+    cleanupStyles,
+    setIsDark,
+  ]);
 
   const setCrazyDarkTheme = useCallback(() => {
     setIsDark(true);
@@ -122,11 +170,35 @@ export const useThemeToggle = ({
 
     if (!document.startViewTransition) {
       switchTheme();
+      cleanupStyles();
       return;
     }
 
-    document.startViewTransition(switchTheme);
-  }, [setTheme, variant, start, blur, gifUrl, updateStyles, setIsDark]);
+    try {
+      const transition = document.startViewTransition(switchTheme);
+      transition?.ready?.catch?.(() => {});
+      transition?.finished
+        ?.then(() => {
+          cleanupStyles();
+        })
+        ?.catch(() => {
+          cleanupStyles();
+        });
+      setTimeout(cleanupStyles, 1200);
+    } catch {
+      switchTheme();
+      cleanupStyles();
+    }
+  }, [
+    setTheme,
+    variant,
+    start,
+    blur,
+    gifUrl,
+    updateStyles,
+    cleanupStyles,
+    setIsDark,
+  ]);
 
   return {
     isDark,
@@ -180,11 +252,7 @@ export const ThemeToggleButton = ({
 // ///////////////////////////////////////////////////////////////////////////
 
 export type AnimationVariant =
-  | 'circle'
-  | 'rectangle'
-  | 'gif'
-  | 'polygon'
-  | 'circle-blur';
+  'circle' | 'rectangle' | 'gif' | 'polygon' | 'circle-blur';
 export type AnimationStart =
   | 'top-left'
   | 'top-right'

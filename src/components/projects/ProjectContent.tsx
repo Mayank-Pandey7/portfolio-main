@@ -5,8 +5,8 @@ import { ProjectCaseStudyFrontmatter } from '@/types/project';
 import rehypeHighlight from '@shikijs/rehype';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { Link } from 'next-view-transitions';
-import Image from 'next/image';
 
+import Interactive3DImage from '../common/Interactive3DImage';
 import Github from '../svgs/Github';
 import Website from '../svgs/Website';
 import { ProjectComponents } from './ProjectComponents';
@@ -43,12 +43,13 @@ export function ProjectContent({ frontmatter, content }: ProjectContentProps) {
     <article className="mx-auto max-w-4xl">
       {/* Hero Section */}
       <header className="mb-8 space-y-6">
-        <div className="relative aspect-video overflow-hidden rounded-lg">
-          <Image
+        <div className="relative aspect-video w-full">
+          <Interactive3DImage
             src={image}
             alt={title}
             fill
             className="object-cover"
+            containerClassName="w-full h-full"
             priority
           />
         </div>
@@ -71,11 +72,11 @@ export function ProjectContent({ frontmatter, content }: ProjectContentProps) {
             )}
           </div>
 
-          <h1 className="text-2xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+          <h1 className="text-2xl leading-tight font-bold sm:text-4xl lg:text-5xl">
             {title}
           </h1>
 
-          <p className="text-muted-foreground text-base sm:text-xl leading-relaxed">
+          <p className="text-muted-foreground text-base leading-relaxed sm:text-xl">
             {description}
           </p>
 

@@ -1,16 +1,11 @@
-import Appwrite from '@/components/technologies/Appwrite';
-import Bun from '@/components/technologies/Bun';
 import ExpressJs from '@/components/technologies/ExpressJs';
 import Github from '@/components/technologies/Github';
-import MDXIcon from '@/components/technologies/MDXIcon';
+import JavaScript from '@/components/technologies/JavaScript';
 import MongoDB from '@/components/technologies/MongoDB';
 import Netlify from '@/components/technologies/Netlify';
 import NextJs from '@/components/technologies/NextJs';
 import NodeJs from '@/components/technologies/NodeJs';
-import PostgreSQL from '@/components/technologies/PostgreSQL';
-import Prisma from '@/components/technologies/Prisma';
 import ReactIcon from '@/components/technologies/ReactIcon';
-import SocketIo from '@/components/technologies/SocketIo';
 import TailwindCss from '@/components/technologies/TailwindCss';
 import TypeScript from '@/components/technologies/TypeScript';
 import Vercel from '@/components/technologies/Vercel';
@@ -18,64 +13,62 @@ import { Project } from '@/types/project';
 
 export const projects: Project[] = [
   {
-    title: 'SocialAi',
+    title: 'Devora',
     description:
-      'A full-stack AI-powered social media content generation platform that helps users create captions, post ideas, hashtags, and platform-specific content.',
-    image: '/project/notesbuddy.png',
-    link: 'https://social-ai-dusky.vercel.app/',
+      'An AI-powered developer career copilot featuring real-time AI mock interview simulations, ATS resume optimization with automated keyword gap analysis, and developer personality profiles.',
+    image: '/project/devora.png',
+    link: 'https://devora-mynk.vercel.app/',
     technologies: [
-      { name: 'Next.js', icon: <NextJs key="nextjs" /> },
-      { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
       { name: 'React', icon: <ReactIcon key="react" /> },
-      { name: 'Vercel', icon: <Vercel key="vercel" /> },
+      { name: 'JavaScript', icon: <JavaScript key="javascript" /> },
+      { name: 'Node.js', icon: <NodeJs key="nodejs" /> },
+      { name: 'Express.js', icon: <ExpressJs key="expressjs" /> },
       { name: 'MongoDB', icon: <MongoDB key="mongodb" /> },
       { name: 'Tailwind CSS', icon: <TailwindCss key="tailwindcss" /> },
-      { name: 'MDX', icon: <MDXIcon key="mdx" /> },
+      { name: 'Vercel', icon: <Vercel key="vercel" /> },
     ],
-    github: 'https://github.com/Mayank-Pandey7/SocialAi',
-    live: 'https://social-ai-dusky.vercel.app/',
+    github: 'https://github.com/Mayank-Pandey7/Devora',
+    live: 'https://devora-mynk.vercel.app/',
     details: true,
-    projectDetailsPageSlug: '/projects/socialai',
+    projectDetailsPageSlug: '/projects/devora',
     isWorking: true,
   },
   {
-    title: 'TrialShopy (Portfolio)',
+    title: 'Marvel Timeline Explorer',
     description:
-      'An intelligent AI assistant and showcase workspace empowering modern commerce and interactive application flows.',
-    image: '/project/appwrite.png',
-    link: 'https://nexus-ai-mayank.vercel.app/',
+      'A cinematic Marvel interactive timeline, character archive, and multiversal relic provenance explorer across 44 MCU canonical entries with dynamic spatial canvas bezier threads.',
+    image: '/project/marvel.png',
+    link: 'https://marvel-mynk.vercel.app',
     technologies: [
       { name: 'Next.js', icon: <NextJs key="nextjs" /> },
       { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
       { name: 'React', icon: <ReactIcon key="react" /> },
-      { name: 'Vercel', icon: <Vercel key="vercel" /> },
-      { name: 'MongoDB', icon: <MongoDB key="mongodb" /> },
       { name: 'Tailwind CSS', icon: <TailwindCss key="tailwindcss" /> },
-      { name: 'MDX', icon: <MDXIcon key="mdx" /> },
+      { name: 'Vercel', icon: <Vercel key="vercel" /> },
+    ],
+    github: 'https://github.com/Mayank-Pandey7/Marvel',
+    live: 'https://marvel-mynk.vercel.app',
+    details: true,
+    projectDetailsPageSlug: '/projects/marvel',
+    isWorking: true,
+  },
+  {
+    title: 'Trialshopy',
+    description:
+      'Smart AR Shopping Platform — virtual try-on, AI-driven product recommendations, and enterprise IoT analytics for modern retail.',
+    image: '/project/trialshopy.png',
+    link: 'https://trialshopy-mynk.vercel.app/',
+    technologies: [
+      { name: 'React', icon: <ReactIcon key="react" /> },
+      { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
+      { name: 'Node.js', icon: <NodeJs key="nodejs" /> },
+      { name: 'Tailwind CSS', icon: <TailwindCss key="tailwindcss" /> },
+      { name: 'Vercel', icon: <Vercel key="vercel" /> },
     ],
     github: 'https://github.com/Mayank-Pandey7/nexus-ai',
-    live: 'https://nexus-ai-mayank.vercel.app/',
+    live: 'https://trialshopy-mynk.vercel.app/',
     details: true,
     projectDetailsPageSlug: '/projects/nexusai',
-    isWorking: true,
-  },
-  {
-    title: 'LaunchDeck',
-    description:
-      'An all-in-one developer toolkit for generating SEO metadata, OG images, favicons, and converting data formats directly in the browser.',
-    image: '/project/intent.png',
-    link: 'https://launchdeck.vercel.app/',
-    technologies: [
-      { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
-      { name: 'React', icon: <ReactIcon key="react" /> },
-      { name: 'Node.js', icon: <NodeJs key="nodejs" /> },
-      { name: 'Bun', icon: <Bun key="bun" /> },
-      { name: 'Vercel', icon: <Vercel key="vercel" /> },
-      { name: 'Appwrite', icon: <Appwrite key="appwrite" /> },
-    ],
-    live: 'https://launchdeck.vercel.app/',
-    details: true,
-    projectDetailsPageSlug: '/projects/launchdeck',
     isWorking: true,
   },
   {
@@ -98,21 +91,19 @@ export const projects: Project[] = [
     isWorking: true,
   },
   {
-    title: 'Calendar App',
+    title: 'Calendar',
     description:
-      'A responsive interactive calendar for viewing dates, creating monthly events, and managing schedules with an intuitive interface.',
-    image: '/project/ramspace.png',
-    link: 'https://calender-mauve-one.vercel.app/',
+      'A modern calendar web app for viewing dates, navigating months, and managing schedules with a clean and responsive interface.',
+    image: '/project/calendar.png',
+    link: 'https://calender-mynk.vercel.app/',
     technologies: [
-      { name: 'Next.js', icon: <NextJs key="nextjs" /> },
-      { name: 'TypeScript', icon: <TypeScript key="typescript" /> },
-      { name: 'Prisma', icon: <Prisma key="prisma" /> },
-      { name: 'PostgreSQL', icon: <PostgreSQL key="postgresql" /> },
+      { name: 'React', icon: <ReactIcon key="react" /> },
+      { name: 'JavaScript', icon: <JavaScript key="javascript" /> },
       { name: 'Tailwind CSS', icon: <TailwindCss key="tailwindcss" /> },
-      { name: 'Socket.io', icon: <SocketIo key="socketio" /> },
+      { name: 'Vercel', icon: <Vercel key="vercel" /> },
     ],
     github: 'https://github.com/Mayank-Pandey7/calender',
-    live: 'https://calender-mauve-one.vercel.app/',
+    live: 'https://calender-mynk.vercel.app/',
     details: true,
     projectDetailsPageSlug: '/projects/calander',
     isWorking: true,

@@ -9,10 +9,10 @@ import Prisma from '@/components/technologies/Prisma';
 import ReactIcon from '@/components/technologies/ReactIcon';
 import TypeScript from '@/components/technologies/TypeScript';
 import { Badge } from '@/components/ui/badge';
-import Image from 'next/image';
 import React from 'react';
 
 import { CodeCopyButton } from '../blog/CodeCopyButton';
+import Interactive3DImage from '../common/Interactive3DImage';
 
 // Technology mapping for dynamic components
 const TechnologyComponents: Record<string, React.ComponentType> = {
@@ -88,13 +88,17 @@ const ProjectMeta = ({
       )}
       {role && (
         <div>
-          <h5 className="text-muted-foreground text-xs font-semibold sm:text-sm">Role</h5>
+          <h5 className="text-muted-foreground text-xs font-semibold sm:text-sm">
+            Role
+          </h5>
           <p className="text-xs font-medium sm:text-sm">{role}</p>
         </div>
       )}
       {team && (
         <div>
-          <h5 className="text-muted-foreground text-xs font-semibold sm:text-sm">Team</h5>
+          <h5 className="text-muted-foreground text-xs font-semibold sm:text-sm">
+            Team
+          </h5>
           <p className="text-xs font-medium sm:text-sm">{team}</p>
         </div>
       )}
@@ -125,14 +129,14 @@ const ProjectMeta = ({
 const Challenges = ({ challenges }: { challenges: string[] }) => {
   return (
     <div className="my-6 rounded-lg border border-yellow-200 bg-yellow-50 p-3.5 sm:p-4 dark:border-yellow-800 dark:bg-yellow-950/20">
-      <h4 className="mb-3 text-base sm:text-lg font-semibold text-yellow-800 dark:text-yellow-200">
+      <h4 className="mb-3 text-base font-semibold text-yellow-800 sm:text-lg dark:text-yellow-200">
         Key Challenges
       </h4>
       <ul className="space-y-2">
         {challenges.map((challenge, index) => (
           <li
             key={index}
-            className="flex items-start gap-2 text-xs sm:text-sm text-yellow-700 dark:text-yellow-300"
+            className="flex items-start gap-2 text-xs text-yellow-700 sm:text-sm dark:text-yellow-300"
           >
             <span className="mt-1 block size-1.5 shrink-0 rounded-full bg-yellow-500 dark:bg-yellow-400" />
             {challenge}
@@ -147,14 +151,14 @@ const Challenges = ({ challenges }: { challenges: string[] }) => {
 const Learnings = ({ learnings }: { learnings: string[] }) => {
   return (
     <div className="my-6 rounded-lg border border-green-200 bg-green-50 p-3.5 sm:p-4 dark:border-green-800 dark:bg-green-950/20">
-      <h4 className="mb-3 text-base sm:text-lg font-semibold text-green-800 dark:text-green-200">
+      <h4 className="mb-3 text-base font-semibold text-green-800 sm:text-lg dark:text-green-200">
         Key Learnings
       </h4>
       <ul className="space-y-2">
         {learnings.map((learning, index) => (
           <li
             key={index}
-            className="flex items-start gap-2 text-xs sm:text-sm text-green-700 dark:text-green-300"
+            className="flex items-start gap-2 text-xs text-green-700 sm:text-sm dark:text-green-300"
           >
             <span className="mt-1 block size-1.5 shrink-0 rounded-full bg-green-500 dark:bg-green-400" />
             {learning}
@@ -166,25 +170,32 @@ const Learnings = ({ learnings }: { learnings: string[] }) => {
 };
 
 export const ProjectComponents = {
-  // Inherit blog components for basic markdown
   img: ({
     src,
     alt,
-    ...props
+    width = 1200,
+    height = 675,
   }: {
-    src: string;
-    alt: string;
+    src?: string;
+    alt?: string;
+    width?: number;
+    height?: number;
     [key: string]: unknown;
-  }) => (
-    <Image
-      src={src}
-      alt={alt}
-      width={800}
-      height={400}
-      className="h-auto w-full max-w-full rounded-lg object-cover"
-      {...props}
-    />
-  ),
+  }) => {
+    if (!src) return null;
+    return (
+      <div className="my-6 aspect-video w-full overflow-hidden rounded-xl">
+        <Interactive3DImage
+          src={src}
+          alt={alt || 'Project screenshot'}
+          width={typeof width === 'string' ? parseInt(width, 10) : width}
+          height={typeof height === 'string' ? parseInt(height, 10) : height}
+          className="h-full w-full rounded-xl object-cover"
+          containerClassName="w-full h-full"
+        />
+      </div>
+    );
+  },
   h1: ({
     children,
     ...props
